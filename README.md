@@ -1,10 +1,11 @@
-# 🎓 Universidade Federal do Tocantins
+# Universidade Federal do Tocantins (UFT)
 
-* **Curso de Ciência da Computação** 
-* **Engenharia de Software 2026/01** 
-* **Professor Edeilson Milhomem da Silva**
+* **Professor: Edeilson Milhomem da Silva**
+* **Disciplina: Engenharia de Software** 
+* **Semestre: 2026.1** 
 
-## 👥 Integrantes do Time
+
+### 👥 Integrantes do Time
 
 * Hiago Freitas Jatoba
 * Antonio Andrade Trauthman
@@ -12,11 +13,7 @@
 * Zacaro Cerqueira Barros
 * Gabriel Henrique Coldebella de Souza
 
-# 🌿 Expresso Verde
-
-Projeto de desenvolvimento de um site de compra e venda de artigos de jardinagem, criado para a disciplina de Engenharia de Software.
-
-## 📌 Descrição do Projeto
+## 🌿 Expresso Verde
 
 O Expresso Verde é uma plataforma web voltada para a compra e venda de artigos de jardinagem, como plantas, ferramentas, sementes e acessórios.
 A proposta do sistema é conectar vendedores e compradores de forma prática, oferecendo uma experiência simples, intuitiva e eficiente para usuários interessados em jardinagem.
@@ -30,17 +27,6 @@ O objetivo principal do projeto é aplicar conceitos de Engenharia de Software n
 * Desenvolvimento front-end e back-end
 * Testes e validação
 * Documentação do projeto
-
-## 🧭 Links
-
-* [🗓️ Planejamento de Sprints](docs/sprints/)
-* [📊 Planejamento no Trello](https://trello.com/b/y7IEh6g8/engenharia-de-software-expresso-verde)
-* 🎨 Protótipos *(em desenvolvimento)*
-* [🎭 User Stories](docs/user-stories.md)
-* [📋 Requisitos Funcionais](docs/requisitos-funcionais.md)
-* [📋 Requisitos Não Funcionais](docs/requisitos-nao-funcionais.md)
-* ⚙️ Documentação da API *(em desenvolvimento)*
-
 
 ## ⚙️ Funcionalidades Planejadas
 
@@ -57,17 +43,21 @@ O objetivo principal do projeto é aplicar conceitos de Engenharia de Software n
 
 O projeto foi desenvolvido utilizando o padrão de arquitetura **MVC (Model-View-Controller)**, garantindo a separação de responsabilidades e facilitando a manutenção do código.
 
-### 📂 Estrutura de Pastas
 
-* **`Model`**: Regras de negócio e acesso ao Banco de dados
-* **`View`**: Interface do usuário
-* **`Controller`**: Intermediação entre Model e View
+## 🧭 Links
 
+* [🗓️ Planejamento de Sprints](docs/sprints/)
+* [📊 Planejamento no Trello](https://trello.com/b/y7IEh6g8/engenharia-de-software-expresso-verde)
+* 🎨 Protótipos *(em desenvolvimento)*
+* [🎭 User Stories](docs/user-stories.md)
+* [📋 Requisitos Funcionais](docs/requisitos-funcionais.md)
+* [📋 Requisitos Não Funcionais](docs/requisitos-nao-funcionais.md)
+* ⚙️ Documentação da API *(em desenvolvimento)*
 
 ## 🚀 Tecnologias Utilizadas
 
 - Linguagem: PHP 8.x
-- Banco de Dados: MySQL
+- Banco de dados: MySQL
 - Interface: HTML5 / CSS3
 - Versionamento: Git com fluxo GitFlow
 
@@ -78,13 +68,13 @@ O projeto foi desenvolvido utilizando o padrão de arquitetura **MVC (Model-View
     ```bash
     git clone https://github.com/antoniotrauthmann/projeto-es
     ```
-2. Configure o Banco de Dados:
+2. Configure o Banco de dados:
     - Ative o MySQL no seu painel de controle.
     - Importe o arquivo /docs/schema.sql via PHPMyAdmin.
 3. Configure a conexão
-    - Ajuste /config/db_connect.php
+    - Ajuste `/config/db_connect.php`
 4. Acesse no navegador:
-    - http://localhost/projeto-es
+    - `http://localhost/projeto-es`
 
 ---
 
