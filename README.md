@@ -86,11 +86,12 @@ Requisitos:
 
 [Relatório - Sprint 2](relatorios/iteracao_2.md)
 
-### Sprint 3: API de Integração
+### Sprint 3: API e Testes Unitários
 
-Valor: Permitir comunicação completa entre frontend e backend por meio de API.
+Valor: Garantir acesso estruturado aos dados do sistema por meio de uma API, além de aumentar a confiabilidade do software com testes automatizados.
 
-Objetivo: Implementar endpoints em PHP nativo para operações de leitura e escrita, utilizando JSON.
+Objetivo: Implementar uma API em PHP nativo para disponibilizar funcionalidades do sistema via JSON e desenvolver testes unitários para validar regras de negócio e operações principais.
+
 
 Requisitos:
 * RF01 – Cadastro/Login de Usuário (via API)

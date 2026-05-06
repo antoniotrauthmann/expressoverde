@@ -45,7 +45,7 @@ if ($rota === 'login') {
     include 'src/View/Perfil/index.php';
 } elseif ($rota === 'cadastrar_produto') {
     $produtoController->cadastrar();
-} elseif ($rota === 'carrinho') {
+} /*elseif ($rota === 'carrinho') {
     $action = $_GET['action'] ?? null;
     if ($action === 'add') {
         $carrinhoController->add();
@@ -56,7 +56,7 @@ if ($rota === 'login') {
     } else {
         $carrinhoController->index();
     }
-} elseif ($rota === 'testeVisualizacao') {
+} */elseif ($rota === 'testeVisualizacao') {
     include 'src/View/testeVisualizacao.php';
 } else {
     echo "<h1>404 - Rota não encontrada</h1>";
