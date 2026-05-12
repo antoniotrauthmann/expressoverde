@@ -1,283 +1,167 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "DM Sans", sans-serif;
+/* ==========================================
+    STYLESHEET COMPARTILHADO
+    ========================================== */
+:root {
+    --brand-color: #114c43; /* Verde escuro do design */
+    --brand-color-hover: #0b362f;
+    --input-border: #ced4da;
+    --text-dark: #212529;
+    --bg-gray: #d1d1d1; /* Fundo cinza de visualização */
 }
 
 body {
-    width: 100%;
-    height: 100vh;
+    background-color: var(--bg-gray);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f6fdf6;
+    gap: 2rem;
+    padding: 2rem;
 }
 
-.container {
-    width: 80%;
-    height: 80vh;
-    display: flex;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
-    border-radius: 8px;
+/* Tipografia */
+.font-quattrocento {
+    font-family: 'Quattrocento', serif;
+}
+
+.brand-text {
+    color: var(--brand-color);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.title-dark {
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+/* Estrutura dos Modais (Estáticos para visualização) */
+.custom-modal {
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    /* Modais sem bordas arredondadas conforme o mockup */
+    border-radius: 0;
     overflow: hidden;
 }
 
-.form-image {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #c2e2c4;
-    padding: 1rem;
-}
-
-.form-image img {
-    width: 35rem;
-    max-width: 100%;
-}
-
-
-.form {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #ffffff;
-    padding: 3rem 4rem;   
-    overflow-y: auto;
-}
-
-
-.form-header {
-    width: 100%;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.form-header h1 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: rgb(16, 70, 70);
-    position: relative;
-}
-
-.form-header h1::after {
-    content: '';           
-    display: block;
-    width: 5rem;
-    height: 0.3rem;
-    background-color: #c2e2c4;
-    margin-top: 0.3rem;
-    border-radius: 10px;
-}
-
-
-.login-button {
-    display: flex;
-    align-items: center;
-}
-
-.login-button button {
-    border: none;
-    background-color: rgb(16, 70, 70);
-    padding: 0.4rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.login-button button:hover {
-    background-color: #c2e2c4;
-}
-
-.login-button button a {
-    text-decoration: none;
+/* Formulários: Inputs e Labels */
+.form-label {
+    font-size: 0.85rem;
     font-weight: 500;
-    color: #fff;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
 }
 
-.input-group {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem 0;   
-}
-
-.input-box {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
-}
-
-.input-box label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: rgb(16, 70, 70);
-}
-
-.input-box input {
-    font-size: 1rem;
-    margin: 0.4rem 0;
-    padding: 0.8rem 1.2rem;
-    border: 1px solid #d4ead5;
-    border-radius: 5px;
-    outline: none;
-    box-shadow: 1px 1px 10px #0000000a;   
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-.input-box input:hover,
-.input-box input:focus {
-    background-color: #f0faf0;
-    border-color: rgb(16, 70, 70);
-}
-
-.continue-button {
-    width: 100%;
-}
-
-.continue-button button {
-    width: 100%;
-    margin-top: 1rem;
-    border: none;
-    background-color: rgb(16, 70, 70);
-    border-radius: 5px;
-    padding: 0.75rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    color: white
-}
-
-.continue-button button:hover {
-    background-color: #4a9e6b;
-}
-
-.continue-button button a {
-    text-decoration: none;
+.form-control, .form-select {
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--input-border);
     font-size: 0.95rem;
+}
+
+.form-control::placeholder {
+    color: #a0aab5;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--brand-color);
+    box-shadow: 0 0 0 0.2rem rgba(17, 76, 67, 0.25);
+}
+
+/* Botão Principal */
+.btn-brand {
+    background-color: var(--brand-color);
+    color: #ffffff;
     font-weight: 600;
-    color: #fff;
+    border-radius: 6px;
+    padding: 0.6rem;
+    width: 100%;
+    border: none;
+    transition: background-color 0.2s ease;
+    margin-top: 0.5rem;
 }
 
-#picture__input {
-    display: none;
+.btn-brand:hover {
+    background-color: var(--brand-color-hover);
+    color: #ffffff;
 }
 
-.picture {
-    width: 200px;
-    height: 200px;
-    background: #c2e2c4;
+/* ==========================================
+    MODAL 1: LOGIN (DUAS COLUNAS)
+    ========================================== */
+.modal-login {
+    width: 800px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 3px dashed rgb(16, 70, 70);
-    border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
 }
 
-.picture:hover {
-    background-color: rgb(16, 70, 70);
-    color: #c2e2c4;
+.login-image-side {
+    width: 50%;
+    background-image: url('Imagem_login.png'); /* Nome do arquivo anexado */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 500px;
 }
 
-
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
+/* Gradiente escuro para garantir leitura do texto branco */
+.login-image-side::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+    pointer-events: none;
 }
 
-.modal {
-    background: #fff;
-    border-radius: 8px;
-    padding: 2rem 2.5rem;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+.image-text-top {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 2;
+}
+
+.image-text-bottom {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    z-index: 2;
+}
+
+.login-form-side {
+    width: 50%;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.modal-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: #c2e2c4;
-    color: rgb(16, 70, 70);
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    font-weight: 700;
 }
 
-.modal p {
-    color: rgb(16, 70, 70);
-    font-size: 1rem;
-    font-weight: 500;
+.login-footer-text {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-dark);
 }
 
-.modal button {
-    padding: 0.6rem 2rem;
-    background: rgb(16, 70, 70);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s;
+.login-footer-text a {
+    color: var(--brand-color);
+    text-decoration: none;
 }
 
-.modal button:hover { background: #4a9e6b; }
-
-/* ── Responsividade ──────────────────────────────── */
-@media screen and (max-width: 1330px) {
-    .form-image {
-        display: none;
-    }
-
-    .container {
-        width: 55%;
-    }
-
-    .form {
-        width: 100%;
-        padding: 3rem;
-    }
+/* ==========================================
+    MODAL 2: CADASTRO (UMA COLUNA)
+    ========================================== */
+.modal-signup {
+    width: 400px;
+    padding: 2.5rem;
 }
 
-@media screen and (max-width: 768px) {
-    .container {
-        width: 80%;
-    }
-
-    .form {
-        padding: 2rem 1.5rem;
-    }
-}
-
-@media screen and (max-height: 1064px) {   
-    .container {
-        width: 80%;
-        height: auto;
-    }
-
-    .input-group {
-        flex-direction: column;
-        flex-wrap: nowrap;
-    }
+.title-underline {
+    width: 45px;
+    height: 4px;
+    background-color: var(--brand-color);
+    margin-top: 8px;
+    margin-bottom: 24px;
+    border-radius: 2px;
 }
