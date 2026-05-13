@@ -16,11 +16,11 @@ class UsuarioModel {
         return $resultado->fetch_assoc();
     }
 
-    public function inserir($usuario_nome, $email, $senha_hash, $tipo) {
+    public function inserir($nome, $email, $senha_hash, $tipo) {
         $stmt = $this->db->prepare(
             "INSERT INTO usuario (usuario_nome, email, senha_hash, tipo) VALUES (?, ?, ?, ?)"
         );
-        $stmt->bind_param("ssss", $usuario_nome, $email, $senha_hash, $tipo);
+        $stmt->bind_param("ssss", $nome, $email, $senha_hash, $tipo);
         $stmt->execute();
     }
 }

@@ -1,5 +1,4 @@
-<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -11,9 +10,10 @@
 </head>
 
 <body>
+    <?php include 'src/View/Cabecalho/index.php'; ?>
     <div class="container">
         <div class="form-image">
-            <img src="src/View/Cadastro_usuario/img/undraw_receipt_tzi0.svg" alt="Ilustração de cadastro">
+            <img src="src/View/Cadastro_usuario/img/undraw_receipt_tzi0.svg" alt="IlustraÃ§Ã£o de cadastro">
         </div>
         <div class="form">
             <form action="index.php?rota=cadastro" method="POST">
@@ -26,7 +26,7 @@
                 <?php if (!empty($erro)): ?>
                     <div class="modal-overlay" id="modalErro">
                         <div class="modal">
-                            <div class="modal-icon" style="background:#fde8e8; color:#c0392b;">✕</div>
+                            <div class="modal-icon" style="background:#fde8e8; color:#c0392b;">âœ•</div>
                             <p><?= htmlspecialchars($erro) ?></p>
                             <button onclick="document.getElementById('modalErro').remove()">OK</button>
                         </div>
@@ -66,7 +66,7 @@
                     <button type="submit">Prosseguir</button>
                 </div>
                 <p style="text-align:center; margin-top: 12px; font-size: 14px;">
-                    Já tem conta? <a href="index.php?rota=login" style="color: #1a5c4a;">Entrar</a>
+                    JÃ¡ tem conta? <a href="index.php?rota=login" style="color: #1a5c4a;">Entrar</a>
                 </p>
             </form>
         </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Comunidade</title>
     <style>
-        /* Configuração Geral */
+        /* ConfiguraÃ§Ã£o Geral */
         body {
             background-color: #1a1a1a;
             color: #ffffff;
@@ -86,16 +86,17 @@
     </style>
 </head>
 <body>
+    <?php include 'src/View/Cabecalho/index.php'; ?>
 
     <nav>
         <a href="index.php?rota=feed" class="active">Comunidade</a>
-        <a href="index.php?rota=manual">Manual de Cuidados 🌿</a>
+        <a href="index.php?rota=manual">Manual de Cuidados ðŸŒ¿</a>
     </nav>
 
     <h2>Compartilhe com a comunidade</h2>
 
     <form action="index.php?rota=salvar" method="POST" enctype="multipart/form-data">
-        <textarea name="conteudo_texto" placeholder="O que você quer compartilhar?"></textarea>
+        <textarea name="conteudo_texto" placeholder="O que vocÃª quer compartilhar?"></textarea>
         <br>
         <input type="file" name="imagem" accept="image/*">
         <br>
@@ -113,7 +114,7 @@
                     <a href="index.php?rota=excluir&id=<?= $post['id_post'] ?>" 
                        class="btn-excluir" 
                        onclick="return confirm('Tem certeza que deseja apagar seu post?')">
-                       Excluir 🗑️
+                       Excluir ðŸ—‘ï¸
                     </a>
                 <?php endif; ?>
 
@@ -121,7 +122,7 @@
                 
                 <p><?= htmlspecialchars($post['conteudo']) ?></p>
                 
-                <?php if ($post['post_caminho_imagem']): ?>
+                <?php if (!empty($post['post_caminho_imagem'])): ?>
                     <img src="<?= htmlspecialchars($post['post_caminho_imagem']) ?>" alt="Imagem" style="max-width: 100%; border-radius: 4px; margin-top: 10px;">
                 <?php endif; ?>
                 
@@ -132,7 +133,7 @@
 
                 <div class="curtidas-container">
                     <a href="index.php?rota=curtir&id=<?= $post['id_post'] ?>" style="text-decoration: none; color: #ff4757; font-weight: bold;">
-                        ❤️ <?= $post['curtidas'] ?> Curtidas
+                        â¤ï¸ <?= $post['curtidas'] ?> Curtidas
                     </a>
                 </div>
             </div>

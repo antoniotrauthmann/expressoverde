@@ -19,9 +19,8 @@ class UsuarioController {
             $usuario = $model->buscarPorEmail($email);
 
             if ($usuario && password_verify($senha, $usuario['senha_hash'])) {
-                session_start();
                 $_SESSION['usuario_id']    = $usuario['id_usuario'];
-                $_SESSION['usuario_nome']  = $usuario['nome'];
+                $_SESSION['usuario_nome']  = $usuario['usuario_nome'];
                 $_SESSION['usuario_email'] = $usuario['email'];
                 $_SESSION['usuario_tipo']  = $usuario['tipo'];
                 header("Location: index.php?rota=feed");
@@ -64,7 +63,6 @@ class UsuarioController {
     }
 
     public function logout() {
-        session_start();
         session_destroy();
         header("Location: index.php?rota=login");
         exit();

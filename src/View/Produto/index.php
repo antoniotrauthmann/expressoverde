@@ -1,9 +1,17 @@
+<?php include 'src/View/Cabecalho/index.php'; ?>
 
 <link rel="stylesheet" href="src/View/Produto/style.css">
 
 <?php
-$sql = "SELECT * FROM produto p LEFT JOIN imagens_produto i ON p.id_produto = i.id_produto WHERE p.id_produto =" . $_POST['id']; 
-$result = $mysqli->query($sql);
+$id_produto = $_GET['id'] ?? $_POST['id'] ?? null;
+if (!$id_produto) {
+    echo "<p>Produto não encontrado.</p>";
+    exit;
+}
+$stmt = $mysqli->prepare("SELECT p.*, i.produto_caminho_imagem FROM produto p LEFT JOIN imagens_produto i ON p.id_produto = i.id_produto WHERE p.id_produto = ?");
+$stmt->bind_param("i", $id_produto);
+$stmt->execute();
+$result = $stmt->get_result();
 $first_result = $result->fetch_assoc();
 ?>
 
@@ -37,8 +45,17 @@ $first_result = $result->fetch_assoc();
         </div>
         
         <div class="action-buttons">
-            <button class="btn-primary">comprar agora</button>
-            <button class="btn-secondary">adicionar ao carrinho</button>
+            <form action="index.php?rota=carrinho&action=add" method="POST" style="display:inline;">
+                <input type="hidden" name="id_produto" value="<?= $first_result['id_produto'] ?>">
+                <input type="hidden" name="quantidade" value="1">
+                <input type="hidden" name="ir_checkout" value="1">
+                <button type="submit" class="btn-primary">comprar agora</button>
+            </form>
+            <form action="index.php?rota=carrinho&action=add" method="POST" style="display:inline;">
+                <input type="hidden" name="id_produto" value="<?= $first_result['id_produto'] ?>">
+                <input type="hidden" name="quantidade" value="1">
+                <button type="submit" class="btn-secondary">adicionar ao carrinho</button>
+            </form>
         </div>
         
         <div class="description-section">

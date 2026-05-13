@@ -1,0 +1,293 @@
+.pedidos-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.pedidos-container h1 {
+    color: #104c4b;
+    margin-bottom: 30px;
+    border-bottom: 4px solid #c2dfcd;
+    padding-bottom: 10px;
+    display: inline-block;
+    font-size: 26px;
+}
+
+.empty-pedidos {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f9faf8;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.empty-pedidos i {
+    font-size: 64px;
+    color: #c2dfcd;
+    margin-bottom: 20px;
+}
+
+.empty-pedidos p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.btn-comprar {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #104c4b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn-comprar:hover {
+    background: #0c3837;
+}
+
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pedido-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border: 1px solid #e8ede5;
+}
+
+.pedido-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e8ede5;
+}
+
+.pedido-numero {
+    font-weight: bold;
+    color: #104c4b;
+    margin-right: 15px;
+    font-size: 1.1rem;
+}
+
+.pedido-data {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.pedido-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-pendente {
+    background: #f39c12;
+    color: #fff;
+}
+
+.status-confirmado, .status-entregue {
+    background: #27ae60;
+    color: #fff;
+}
+
+.status-em_rota {
+    background: #3498db;
+    color: #fff;
+}
+
+.status-cancelado {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.pedido-itens {
+    padding: 20px;
+}
+
+.pedido-itens ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pedido-itens li {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e8ede5;
+    align-items: center;
+}
+
+.pedido-itens li:last-child {
+    border-bottom: none;
+}
+
+.item-qtd {
+    color: #7f8c8d;
+    width: 40px;
+    font-weight: bold;
+}
+
+.item-nome {
+    flex: 1;
+    color: #2c3e50;
+}
+
+.item-preco {
+    color: #34495e;
+    font-weight: 500;
+}
+
+/* ========== Detalhes do Pedido (Endereço) ========== */
+.pedido-detalhes {
+    padding: 0 20px 20px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.detalhe-endereco {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    background: #f0f8f0;
+    border: 1px solid #c2dfcd;
+    border-radius: 8px;
+}
+
+.detalhe-endereco-icon {
+    width: 40px;
+    height: 40px;
+    background: #104c4b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.detalhe-endereco-icon i {
+    color: #fff;
+    font-size: 16px;
+}
+
+.detalhe-endereco-info {
+    flex: 1;
+}
+
+.detalhe-titulo {
+    font-weight: 700;
+    color: #104c4b;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.detalhe-rua {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.detalhe-complemento {
+    color: #7f8c8d;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.detalhe-sem-endereco {
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* ========== Footer ========== */
+.pedido-footer {
+    background: #fbfcfc;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e8ede5;
+}
+
+.pedido-total-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pedido-total-label {
+    color: #7f8c8d;
+}
+
+.pedido-total-valor {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #27ae60;
+}
+
+.btn-detalhes {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid #dce4d1;
+    border-radius: 6px;
+    color: #104c4b;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-detalhes:hover {
+    background: #f0f8f0;
+    border-color: #104c4b;
+}
+
+.btn-detalhes i {
+    font-size: 12px;
+    transition: transform 0.3s;
+}
+
+@media (max-width: 600px) {
+    .pedido-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .pedido-footer {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+}

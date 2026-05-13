@@ -1,5 +1,4 @@
-<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -11,6 +10,7 @@
 </head>
 
 <body>
+    <?php include 'src/View/Cabecalho/index.php'; ?>
     <div class="container">
         <div class="form-image">
             <img src="src/View/Login/img/img2.png" alt="Imagem de login">
@@ -26,7 +26,7 @@
                 <?php if (!empty($erro)): ?>
                     <div class="modal-overlay" id="modalErro">
                         <div class="modal">
-                            <div class="modal-icon" style="background:#fde8e8; color:#c0392b;">✕</div>
+                            <div class="modal-icon" style="background:#fde8e8; color:#c0392b;">âœ•</div>
                             <p><?= htmlspecialchars($erro) ?></p>
                             <button onclick="document.getElementById('modalErro').remove()">OK</button>
                         </div>
@@ -47,7 +47,7 @@
                     <button type="submit">Entrar</button>
                 </div>
                 <p style="text-align:center; margin-top: 12px; font-size: 14px;">
-                    Não tem conta? <a href="index.php?rota=cadastro" style="color: #1a5c4a;">Cadastre-se</a>
+                    NÃ£o tem conta? <a href="index.php?rota=cadastro" style="color: #1a5c4a;">Cadastre-se</a>
                 </p>
             </form>
         </div>
