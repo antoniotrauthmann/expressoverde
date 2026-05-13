@@ -1,5 +1,4 @@
-<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -11,10 +10,11 @@
 </head>
 
 <body>
+    <?php include 'src/View/Cabecalho/index.php'; ?>
     <?php if (!empty($_SESSION['sucesso'])): ?>
         <div class="modal-overlay" id="modalSucesso">
             <div class="modal">
-                <div class="modal-icon">✓</div>
+                <div class="modal-icon">âœ“</div>
                 <p><?= htmlspecialchars($_SESSION['sucesso']) ?></p>
                 <button onclick="fecharModal()">OK</button>
             </div>
@@ -24,7 +24,7 @@
     <?php if (!empty($_SESSION['erro'])): ?>
         <div class="modal-overlay" id="modalErro">
             <div class="modal">
-                <div class="modal-icon" style="background:#fde8e8; color:#c0392b;">✕</div>
+                <div class="modal-icon" style="background:#fde8e8; color:#c0392b;">âœ•</div>
                 <p><?= htmlspecialchars($_SESSION['erro']) ?></p>
                 <button onclick="document.getElementById('modalErro').remove()">OK</button>
             </div>
@@ -50,7 +50,7 @@
                 <!-- Abas -->
                 <div class="tabs">
                     <button type="button" class="tab-btn active" data-tab="dados">Dados</button>
-                    <button type="button" class="tab-btn" data-tab="midia">Imagens & Descrição</button>
+                    <button type="button" class="tab-btn" data-tab="midia">Imagens & DescriÃ§Ã£o</button>
                 </div>
 
                 <!-- Aba: Dados -->
@@ -69,11 +69,11 @@
                                 <option value="suplemento">Suplemento</option>
                                 <option value="semente">Semente</option>
                                 <option value="ferramenta">Ferramenta</option>
-                                <option value="acessorio">Acessório</option>
+                                <option value="acessorio">AcessÃ³rio</option>
                             </select>
                         </div>
                         <div class="input-box half">
-                            <label for="preco">Preço</label>
+                            <label for="preco">PreÃ§o</label>
                             <input id="preco" name="preco" type="number" step="0.01" placeholder="0,00" required>
                         </div>
                         <div class="input-box half">
@@ -83,7 +83,7 @@
                     </div>
                 </div>
 
-                <!-- Aba: Imagens & Descrição -->
+                <!-- Aba: Imagens & DescriÃ§Ã£o -->
                 <div class="tab-content" id="tab-midia">
                     <div class="input-group">
                         <div class="input-box">
@@ -103,7 +103,7 @@
                             <input type="hidden" id="imagensCaminhos" name="imagens_caminhos">
                         </div>
                         <div class="input-box">
-                            <label for="descricao">Descrição</label>
+                            <label for="descricao">DescriÃ§Ã£o</label>
                             <textarea id="descricao" name="descricao" placeholder="Descreva o produto..." rows="4" required></textarea>
                         </div>
                     </div>
