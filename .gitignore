@@ -1,2 +1,3 @@
 public/uploads/*
 !public/uploads/.gitkeep
+config/conexao.php
