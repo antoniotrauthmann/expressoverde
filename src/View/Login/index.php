@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<link rel="stylesheet" href="src/View/Login/style.css">
+<link rel="stylesheet" href="/projeto-es/src/View/Login/style.css">
 
 <div class="custom-modal modal-login">
     <div class="login-image-side">
@@ -32,7 +31,7 @@
                 <input id="senha" name="senha" type="password" class="form-control" placeholder="Senha" required>
             </div>
             
-            <button type="submit" class="btn btn-brand w-100 py-2 fw-bold">Entrar</button>
+            <button type="submit" class="btn btn-brand text-center w-100 py-2 fw-bold">Entrar</button>
         </form>
     </div>
 </div>

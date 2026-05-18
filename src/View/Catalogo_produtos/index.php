@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php include __DIR__ . '/../Cabecalho/index.php'; ?>
 
 <link rel="stylesheet" href="src/View/Catalogo_produtos/style.css">
 
@@ -49,11 +49,32 @@
     </div>
 
     <!-- Banner Principal -->
-    <div class="banner">
+    <div id="carouselExample" class="carousel slide banner">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="public/img/Imagem_login.png" class="propaganda-imagem d-block w-100 h-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+   <!--  <div class="banner">
         <div class="arrow">&lt;</div>
         <div class="banner-text">PROPAGANDA</div>
         <div class="arrow">&gt;</div>
-    </div>
+    </div> -->
 
     <!-- Seção de Conteúdo (Fundo Cinza) -->
     <div class="container">
@@ -83,7 +104,4 @@
     </div>
 
 </div>
-<<<<<<< Updated upstream
-=======
 <?php $mysqli->close(); ?>
->>>>>>> Stashed changes

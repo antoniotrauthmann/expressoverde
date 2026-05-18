@@ -4,6 +4,8 @@
         padding: 0;
         font-family: Arial, sans-serif; 
         background-color: #ffffff; /* Fundo cinza conforme o wireframe */
+        display: flex;
+        flex-direction: column;
     }
     
     /* Barra de Categorias */
@@ -19,6 +21,24 @@
         color: #000; 
     }
     
+    .propaganda-imagem{
+        object-fit: cover;
+    }
+
+    /* Garante que os containers internos do carrossel respeitem os 250px da classe .banner */
+    .carousel-inner, 
+    .carousel-item {
+        height: 100%;
+    }
+
+    /* Ajusta a imagem para preencher o container sem distorcer */
+    .propaganda-imagem {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;       /* Faz a imagem preencher o espaço cortando as bordas sobressalentes */
+        object-position: center; /* Mantém o centro da imagem visível */
+    }
+
     /* Banner de Propaganda */
     .banner { 
         background-color: #e56b6b; /* Vermelho/Coral do banner */
