@@ -20,7 +20,7 @@ $enderecos = $enderecoModel->buscarTodosPorUsuario($_SESSION['usuario_id']);
     </div>
 
     <div class="avatar-section">
-        <div class="avatar-circle"><?= mb_substr($result["usuario_nome"], 0, 1, "UTF-8") ?></div> 
+        <div class="avatar-circle"><?= mb_substr($result["usuario_nome"], 0, 1, "UTF-8") ?></div>
     </div>
 
     <div class="field-group">
@@ -45,6 +45,11 @@ $enderecos = $enderecoModel->buscarTodosPorUsuario($_SESSION['usuario_id']);
 
     <div class="actions">
         <button class="btn-primary" onclick="window.location.href='index.php?rota=editar_perfil'">Editar Perfil</button>
+        <?php if ($_SESSION['usuario_tipo'] === 'profissional'): ?>
+            <button class="btn-primary" onclick="window.location.href='index.php?rota=cadastrar_produto'" style="margin-top: 12px;">
+                Cadastrar Produto
+            </button>
+        <?php endif; ?>
         <a href="index.php?rota=logout" class="btn-logout">Sair da conta</a>
     </div>
 </div>
