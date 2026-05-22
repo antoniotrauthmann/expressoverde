@@ -30,6 +30,9 @@ class UsuarioController
                 exit();
             } else {
                 $erro = "E-mail ou senha inválidos.";
+                $_SESSION['login_erro'] = $erro;
+                header('Location: index.php?rota=catalogo');
+                exit;
             }
         }
 
