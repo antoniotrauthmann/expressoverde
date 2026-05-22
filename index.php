@@ -69,6 +69,11 @@ if ($rota === 'login') {
     $pedidoController->checkout();
 } elseif ($rota === 'pedidos') {
     $pedidoController->index();
-} else {
+} elseif ($rota === 'editar_perfil'){
+    include 'src/View/Perfil/editar_perfil.php';
+} elseif ($rota === 'salvar_perfil') {
+    $usuarioController->editarPerfil();
+}
+else {
     echo "<h1>404 - Rota não encontrada</h1>";
 }

@@ -44,7 +44,7 @@ $enderecos = $enderecoModel->buscarTodosPorUsuario($_SESSION['usuario_id']);
     </div>
 
     <div class="actions">
-        <button class="btn-primary">Editar Perfil</button>
+        <button class="btn-primary" onclick="window.location.href='index.php?rota=editar_perfil'">Editar Perfil</button>
         <a href="index.php?rota=logout" class="btn-logout">Sair da conta</a>
     </div>
 </div>
