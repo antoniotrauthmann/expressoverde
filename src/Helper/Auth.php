@@ -68,7 +68,7 @@ class Auth {
     public static function logout() {
         self::iniciarSessao();
         session_destroy();
-        header('Location: index.php?rota=login');
+        header('Location: index.php?rota=catalogo');
         exit;
     }
 }

@@ -64,7 +64,7 @@ class UsuarioController {
 
     public function logout() {
         session_destroy();
-        header("Location: index.php?rota=login");
+        header("Location: index.php?rota=catalogo");
         exit();
     }
 }
