@@ -1,0 +1,1 @@
+{"version":2,"defects":{"ProdutoModelTeste::testBuscarProdutoPorId":8,"ProdutoModelTeste::testInserirProduto":8},"times":{"ProdutoModelTeste::testBuscarProdutoPorId":0.01,"ProdutoModelTeste::testInserirProduto":0}}
