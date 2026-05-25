@@ -11,9 +11,10 @@
     <div class="logo">
         <a href="index.php?rota=catalogo" class="logo-l">Expresso Verde</a>
     </div>
-
-    <form action="/projeto-es/src/View/Busca/index.php" method="GET"class="search-container">
-        <input name="busca" type="text" class="search-input" placeholder="Buscar &quot;Ferramentas&quot;">
+    <!-- index.php?rota=busca -->
+    <form action="index.php" method="GET"class="search-container">
+        <input name="rota" type="hidden" value="busca">
+        <input name="b" type="text" class="search-input" placeholder="Buscar &quot;Ferramentas&quot;">
         
         <input type="submit" class="btn btn-primary search-btn"></input>
     </form>
