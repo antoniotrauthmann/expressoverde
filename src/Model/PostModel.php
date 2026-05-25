@@ -29,4 +29,16 @@ class PostModel {
         $stmt->bind_param("ii", $id_post, $id_usuario);
         return $stmt->execute();
     }
+
+    public function validarConteudo($texto) {
+    // Remove espaços em branco do início e fim
+    $textoLimpo = trim($texto);
+    
+    // Se estiver vazio, retorna falso. Se tiver texto, retorna verdadeiro.
+    if (empty($textoLimpo)) {
+        return false;
+    }
+    
+    return true;
+}
 }
