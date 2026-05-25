@@ -31,14 +31,10 @@ class PostModel {
     }
 
     public function validarConteudo($texto) {
-    // Remove espaços em branco do início e fim
-    $textoLimpo = trim($texto);
-    
-    // Se estiver vazio, retorna falso. Se tiver texto, retorna verdadeiro.
-    if (empty($textoLimpo)) {
-        return false;
+        $textoLimpo = trim($texto);
+        if (empty($textoLimpo)) {
+            return false;
+        }
+        return true;
     }
-    
-    return true;
-}
 }
