@@ -73,8 +73,6 @@ if ($rota === 'login') {
     include 'src/View/Perfil/editar_perfil.php';
 } elseif ($rota === 'salvar_perfil') {
     $usuarioController->editarPerfil();
-}
-else {
 } elseif ($rota === 'busca') {
     include 'src/View/Busca/index.php';
 } else {
