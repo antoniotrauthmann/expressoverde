@@ -5,7 +5,7 @@
 
     <div class="registro-form-side p-4 p-md-5 w-100">
         <div class="mb-4">
-            <h3 class="fw-bold mb-1 text-dark">Bem-vindo(a) à bordo do</h3>
+            <h3 class="fw-bold mb-1 text-dark">Cadastre-se agora no</h3>
             <h3 class="fw-bold mb-2 brand-text-color">Expresso Verde</h3>
             <div class="title-underline"></div>
         </div>

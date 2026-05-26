@@ -69,6 +69,8 @@ if ($rota === 'login') {
     $pedidoController->checkout();
 } elseif ($rota === 'pedidos') {
     $pedidoController->index();
+} elseif ($rota === 'busca') {
+    include 'src/View/Busca/index.php';
 } else {
     echo "<h1>404 - Rota não encontrada</h1>";
 }
