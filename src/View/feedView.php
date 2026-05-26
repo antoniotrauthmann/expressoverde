@@ -128,8 +128,13 @@
     <?php include 'src/View/Cabecalho/index.php'; ?>
 
     <nav>
+<<<<<<< HEAD
         <a href="index.php?rota=feed" class="active">Comunidade</a>
         <a href="index.php?rota=manual">Manual de Cuidados</a>
+=======
+        <a href="index.php?rota=feed" class="active">👥 Comunidade</a>
+        <a href="index.php?rota=manual">🌱 Manual de Cuidados</a>
+>>>>>>> 668c85436969dd389105faa6fba965b074598056
     </nav>
 
     <h2>Compartilhe com a comunidade</h2>
