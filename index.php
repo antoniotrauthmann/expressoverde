@@ -75,5 +75,8 @@ if ($rota === 'login') {
     $usuarioController->editarPerfil();
 }
 else {
+} elseif ($rota === 'busca') {
+    include 'src/View/Busca/index.php';
+} else {
     echo "<h1>404 - Rota não encontrada</h1>";
 }

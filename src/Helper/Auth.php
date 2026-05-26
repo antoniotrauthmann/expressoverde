@@ -75,7 +75,7 @@ class Auth
     {
         self::iniciarSessao();
         session_destroy();
-        header('Location: index.php?rota=catologo');
+        header('Location: index.php?rota=catalogo');
         exit;
     }
 }
