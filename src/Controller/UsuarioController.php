@@ -23,7 +23,7 @@ class UsuarioController {
                 $_SESSION['usuario_nome']  = $usuario['usuario_nome'];
                 $_SESSION['usuario_email'] = $usuario['email'];
                 $_SESSION['usuario_tipo']  = $usuario['tipo'];
-                header("Location: index.php?rota=feed");
+                header("Location: index.php?rota=catalogo");
                 exit();
             } else {
                 $erro = "E-mail ou senha inválidos.";
@@ -64,7 +64,7 @@ class UsuarioController {
 
     public function logout() {
         session_destroy();
-        header("Location: index.php?rota=login");
+        header("Location: index.php?rota=catalogo");
         exit();
     }
 }

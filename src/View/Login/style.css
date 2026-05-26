@@ -1,24 +1,12 @@
-/* ==========================================
-    STYLESHEET COMPARTILHADO
-    ========================================== */
+
 :root {
-    --brand-color: #114c43; /* Verde escuro do design */
+    --brand-color: #114c43;
     --brand-color-hover: #0b362f;
     --input-border: #ced4da;
     --text-dark: #212529;
-    --bg-gray: #ffffff; /* Fundo cinza de visualização */
+    --bg-gray: #ffffff;
 }
 
-body {
-    background-color: var(--bg-gray);
-    font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem;
-}
 
 /* Tipografia */
 .font-quattrocento {
@@ -37,17 +25,13 @@ body {
     font-size: 1.25rem;
 }
 
-/* Estrutura dos Modais (Estáticos para visualização) */
 .custom-modal {
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    /* Modais sem bordas arredondadas conforme o mockup */
     border-radius: 0;
-    /* overflow: hidden; */
     overflow-y: auto;
 }
 
-/* Formulários: Inputs e Labels */
 .form-label {
     font-size: 0.85rem;
     font-weight: 500;
@@ -71,7 +55,11 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(17, 76, 67, 0.25);
 }
 
-/* Botão Principal */
+.btn{
+    display: flex;
+    text-align: center;
+}
+
 .btn-brand {
     background-color: var(--brand-color);
     color: #ffffff;
@@ -89,9 +77,6 @@ body {
     color: #ffffff;
 }
 
-/* ==========================================
-    MODAL 1: LOGIN (DUAS COLUNAS)
-    ========================================== */
 .modal-login {
     width: 800px;
     display: flex;
@@ -99,14 +84,13 @@ body {
 
 .login-image-side {
     width: 50%;
-    background-image: url('Imagem_login.png'); /* Nome do arquivo anexado */
+    background-image: url('Imagem_login.png');
     background-size: cover;
     background-position: center;
     position: relative;
     min-height: 500px;
 }
 
-/* Gradiente escuro para garantir leitura do texto branco */
 .login-image-side::after {
     content: '';
     position: absolute;
@@ -150,9 +134,6 @@ body {
     text-decoration: none;
 }
 
-/* ==========================================
-    MODAL 2: CADASTRO (UMA COLUNA)
-    ========================================== */
 .modal-signup {
     width: 400px;
     padding: 2.5rem;

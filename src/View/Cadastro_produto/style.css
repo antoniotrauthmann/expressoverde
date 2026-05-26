@@ -7,9 +7,10 @@
     font-family: "DM Sans", sans-serif;
 }
 
-body {
-    width: 100%;
-    height: 100vh;
+.corpoCadastroProduto {
+    width: auto;
+    height: fit-content;
+    padding-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,8 +18,8 @@ body {
 }
 
 .container {
-    width: 80%;
-    height: 80vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
     border-radius: 8px;
@@ -40,7 +41,7 @@ body {
 }
 
 .form {
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
