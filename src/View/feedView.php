@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Comunidade</title>
     <style>
-        /* ConfiguraÃ§Ã£o Geral */
+        /* Configuração Geral */
         body {
             background-color: #1a1a1a;
             color: #ffffff;
@@ -15,26 +15,42 @@
             padding: 20px;
         }
 
+        /* MENU DE NAVEGAÇÃO ATUALIZADO */
         nav {
             width: 100%;
             max-width: 500px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            background-color: #2d2d2d;
+            padding: 6px;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
         }
 
         nav a {
             text-decoration: none;
-            color: #ffffff;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-bottom: 2px solid transparent;
+            color: #b3b3b3;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
         }
 
+        /* Efeito ao passar o mouse nas abas apagadas */
+        nav a:hover {
+            color: #ffffff;
+            background-color: #3d3d3d;
+        }
+
+        /* Aba ativa estilizada em verde */
         nav a.active {
-            color: #2ecc71;
-            border-bottom: 2px solid #2ecc71;
+            color: #ffffff;
+            background-color: #2ecc71;
         }
 
         form, .post {
@@ -55,6 +71,7 @@
             border-radius: 4px;
             padding: 10px;
             resize: none;
+            box-sizing: border-box;
         }
 
         button {
@@ -65,7 +82,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         button:hover {
@@ -83,6 +100,28 @@
         .btn-excluir:hover {
             text-decoration: underline;
         }
+
+        .upload-input {
+            margin-top: 15px;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+
+        .upload-input::file-selector-button {
+            background-color: #4a4a4a;
+            color: #ffffff;
+            border: 1px solid #5a5a5a;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 10px;
+            transition: background 0.2s;
+        }
+
+        .upload-input::file-selector-button:hover {
+            background-color: #5a5a5a;
+        }
     </style>
 </head>
 <body>
@@ -98,7 +137,7 @@
     <form action="index.php?rota=salvar" method="POST" enctype="multipart/form-data">
         <textarea name="conteudo_texto" placeholder="O que você quer compartilhar?"></textarea>
         <br>
-        <input type="file" name="imagem" accept="image/*">
+        <input type="file" name="imagem" accept="image/*" class="upload-input">
         <br>
         <button type="submit">Postar</button>
     </form>
@@ -120,14 +159,18 @@
 
                 <strong style="color: #2ecc71;">@<?= htmlspecialchars($post['usuario_nome']) ?></strong>
                 
-                <p><?= htmlspecialchars($post['conteudo']) ?></p>
+                <p style="color: #ffffff; margin-top: 10px; margin-bottom: 10px; word-wrap: break-word;">
+                    <?= htmlspecialchars($post['conteudo']) ?>
+                </p>
                 
                 <?php if (!empty($post['post_caminho_imagem'])): ?>
                     <img src="<?= htmlspecialchars($post['post_caminho_imagem']) ?>" alt="Imagem" style="max-width: 100%; border-radius: 4px; margin-top: 10px;">
                 <?php endif; ?>
                 
-                <br><br>
-                <small style="color: #aaa;">Postado em: <?= $post['criado_em'] ?></small>
+                <br>
+                <small style="color: #aaa;">
+                    Postado em: <?= isset($post['criado_em']) ? $post['criado_em'] : 'Data indisponível' ?>
+                </small>
                 
                 <hr style="border: 0; border-top: 1px solid #4d4d4d; margin: 15px 0;">
 
@@ -139,7 +182,7 @@
             </div>
         <?php endforeach; ?>
     <?php else: ?>
-        <p>Nenhum post ainda. Seja o primeiro a compartilhar</p>
+        <p style="color: #ffffff;">Nenhum post ainda. Seja o primeiro a compartilhar</p>
     <?php endif; ?>
 </div>
 

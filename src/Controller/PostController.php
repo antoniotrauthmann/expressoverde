@@ -50,7 +50,6 @@ class PostController {
             $id_usuario_logado = $_SESSION['usuario_id'];
 
             $model = new PostModel($this->db);
-            
             $model->excluirSeguro($id_post, $id_usuario_logado);
         }
         header("Location: index.php?rota=feed");
