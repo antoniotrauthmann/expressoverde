@@ -7,35 +7,6 @@
     $resultado = $mysqli->query($sql);
     $total_produtos = $resultado->fetch_assoc()["total_produtos"];
 ?>
-<!-- 
-<php    
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo('
-                <form method="POST" action="index.php?rota=produto" class="card-form">
-                    
-                    <input type="hidden" name="rota" value="produto">
-                    <input type="hidden" name="id" value="' . $row["id_produto"] . '">
-                    
-                    <button type="submit" class="card btn-card">
-                        <div class="card-image">
-                            <img src="public/uploads/'. $row["produto_caminho_imagem"] . '" alt="' . $row["produto_nome"] . '">
-                        </div>
-                        <div class="card-content">
-                            <div class="card-title">' . $row["produto_nome"] . '</div>
-                            <span class="price">R$ ' . $row["preco"] . '</span>
-                            <span class="card-condition">'. $row["estoque"] .' em estoque</span>
-                        </div>
-                    </button>
-                </form>
-            ');
-        }
-    } else {
-        echo "0 resultados";
-    }
-
-    $mysqli->close();
-?> -->
 
 <div class="corpo">
     <div class="category-bar">
@@ -80,8 +51,8 @@
     <div class="container">
         <!-- Categorias -->
         <div class="category-grid">
-            <div class="category-box">Mais Vendidos</div>
-            <div class="category-box">Preço de banana</div>
+            <a href="index.php?=" class="category-box"><img src="public/img/maisVendidos.png" class="d-block w-100 h-100"></a>
+            <div class="category-box"><img src="public/img/precoBanana.png" class="d-block w-100 h-100"></div>
             <div class="category-box">Suplementos poderosos</div>
             <div class="category-box">Ferramentas obrigatórias</div>
         </div>
@@ -89,13 +60,13 @@
         <!-- Produtos Relevantes -->
         <div class="product-grid">
         <?php 
-                $sql = "SELECT p.produto_nome, i.produto_caminho_imagem  FROM produto p LEFT JOIN imagens_produto i ON p.id_produto = i.id_produto GROUP BY p.id_produto LIMIT 5"; 
+                $sql = "SELECT p.id_produto, p.produto_nome, i.produto_caminho_imagem  FROM produto p LEFT JOIN imagens_produto i ON p.id_produto = i.id_produto GROUP BY p.id_produto LIMIT 5"; 
                 $result = $mysqli->query($sql);
                 // print_r($result->fetch_assoc());
                 $i = 0;
                 if ($result->num_rows > 0) {
                     while($i < 5 && $row = $result->fetch_assoc()) {
-                        echo "<div class=\"product-box\" style=\"background-image: url('/PROJETO-ES/public/uploads/{$row['produto_caminho_imagem']}'); max-height: 200px; background-size: cover; background-position: center;\">{$row['produto_nome']}</div>";
+                        echo "<a href='index.php?rota=produto&p=".$row['id_produto']."' class=\"product-box\" style=\"background-image: url('/PROJETO-ES/public/uploads/{$row['produto_caminho_imagem']}'); text-decoration:none; max-height: 200px; background-size: cover; background-position: center;\">{$row['produto_nome']}</a>";
                         $i++;
                         }
                         }

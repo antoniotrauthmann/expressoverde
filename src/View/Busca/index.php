@@ -25,7 +25,7 @@ $todos_resultados = $resultado->fetch_all(MYSQLI_ASSOC);
 <!DOCTYPE html>
 
 <div class="container py-4 pt-5">
-    <div class="pt-3 d-flex gap-2 mb-4 scroll-horizontal pb-2">
+    <!-- <div class="pt-3 d-flex gap-2 mb-4 scroll-horizontal pb-2">
         <button class="btn btn-outline-secondary rounded-pill filter-btn dropdown-toggle bg-purple-light border-0">mais relevantes</button>
         <button class="btn btn-outline-secondary rounded-pill filter-btn dropdown-toggle">tipo de loja</button>
         <button class="btn btn-outline-secondary rounded-pill filter-btn dropdown-toggle">categoria</button>
@@ -35,9 +35,11 @@ $todos_resultados = $resultado->fetch_all(MYSQLI_ASSOC);
         <button class="btn btn-outline-secondary rounded-pill filter-btn dropdown-toggle">novidades</button>
         <button class="btn btn-outline-secondary rounded-pill filter-btn dropdown-toggle">condição</button>
         <button class="btn btn-outline-secondary rounded-pill filter-btn dropdown-toggle bg-purple-light border-0">regiões próximas</button>
+    </div> -->
+    <div>
+        <h4 class="font-weight-bold">Pesquisando por: <?php if(strlen($_GET['b']) > 0){ echo $_GET['b']; }else {echo "Todos os produtos";} ?></h4>
     </div>
-
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4 pt-4">
         <?php foreach ($todos_resultados as $value) {?>
             <div class="col">
                 <a href="index.php?rota=produto&p=<?= $value['id_produto']; ?>" class="text-decoration-none text-reset d-block h-100">
