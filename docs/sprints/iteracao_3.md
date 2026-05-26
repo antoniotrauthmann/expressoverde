@@ -9,11 +9,18 @@ Requisitos:
 * RF01 – Cadastro/Login de Usuário (via API)
 * RF02 – Navegação no Catálogo (via API)
 * RF03 – Comunidade (criação e listagem via API)
+* RF05 - Carrinho de compras
+* RF07 - Histórico de Compras
 
 ---
 
 | Feature                         | Autor   | Revisor | Concluído |
 |--------------------------------|---------|---------|-----------|
+| API de login e cadastro        | João    | Antonio | ✅        |
+| Carrinho                       | Antonio | Gabriel | ✅        |
+| API da comunidade              | Hiago   | Antonio | ✅        |
+| Front-end                      | Gabriel | Antonio | ✅        |
+
 
 
 ---
