@@ -2,3 +2,5 @@ public/uploads/*
 !public/uploads/.gitkeep
 config/conexao.php
 /vendor/
+composer.json
+composer.lock
