@@ -1,22 +1,36 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+require_once __DIR__ . '/../../vendor/autoload.php';
 
+class FakeStmt extends mysqli_stmt
+{
+    public bool $executeRetorna;
+
+    public function __construct() {}
+    public function bind_param($types, &...$vars): bool
+    {
+        return true;
+    }
+    public function execute(?array $params = null): bool
+    {
+        return $this->executeRetorna;
+    }
+}
 class RegistrarComprasTest extends TestCase
 {
     protected function setUp(): void
     {
-        require_once __DIR__ . '/../Model/RegistrarCompras.php';
+        require_once __DIR__ . '/../../src/Model/RegistrarCompras.php';
     }
 
     private function criarRegistrar(bool $executeRetorna): RegistrarCompras
     {
-        $mockStmt = $this->createMock(mysqli_stmt::class);
-        $mockStmt->method('bind_param')->willReturn(true);
-        $mockStmt->method('execute')->willReturn($executeRetorna);
+        $fakeStmt = new FakeStmt();
+        $fakeStmt->executeRetorna = $executeRetorna;
 
         $mockDb = $this->createMock(mysqli::class);
-        $mockDb->method('prepare')->willReturn($mockStmt);
+        $mockDb->method('prepare')->willReturn($fakeStmt);
 
         return new RegistrarCompras($mockDb);
     }
