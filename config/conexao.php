@@ -3,7 +3,7 @@
     $bancodedados = "projetoes";
     $usuario = "root";
     $senha = "";
-    $porta = 3307;
+    $porta = 3306;
 
     $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados, $porta);
     if ($mysqli->connect_errno){
