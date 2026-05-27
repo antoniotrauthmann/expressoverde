@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 class FakeStmt extends mysqli_stmt
 {
@@ -20,7 +21,7 @@ class RegistrarComprasTest extends TestCase
 {
     protected function setUp(): void
     {
-        require_once __DIR__ . '/../Model/RegistrarCompras.php';
+        require_once __DIR__ . '/../../src/Model/RegistrarCompras.php';
     }
 
     private function criarRegistrar(bool $executeRetorna): RegistrarCompras
