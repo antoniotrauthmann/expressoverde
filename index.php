@@ -15,7 +15,7 @@ require_once 'src/Controller/PedidoController.php';
 require_once 'src/Controller/EnderecoController.php';
 
 //(Roteamento simples)
-$rota = $_GET['rota'] ?? 'login';
+$rota = $_GET['rota'] ?? 'catalogo';
 
 $controller = new PostController($mysqli);
 $usuarioController = new UsuarioController($mysqli);
@@ -69,6 +69,10 @@ if ($rota === 'login') {
     $pedidoController->checkout();
 } elseif ($rota === 'pedidos') {
     $pedidoController->index();
+} elseif ($rota === 'editar_perfil'){
+    include 'src/View/Perfil/editar_perfil.php';
+} elseif ($rota === 'salvar_perfil') {
+    $usuarioController->editarPerfil();
 } elseif ($rota === 'busca') {
     include 'src/View/Busca/index.php';
 } else {

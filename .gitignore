@@ -5,3 +5,4 @@ config/conexao.php
 composer.json
 composer.lock
 config/conexao.php
+composer.lock
