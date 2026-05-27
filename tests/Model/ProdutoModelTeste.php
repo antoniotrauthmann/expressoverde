@@ -1,7 +1,8 @@
 <?php
 // chama o phpunit e a classe original (ProdutoModel)
 use PHPUnit\Framework\TestCase;
-require_once __DIR__ . '/ProdutoModel.php'; 
+require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/Model/ProdutoModel.php'; 
 
 class ProdutoModelTeste extends TestCase {
 
