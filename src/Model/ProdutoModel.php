@@ -23,4 +23,12 @@ class ProdutoModel {
         $stmt->bind_param("is", $id_produto, $produto_caminho_imagem);
         $stmt->execute();
     }
+
+    public function buscarPorId($id_produto) {
+        $stmt = $this->db->prepare("SELECT * FROM produto WHERE id_produto = ?");
+        $stmt->bind_param("i", $id_produto);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        return $resultado->fetch_assoc();
+    }
 }

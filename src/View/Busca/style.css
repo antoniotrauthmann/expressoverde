@@ -1,0 +1,115 @@
+/* Cores Customizadas */
+.text-purple { color: #8A2BE2; }
+.bg-purple-light { background-color: #d8b4fe !important; border-color: #d8b4fe !important; color: #4c1d95 !important; }
+.bg-purple-light:hover { background-color: #c084fc !important; }
+
+.badge-discount {
+    background-color: #d4fc79;
+    color: #1a1a1a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.badge-likes {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Botões de Filtro */
+.filter-btn {
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-color: #e5e5e5;
+    color: #555;
+    white-space: nowrap;
+}
+.filter-btn:hover {
+    background-color: #f8f9fa;
+}
+.filter-btn::after {
+    margin-left: 0.5em;
+}
+
+/* Categorias do Topo */
+.category-box {
+    width: 60px;
+    height: 60px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    transition: transform 0.2s;
+}
+.category-box:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.category-text {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Scroll horizontal para filtros e categorias */
+.scroll-horizontal {
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+}
+.scroll-horizontal::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Cards de Produto */
+.product-img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.product-title {
+    font-size: 0.85rem;
+    color: #444;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.product-brand {
+    font-size: 0.75rem;
+    color: #888;
+}
+.price-current {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #111;
+}
+.price-old {
+    font-size: 0.8rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 6px;
+    font-weight: 400;
+}
+
+/* Ícone customizado estilo Enjoei */
+.icon-u {
+    color: #8A2BE2;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
