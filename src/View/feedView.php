@@ -13,6 +13,7 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            padding-top: 0;
         }
 
         /* MENU DE NAVEGAÇÃO ATUALIZADO */
@@ -126,7 +127,7 @@
 </head>
 <body>
     <?php include 'src/View/Cabecalho/index.php'; ?>
-
+    <div class="pt-5" style="color: white;">.</div>
     <nav>
         <a href="index.php?rota=feed" class="active">👥 Comunidade</a>
         <a href="index.php?rota=manual">🌱 Manual de Cuidados</a>

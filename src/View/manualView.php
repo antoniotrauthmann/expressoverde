@@ -44,7 +44,7 @@
         background-color: #27ae60;
     }
 </style>
-
+<div class="pt-5" style="color: white;">.</div>
 <div class="manual-container">
     <div class="manual-header">
         <h2 style="color: white; margin: 0;">Manual de Cuidados com Plantas</h2>

@@ -13,7 +13,7 @@ class PostModelTest extends TestCase {
     public function testDeveAceitarTextoValido() {
         $postModel = new PostModel(null);
         
-        $resultado = $postModel->validarConteudo("Meu primeiro post via API no Postman!");
+        $resultado = $postModel->validarConteudo("Meu primeiro post na comunidade");
         
         $this->assertTrue($resultado);
     }

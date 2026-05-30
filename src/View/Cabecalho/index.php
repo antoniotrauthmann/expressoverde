@@ -33,8 +33,8 @@
             echo '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastrar</button>';
         } 
         else if ($id > 0){
-            echo 'Bem vindo,<br>' . htmlspecialchars($_SESSION["usuario_nome"] ?? '');
-            echo '<a href="index.php?rota=carrinho" class="btn btn-entrar"><i class="fa-solid fa-cart-shopping"></i></a>';
+            // echo 'Bem vindo,<br>' . htmlspecialchars($_SESSION["usuario_nome"] ?? '');
+            echo '<a href="index.php?rota=carrinho" class="btn btn-entrar">🛒</a>';
             echo '<a href="index.php?rota=pedidos" class="btn btn-entrar">Pedidos</a>';
             echo '<a href="index.php?rota=perfil" class="btn btn-entrar">Perfil</a>';
             echo '<a href="index.php?rota=logout" class="btn btn-entrar">Sair</a>';
