@@ -7,8 +7,8 @@
     $resultado = $mysqli->query($sql);
     $total_produtos = $resultado->fetch_assoc()["total_produtos"];
 ?>
-
-<div class="corpo">
+<div class="pt-2" style="color: white;">.</div>
+<div class="corpo pt-5">
     <div class="category-bar">
         <a href="#">Todas as categorias</a>
         <a href="#">plantas</a>
@@ -20,18 +20,19 @@
     </div>
 
     <!-- Banner Principal -->
-    <div id="carouselExample" class="carousel slide banner">
+    <div id="carouselExample" class="carousel slide banner" data-bs-ride="carousel" data-bs-interval="5000" dir="rtl">
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="public/img/Imagem_login.png" class="propaganda-imagem d-block w-100 h-100" alt="...">
+            <img src="public/img/banner1.png" class="propaganda-imagem d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
+            <img src="public/img/banner2.png" class="propaganda-imagem d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
+            <img src="public/img/banner3.png" class="propaganda-imagem d-block w-100 h-100" alt="...">
             </div>
         </div>
+        
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -51,10 +52,10 @@
     <div class="container">
         <!-- Categorias -->
         <div class="category-grid">
-            <a href="index.php?=" class="category-box"><img src="public/img/maisVendidos.png" class="d-block w-100 h-100"></a>
-            <div class="category-box"><img src="public/img/precoBanana.png" class="d-block w-100 h-100"></div>
-            <div class="category-box">Suplementos poderosos</div>
-            <div class="category-box">Ferramentas obrigatórias</div>
+            <a href="index.php?rota=busca&c=semente" class="category-box rounded"><img src="public/img/sementes.png" class="d-block w-100 h-100 rounded"></a>
+            <div class="category-box"><img src="public/img/precoBanana.png" class="d-block w-100 h-100 rounded"></div>
+            <div class="category-box"><img src="public/img/suplementopoderosos.png" class="d-block w-100 h-100 rounded"></div>
+            <div class="category-box"><img src="public/img/mais.png" class="d-block w-100 h-100 rounded"></div>
         </div>
 
         <!-- Produtos Relevantes -->
@@ -66,7 +67,7 @@
                 $i = 0;
                 if ($result->num_rows > 0) {
                     while($i < 5 && $row = $result->fetch_assoc()) {
-                        echo "<a href='index.php?rota=produto&p=".$row['id_produto']."' class=\"product-box\" style=\"background-image: url('/PROJETO-ES/public/uploads/{$row['produto_caminho_imagem']}'); text-decoration:none; max-height: 200px; background-size: cover; background-position: center;\">{$row['produto_nome']}</a>";
+                        echo "<a href='index.php?rota=produto&p=".$row['id_produto']."' class=\"product-box\" style=\"background-image: url('/PROJETO-ES/public/uploads/{$row['produto_caminho_imagem']}'); text-decoration:none; max-height: 200px; background-size: cover; background-position: center; color: white;\">{$row['produto_nome']}</a>";
                         $i++;
                         }
                         }
