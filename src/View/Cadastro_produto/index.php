@@ -1,16 +1,9 @@
-<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
+﻿<link rel="stylesheet" href="/projeto-es/src/View/Cadastro_produto/style.css">
+<?php include __DIR__ . '/../Cabecalho/index.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Produtos</title>
-    <link rel="stylesheet" href="src/View/Cadastro_produto/style.css">
-</head>
+<title>Cadastro de Produtos</title>
 
-<body>
+<div class="corpoCadastroProduto">
     <?php if (!empty($_SESSION['sucesso'])): ?>
         <div class="modal-overlay" id="modalSucesso">
             <div class="modal">
@@ -32,9 +25,6 @@
         <?php unset($_SESSION['erro']); ?>
     <?php endif; ?>
     <div class="container">
-        <div class="form-image">
-            <img src="src/View/Cadastro_produto/img/img1.png">
-        </div>
         <div class="form">
             <form action="index.php?rota=cadastrar_produto" method="POST" enctype="multipart/form-data">
                 <div class="form-header">
@@ -185,6 +175,4 @@
             document.getElementById('modalSucesso').remove();
         }
     </script>
-</body>
-
-</html>
+</div>

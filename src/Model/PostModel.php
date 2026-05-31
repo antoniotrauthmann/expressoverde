@@ -29,4 +29,12 @@ class PostModel {
         $stmt->bind_param("ii", $id_post, $id_usuario);
         return $stmt->execute();
     }
+
+    public function validarConteudo($texto) {
+        $textoLimpo = trim($texto);
+        if (empty($textoLimpo)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -1,3 +1,4 @@
+﻿<?php include 'src/View/Cabecalho/index.php'; ?>
 <style>
     /* Container principal  */
     .manual-container {
@@ -46,7 +47,7 @@
 
 <div class="manual-container">
     <div class="manual-header">
-        <h2 style="color: white; margin: 0;">🌿 Manual de Cuidados com Plantas</h2>
+        <h2 style="color: white; margin: 0;">Manual de Cuidados com Plantas</h2>
         <p style="color: #aaa; margin: 5px 0 0 0;">Guia básico para manter as suas plantas saudáveis</p>
     </div>
 

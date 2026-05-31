@@ -1,87 +1,99 @@
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    .corpo { 
+        margin: 0; 
+        padding: 0;
+        font-family: Arial, sans-serif; 
+        background-color: #ffffff; /* Fundo cinza conforme o wireframe */
+        display: flex;
+        flex-direction: column;
+    }
     
-}
+    /* Barra de Categorias */
+    .category-bar { 
+        background-color: #ffffff; /* Rosa bem claro da imagem */
+        display: flex; 
+        justify-content: space-around; 
+        padding: 10px 0; 
+        font-size: 18px;
+    }
+    .category-bar a { 
+        text-decoration: none; 
+        color: #000; 
+    }
+    
+    .propaganda-imagem{
+        object-fit: cover;
+    }
 
-body {
-    background-color: #f6fdf6;
-    color: black;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-}
+    /* Garante que os containers internos do carrossel respeitem os 250px da classe .banner */
+    .carousel-inner, 
+    .carousel-item {
+        height: 100%;
+    }
 
+    /* Ajusta a imagem para preencher o container sem distorcer */
+    .propaganda-imagem {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;       /* Faz a imagem preencher o espaço cortando as bordas sobressalentes */
+        object-position: center; /* Mantém o centro da imagem visível */
+    }
 
-.marketplace-grid {
-    padding: 50px;
-    align-self: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    max-width: 1400px;
-    background-color: #ffffff;
-}
+    /* Banner de Propaganda */
+    .banner { 
+        background-color: #e56b6b; /* Vermelho/Coral do banner */
+        color: white; 
+        height: 250px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        padding: 0 40px; 
+        font-size: 24px; 
+    }
+    .banner-text {
+        letter-spacing: 1px;
+    }
+    .arrow {
+        cursor: pointer;
+        font-weight: normal;
+    }
 
-.card {
-    display: flex;
-    padding: 10px;
-    flex-direction: column;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    background-color: #ffffff; 
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-.card:hover .card-image img {
-    opacity: 0.9;
-}
-
-.card-image {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #ffffff; 
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-}
-
-
-.card-content {
-    padding-top: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.price {
-    font-size: 17px;
-    font-weight: 600;
-    color: black;
-}
-
-.title {
-    font-size: 15px;
-    color: black;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.3;
-}
-
-.location {
-    font-size: 13px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+    /* Container Principal */
+    .container { 
+        padding: 50px 40px; 
+    }
+    
+    /* Grid de Categorias (4 colunas) */
+    .category-grid { 
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 30px; 
+        margin-bottom: 60px; 
+    }
+    .category-box { 
+        background-color: #d9d9d9; 
+        height: 280px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 20px; 
+        border-radius: 10px;
+        color: #000; 
+    }
+    
+    /* Grid de Produtos (5 colunas) */
+    .product-grid { 
+        display: grid; 
+        grid-template-columns: repeat(5, 1fr); 
+        gap: 20px; 
+    }
+    .product-box { 
+        background-color: #d9d9d9; 
+        border-radius: 5px;
+        height: 180px; 
+        padding: 15px; 
+        font-size: 18px; 
+        color: #000; 
+        display: flex;
+        align-items: flex-end; /* Alinhamento do texto similar ao mockup */
+    }
