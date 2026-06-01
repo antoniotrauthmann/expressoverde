@@ -1,3 +1,11 @@
+<?php
+if (!isset($lojas)) {
+    global $mysqli;
+    $resultado = $mysqli->query("SELECT id_loja, loja_nome FROM loja_parceira");
+    $lojas = $resultado->fetch_all(MYSQLI_ASSOC);
+}
+?>
+
 <link rel="stylesheet" href="src/View/Login/style.css">
 <link rel="stylesheet" href="src/View/Cadastro_usuario/style.css">
 
@@ -15,7 +23,7 @@
                 <label class="form-label text-dark fw-medium">Nome Completo</label>
                 <input id="nome" name="nome" type="text" class="form-control custom-input" placeholder="Digite o nome completo" value="<?= htmlspecialchars($_POST['nome'] ?? '') ?>" required>
             </div>
-            
+
             <div class="mb-3">
                 <label class="form-label text-dark fw-medium">Tipo de conta</label>
                 <select id="tipo" name="tipo" class="form-select custom-input" required>
@@ -24,23 +32,57 @@
                     <option value="profissional">Profissional (Quero anunciar produtos)</option>
                 </select>
             </div>
-            
+
+            <!-- Após o select de tipo -->
+            <div class="mb-3" id="campo-loja" style="display:none;">
+                <label class="form-label text-dark fw-medium">Loja</label>
+                <select name="id_loja" id="id_loja" class="form-select custom-input">
+                    <option value="">Selecione uma loja...</option>
+                    <?php foreach ($lojas as $loja): ?>
+                        <option value="<?= $loja['id_loja'] ?>">
+                            <?= htmlspecialchars($loja['loja_nome']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <script>
+                document.getElementById('tipo').addEventListener('change', function() {
+                    const campoLoja = document.getElementById('campo-loja');
+                    const selectLoja = document.getElementById('id_loja');
+
+                    if (this.value === 'profissional') {
+                        campoLoja.style.display = 'block';
+                        selectLoja.required = true;
+                    } else {
+                        campoLoja.style.display = 'none';
+                        selectLoja.required = false;
+                    }
+                });
+            </script>
+
             <div class="mb-3">
                 <label class="form-label text-dark fw-medium">E-mail</label>
                 <input id="email" name="email" type="email" class="form-control custom-input" placeholder="Digite o e-mail" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
             </div>
-            
+
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label text-dark fw-medium">Senha</label>
-                    <input  id="senha" name="senha" type="password" class="form-control custom-input" placeholder="Digite a senha" required>
+                    <input id="senha" name="senha" type="password" class="form-control custom-input" placeholder="Digite a senha" required>
                 </div>
                 <div class="col-md-6 mb-4">
                     <label class="form-label text-dark fw-medium">Confirme sua senha</label>
                     <input id="confirmar_senha" name="confirmar_senha" type="password" class="form-control custom-input" placeholder="Repita a senha" required>
                 </div>
             </div>
-            
+
+            <?php if (!empty($_SESSION['cadastro_erro'])): ?>
+                <div class="alert alert-danger"><?= $_SESSION['cadastro_erro'] ?></div>
+                <?php unset($_SESSION['cadastro_erro']); ?>
+            <?php endif; ?>
+
+
             <button type="submit" class="btn btn-brand w-100 py-2 fw-bold">Cadastrar</button>
         </form>
     </div>
