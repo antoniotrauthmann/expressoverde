@@ -13,7 +13,8 @@ class PostController {
         Auth::verificar();
         $model = new PostModel($this->db);
         $posts = $model->buscarTodos();
-        include __DIR__ . '/../View/feedView.php';
+        // Caminho atualizado para refletir a nova organização em pastas
+        include __DIR__ . '/../View/Comunidade/feedView.php';
     }
 
     public function salvar() {
@@ -21,8 +22,15 @@ class PostController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $conteudo = $_POST['conteudo_texto']; 
             $titulo = "Post da Comunidade"; 
-            
             $id_usuario = $_SESSION['usuario_id']; 
+
+            $model = new PostModel($this->db);
+
+            // REFINAMENTO: Chamando a regra de negócio que valida o conteúdo
+            if (!$model->validarConteudo($conteudo)) {
+                header("Location: index.php?rota=feed&erro=conteudo_vazio");
+                exit();
+            }
 
             $post_caminho_imagem = null;
             if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === 0) {
@@ -35,7 +43,6 @@ class PostController {
                 }
             }
 
-            $model = new PostModel($this->db);
             $model->inserir($id_usuario, $titulo, $conteudo, $post_caminho_imagem); 
 
             header("Location: index.php?rota=feed");
@@ -57,6 +64,8 @@ class PostController {
     }
 
     public function curtir() {
+        // REFINAMENTO: Protegendo a rota de curtidas contra acessos maliciosos deslogados
+        Auth::verificar();
         if (isset($_GET['id'])) {
             $id_post = $_GET['id'];
             $model = new PostModel($this->db);
