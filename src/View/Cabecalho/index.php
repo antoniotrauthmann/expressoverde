@@ -8,18 +8,22 @@
 
 <link rel="stylesheet" href="/projeto-es/src/View/Cabecalho/style.css">
 <div class="cabecalho">
-    <div class="logo">
-        <a href="index.php?rota=catalogo" class="logo-l">Expresso Verde</a>
+    <div class="logo  p-0">
+        <a href="index.php?rota=catalogo" class="logo-l" style="box-sizing: border-box; ">
+          <!-- <img class="card-img-top border border-gray rounded" > -->
+          <img src="/projeto-es/public/img/logo.png" class="" style="height: 45px; object-fit: cover;">
+        </a>
     </div>
     <!-- index.php?rota=busca -->
-    <form action="index.php" method="GET"class="search-container">
+    <form action="index.php" method="GET" class="search-container d-flex justify-content-between">
         <input name="rota" type="hidden" value="busca">
-        <input name="b" type="text" class="search-input" placeholder="Buscar &quot;Ferramentas&quot;">
-        
-        <input type="submit" class="btn btn-primary search-btn"></input>
+        <div class="ml-2">
+          <input name="b" type="text" class="search-input" placeholder="Buscar &quot;Ferramentas&quot;">
+        </div>
+
+        <button type="submit" class="btn btn-outline-secondary search-btn p-2 lh-1" id="inputBarraPesquisa">🔍</button>
     </form>
     <div class="nav-menu">
-        <a href="index.php?rota=feed" class="btn btn-entrar">comunidade</a>
         <?php 
         if(isset( $_SESSION["usuario_id"])){
             $id = $_SESSION["usuario_id"];
@@ -29,15 +33,16 @@
         
         if ($id == NULL)
         {
-            echo '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Entrar</button>';
-            echo '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastrar</button>';
+            echo '<div class="d-flex flex-row" style="gap:5px;"><button type="button" class="btn btn-entrar" data-bs-toggle="modal" data-bs-target="#loginModal">Entrar</button>';
+            echo '<button type="button" class="btn btn-entrar" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastrar</button></div>';
         } 
         else if ($id > 0){
             // echo 'Bem vindo,<br>' . htmlspecialchars($_SESSION["usuario_nome"] ?? '');
-            echo '<a href="index.php?rota=carrinho" class="btn btn-entrar">🛒</a>';
+            echo '<div class="d-flex flex-row" style="gap:5px;"><a href="index.php?rota=carrinho" class="btn btn-entrar">🛒</a>';
+            echo '<a href="index.php?rota=feed" class="btn btn-entrar">comunidade</a>';
             echo '<a href="index.php?rota=pedidos" class="btn btn-entrar">Pedidos</a>';
             echo '<a href="index.php?rota=perfil" class="btn btn-entrar">Perfil</a>';
-            echo '<a href="index.php?rota=logout" class="btn btn-entrar">Sair</a>';
+            echo '<a href="index.php?rota=logout" class="btn btn-entrar">Sair</a></div>';
         }
         ?>
     </div>
