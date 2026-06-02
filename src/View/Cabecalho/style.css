@@ -15,7 +15,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 12px 30px;
     background-color: #ffffff;
     border-bottom: 1px solid #e5e5e5;
@@ -43,7 +43,7 @@
     background-color: #f4f4f4;
     border-radius: 30px;
     flex: 1;
-    max-width: 600px;
+    max-width: 400px;
     padding: 5px 15px;
     height: 48px;
 }
@@ -119,7 +119,10 @@
     gap: 8px;
     transition: all 0.2s ease;
 }
-
+.btn-light{
+    background-color: white;
+    border-color: #f4f4f4;
+}
 .btn-entrar {
     color: #1a1a1a;
     background-color: #ffffff;
