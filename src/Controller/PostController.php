@@ -13,7 +13,6 @@ class PostController {
         Auth::verificar();
         $model = new PostModel($this->db);
         $posts = $model->buscarTodos();
-        // Caminho atualizado para refletir a nova organização em pastas
         include __DIR__ . '/../View/Comunidade/feedView.php';
     }
 
@@ -25,7 +24,7 @@ class PostController {
             $id_usuario = $_SESSION['usuario_id']; 
 
             $model = new PostModel($this->db);
-
+            
             // REFINAMENTO: Chamando a regra de negócio que valida o conteúdo
             if (!$model->validarConteudo($conteudo)) {
                 header("Location: index.php?rota=feed&erro=conteudo_vazio");
@@ -57,19 +56,30 @@ class PostController {
             $id_usuario_logado = $_SESSION['usuario_id'];
 
             $model = new PostModel($this->db);
-            $model->excluirSeguro($id_post, $id_usuario_logado);
+            
+            // REFINAMENTO: Captura as informações do post antes de apagar do banco
+            $post = $model->buscarPorId($id_post);
+            
+            if ($model->excluirSeguro($id_post, $id_usuario_logado)) {
+                // REFINAMENTO: Se o post foi apagado do banco e continha imagem, remove do HD do servidor
+                if ($post && !empty($post['post_caminho_imagem']) && file_exists($post['post_caminho_imagem'])) {
+                    unlink($post['post_caminho_imagem']);
+                }
+            }
         }
         header("Location: index.php?rota=feed");
         exit();
     }
 
     public function curtir() {
-        // REFINAMENTO: Protegendo a rota de curtidas contra acessos maliciosos deslogados
         Auth::verificar();
         if (isset($_GET['id'])) {
             $id_post = $_GET['id'];
+            $id_usuario_logado = $_SESSION['usuario_id']; // Capturando quem está curtindo
+
             $model = new PostModel($this->db);
-            $model->adicionarCurtida($id_post);
+            // Executa a regra inteligente de alternância
+            $model->alternarCurtida($id_post, $id_usuario_logado);
         }
         header("Location: index.php?rota=feed");
         exit();
