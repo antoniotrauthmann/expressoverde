@@ -67,3 +67,10 @@
     </div>
   </div>
 </div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('modal') === 'cadastro') {
+        new bootstrap.Modal(document.getElementById('cadastroModal')).show();
+    }
+</script>

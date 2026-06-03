@@ -1,12 +1,15 @@
 <?php
-class UsuarioModel {
+class UsuarioModel
+{
     private $db;
 
-    public function __construct($mysqli) {
+    public function __construct($mysqli)
+    {
         $this->db = $mysqli;
     }
 
-    public function buscarPorEmail($email) {
+    public function buscarPorEmail($email)
+    {
         $stmt = $this->db->prepare(
             "SELECT id_usuario, usuario_nome, email, senha_hash, tipo FROM usuario WHERE email = ?"
         );
@@ -16,11 +19,12 @@ class UsuarioModel {
         return $resultado->fetch_assoc();
     }
 
-    public function inserir($nome, $email, $senha_hash, $tipo) {
+    public function inserir($nome, $email, $senha_hash, $tipo, $id_loja = null)
+    {
         $stmt = $this->db->prepare(
-            "INSERT INTO usuario (usuario_nome, email, senha_hash, tipo) VALUES (?, ?, ?, ?)"
+            "INSERT INTO usuario (usuario_nome, email, senha_hash, tipo, id_loja) VALUES (?, ?, ?, ?, ?)"
         );
-        $stmt->bind_param("ssss", $nome, $email, $senha_hash, $tipo);
+        $stmt->bind_param("ssssi", $nome, $email, $senha_hash, $tipo, $id_loja);
         $stmt->execute();
     }
 }
