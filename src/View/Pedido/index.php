@@ -10,6 +10,22 @@
 <body>
     <main class="pedidos-container">
         <h1>Meus Pedidos</h1>
+
+        <?php if (!empty($_SESSION['pedido_msg'])): ?>
+            <div class="pedido-alerta pedido-alerta-sucesso">
+                <i class="fa-solid fa-circle-check"></i>
+                <?= htmlspecialchars($_SESSION['pedido_msg']) ?>
+            </div>
+            <?php unset($_SESSION['pedido_msg']); ?>
+        <?php endif; ?>
+
+        <?php if (!empty($_SESSION['pedido_erro'])): ?>
+            <div class="pedido-alerta pedido-alerta-erro">
+                <i class="fa-solid fa-circle-xmark"></i>
+                <?= htmlspecialchars($_SESSION['pedido_erro']) ?>
+            </div>
+            <?php unset($_SESSION['pedido_erro']); ?>
+        <?php endif; ?>
         
         <?php if (empty($pedidos)): ?>
             <div class="empty-pedidos">
@@ -73,6 +89,16 @@
                                 <i class="fa-solid fa-chevron-down" id="icon-detalhes-<?php echo $pedido['id_pedido']; ?>"></i>
                                 <span id="text-detalhes-<?php echo $pedido['id_pedido']; ?>">Ver Detalhes</span>
                             </button>
+
+                            <?php if (!in_array($pedido['status'], ['cancelado', 'entregue'])): ?>
+                                <form method="POST" action="index.php?rota=cancelar_pedido" class="form-cancelar" onsubmit="return confirm('Tem certeza que deseja cancelar este pedido?');">
+                                    <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
+                                    <button type="submit" class="btn-cancelar">
+                                        <i class="fa-solid fa-ban"></i> Cancelar Pedido
+                                    </button>
+                                </form>
+                            <?php endif; ?>
+
                             <div class="pedido-total-wrapper">
                                 <span class="pedido-total-label">Total Pago:</span>
                                 <span class="pedido-total-valor">R$ <?php echo number_format($pedido['total'], 2, ',', '.'); ?></span>

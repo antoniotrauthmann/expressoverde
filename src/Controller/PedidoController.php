@@ -89,4 +89,31 @@ class PedidoController {
 
         include __DIR__ . '/../View/Pedido/index.php';
     }
+
+    public function cancelar() {
+        if (!isset($_SESSION['usuario_id'])) {
+            header("Location: index.php?rota=login");
+            exit();
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: index.php?rota=pedidos");
+            exit();
+        }
+
+        $id_pedido = (int)($_POST['id_pedido'] ?? 0);
+        $id_usuario = $_SESSION['usuario_id'];
+
+        $model = new PedidoModel($this->db);
+        $resultado = $model->cancelarPedido($id_pedido, $id_usuario);
+
+        if ($resultado) {
+            $_SESSION['pedido_msg'] = 'Pedido cancelado com sucesso. O estoque foi restaurado.';
+        } else {
+            $_SESSION['pedido_erro'] = 'Não foi possível cancelar este pedido.';
+        }
+
+        header("Location: index.php?rota=pedidos");
+        exit();
+    }
 }
