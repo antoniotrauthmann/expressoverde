@@ -25,7 +25,6 @@ class PostController {
 
             $model = new PostModel($this->db);
             
-            // REFINAMENTO: Chamando a regra de negócio que valida o conteúdo
             if (!$model->validarConteudo($conteudo)) {
                 header("Location: index.php?rota=feed&erro=conteudo_vazio");
                 exit();
@@ -56,12 +55,9 @@ class PostController {
             $id_usuario_logado = $_SESSION['usuario_id'];
 
             $model = new PostModel($this->db);
-            
-            // REFINAMENTO: Captura as informações do post antes de apagar do banco
             $post = $model->buscarPorId($id_post);
             
             if ($model->excluirSeguro($id_post, $id_usuario_logado)) {
-                // REFINAMENTO: Se o post foi apagado do banco e continha imagem, remove do HD do servidor
                 if ($post && !empty($post['post_caminho_imagem']) && file_exists($post['post_caminho_imagem'])) {
                     unlink($post['post_caminho_imagem']);
                 }
@@ -73,15 +69,28 @@ class PostController {
 
     public function curtir() {
         Auth::verificar();
+        
+        if (ob_get_length()) ob_clean();
+        
+        header('Content-Type: application/json');
+
         if (isset($_GET['id'])) {
             $id_post = $_GET['id'];
-            $id_usuario_logado = $_SESSION['usuario_id']; // Capturando quem está curtindo
+            $id_usuario_logado = $_SESSION['usuario_id'];
 
             $model = new PostModel($this->db);
-            // Executa a regra inteligente de alternância
             $model->alternarCurtida($id_post, $id_usuario_logado);
+            
+            $postAtualizado = $model->buscarPorId($id_post);
+            
+            echo json_encode([
+                'sucesso' => true,
+                'curtidas' => $postAtualizado['curtidas']
+            ]);
+            exit();
         }
-        header("Location: index.php?rota=feed");
+
+        echo json_encode(['sucesso' => false, 'erro' => 'ID inválido']);
         exit();
     }
 }
