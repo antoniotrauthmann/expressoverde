@@ -105,7 +105,7 @@ class PedidoController {
         $resultado = $model->cancelarPedido($id_pedido, $id_usuario);
 
         if ($resultado) {
-            $_SESSION['pedido_msg'] = 'Pedido cancelado com sucesso. O estoque foi restaurado.';
+            $_SESSION['pedido_msg'] = 'Pedido cancelado com sucesso.';
         } else {
             $_SESSION['pedido_erro'] = 'Não foi possível cancelar este pedido.';
         }

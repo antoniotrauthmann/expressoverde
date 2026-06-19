@@ -59,8 +59,8 @@
                             </ul>
                         </div>
 
-                        <!-- Detalhes do Pedido (endereço) -->
-                        <div class="pedido-detalhes" id="detalhes-<?php echo $pedido['id_pedido']; ?>" style="display: none;">
+                        <!-- Detalhes do Pedido (endereço + ações) -->
+                        <div class="pedido-detalhes" id="detalhes-<?php echo $pedido['id_pedido']; ?>">
                             <?php if (!empty($pedido['endereco'])): ?>
                                 <div class="detalhe-endereco">
                                     <div class="detalhe-endereco-icon">
@@ -82,6 +82,23 @@
                             <?php else: ?>
                                 <p class="detalhe-sem-endereco">Endereço não disponível.</p>
                             <?php endif; ?>
+
+                            <?php if (!in_array($pedido['status'], ['cancelado', 'entregue'])): ?>
+                                <div class="detalhe-acoes">
+                                    <div class="cancelar-section">
+                                        <div class="cancelar-info">
+                                            <i class="fa-solid fa-circle-info"></i>
+                                            <span>Deseja cancelar este pedido?.</span>
+                                        </div>
+                                        <form method="POST" action="index.php?rota=cancelar_pedido" class="form-cancelar" onsubmit="return confirm('Tem certeza que deseja cancelar o Pedido #<?php echo $pedido['id_pedido']; ?>? Esta ação não pode ser desfeita.');">
+                                            <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
+                                            <button type="submit" class="btn-cancelar">
+                                                <i class="fa-solid fa-ban"></i> Cancelar Pedido
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         
                         <div class="pedido-footer">
@@ -89,15 +106,6 @@
                                 <i class="fa-solid fa-chevron-down" id="icon-detalhes-<?php echo $pedido['id_pedido']; ?>"></i>
                                 <span id="text-detalhes-<?php echo $pedido['id_pedido']; ?>">Ver Detalhes</span>
                             </button>
-
-                            <?php if (!in_array($pedido['status'], ['cancelado', 'entregue'])): ?>
-                                <form method="POST" action="index.php?rota=cancelar_pedido" class="form-cancelar" onsubmit="return confirm('Tem certeza que deseja cancelar este pedido?');">
-                                    <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
-                                    <button type="submit" class="btn-cancelar">
-                                        <i class="fa-solid fa-ban"></i> Cancelar Pedido
-                                    </button>
-                                </form>
-                            <?php endif; ?>
 
                             <div class="pedido-total-wrapper">
                                 <span class="pedido-total-label">Total Pago:</span>
@@ -116,13 +124,13 @@
             const icon = document.getElementById('icon-detalhes-' + id);
             const text = document.getElementById('text-detalhes-' + id);
             
-            if (detalhes.style.display === 'none') {
-                detalhes.style.display = 'block';
+            const aberto = detalhes.classList.toggle('aberto');
+
+            if (aberto) {
                 icon.classList.remove('fa-chevron-down');
                 icon.classList.add('fa-chevron-up');
                 text.textContent = 'Ocultar Detalhes';
             } else {
-                detalhes.style.display = 'none';
                 icon.classList.remove('fa-chevron-up');
                 icon.classList.add('fa-chevron-down');
                 text.textContent = 'Ver Detalhes';
