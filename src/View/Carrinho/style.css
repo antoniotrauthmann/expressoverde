@@ -4,6 +4,25 @@
     padding: 0 20px;
     font-family: 'Inter', sans-serif;
 }
+*{
+    box-sizing: border-box !important;
+}
+head{
+    margin-bottom: 0 !important;
+}
+.badge-tag {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
 
 .carrinho-container h1 {
     color: #2c3e50;

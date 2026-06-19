@@ -1,4 +1,16 @@
-/* Reset básico e tipografia */
+/* Reset básico do HTML e Body para eliminar margens do navegador */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Espaçamento no topo do body para o conteúdo não sumir sob o header fixo */
+body {
+    padding-top: 73px; 
+}
+
+/* Reset interno do cabeçalho */
 .cabecalho * {
     margin: 0;
     padding: 0;
@@ -6,9 +18,11 @@
     font-family: Arial, sans-serif;
 }
 
-/* Container principal do Header */
+/* Container principal do Header - CORRIGIDO */
 .cabecalho {
     position: fixed;
+    top: 0;        /* Garante que cole no topo do navegador */
+    left: 0;       /* Garante que alinhe totalmente à esquerda */
     z-index: 99999;
     flex-direction: row;
     width: 100%;
@@ -19,7 +33,7 @@
     background-color: #ffffff;
     border-bottom: 1px solid #e5e5e5;
     gap: 20px;
-    /* Adicionado transição suave para a troca de cores */
+    /* Transição suave para a troca de cores */
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
 }
 

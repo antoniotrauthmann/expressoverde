@@ -22,7 +22,7 @@ $is_catalogo = (!isset($_GET['rota']) || $_GET['rota'] === 'catalogo');
     <form action="index.php" method="GET" class="search-container d-flex justify-content-between">
         <input name="rota" type="hidden" value="busca">
         <div class="ml-2">
-          <input name="b" type="text" class="search-input" placeholder="Buscar &quot;Ferramentas&quot;">
+          <input name="b" type="text" class="search-input w-100" placeholder="Buscar &quot;Ferramentas&quot;">
         </div>
         <button type="submit" class="btn btn-outline-secondary search-btn p-2 lh-1" id="inputBarraPesquisa">🔍</button>
     </form>
@@ -72,12 +72,10 @@ $is_catalogo = (!isset($_GET['rota']) || $_GET['rota'] === 'catalogo');
 </div>
 
 <script>
-<<<<<<< Updated upstream
     const params = new URLSearchParams(window.location.search);
     if (params.get('modal') === 'cadastro') {
         new bootstrap.Modal(document.getElementById('cadastroModal')).show();
     }
-=======
     document.addEventListener("DOMContentLoaded", function () {
         const header = document.querySelector('.cabecalho.header-dynamic');
         
@@ -95,5 +93,4 @@ $is_catalogo = (!isset($_GET['rota']) || $_GET['rota'] === 'catalogo');
             checkScroll(); // Executa na inicialização da página
         }
     });
->>>>>>> Stashed changes
 </script>
