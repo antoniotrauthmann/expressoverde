@@ -64,21 +64,15 @@ body.comunidade-page {
     box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
 }
 
-/* CARD DE CRIAÇÃO DE POSTS */
-.publish-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
-.publish-card h3 {
-    color: var(--text-primary);
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 18px;
+form, .post {
+    background-color: #2d2d2d;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;             
+    max-width: 500px;        
+    box-sizing: border-box;  
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
 .publish-card textarea {

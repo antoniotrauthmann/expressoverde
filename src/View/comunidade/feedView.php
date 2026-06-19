@@ -55,34 +55,18 @@
                     <span>Publicações Recentes</span>
                 </div>
 
-                <!-- Lista de Postagens -->
-                <div class="feed-container">
-                    <?php if (!empty($posts)): ?>
-                        <?php foreach ($posts as $post): ?>
-                            <div class="post-card">
-                                
-                                <!-- Topo do Card: Usuário e Botões -->
-                                <div class="post-header">
-                                    <div class="user-meta">
-                                        <div class="user-avatar">
-                                            <?= strtoupper(substr($post['usuario_nome'], 0, 1)) ?>
-                                        </div>
-                                        <div class="user-info">
-                                            <span class="username">@<?= htmlspecialchars($post['usuario_nome']) ?></span>
-                                            <span class="post-date">
-                                                <i class="fa-regular fa-clock"></i> <?= isset($post['criado_em']) ? $post['criado_em'] : 'Data indisponível' ?>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    
-                                    <?php if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_id'] == $post['id_usuario']): ?>
-                                        <a href="index.php?rota=excluir&id=<?= $post['id_post'] ?>" 
-                                           class="btn-delete-post" 
-                                           onclick="return confirm('Tem certeza que deseja apagar seu post?')">
-                                           <i class="fa-regular fa-trash-can"></i> Excluir
-                                        </a>
-                                    <?php endif; ?>
-                                </div>
+    <div class="feed" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+    <?php if (!empty($posts)): ?>
+        <?php foreach ($posts as $post): ?>
+            <div class="post" style="border: 1px solid #4d4d4d; padding: 20px; margin-bottom: 20px; position: relative; width: 100%; max-width: 500px; box-sizing: border-box;">
+                
+                <?php if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_id'] == $post['id_usuario']): ?>
+                    <a href="index.php?rota=excluir&id=<?= $post['id_post'] ?>" 
+                       class="btn-excluir" 
+                       onclick="return confirm('Tem certeza que deseja apagar seu post?')">
+                       Excluir  🗑️
+                    </a>
+                <?php endif; ?>
 
                                 <!-- Conteúdo Central do Post -->
                                 <div class="post-body">
@@ -135,10 +119,52 @@
                         </a>
                     </div>
 
+                <div class="curtidas-container">
+                    <a href="index.php?rota=curtir&id=<?= $post['id_post'] ?>" 
+                       class="btn-curtir" 
+                       style="text-decoration: none; color: #ff4757; font-weight: bold;">
+                        ❤️ <span><?= $post['curtidas'] ?></span> Curtidas
+                    </a>
                 </div>
             </div>
 
-        </div>
-    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const botoesCurtir = document.querySelectorAll('.btn-curtir');
 
-</div>
+    botoesCurtir.forEach(botao => {
+        botao.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const url = this.getAttribute('href');
+            const spanQuantidade = this.querySelector('span');
+
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro na resposta do servidor: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.sucesso) {
+                    spanQuantidade.textContent = data.curtidas;
+                } else {
+                    console.error('Erro no processamento da curtida:', data.erro);
+                }
+            })
+            .catch(error => {
+                console.error('Falha na requisição AJAX:', error);
+                window.location.href = url;
+            });
+        });
+    });
+});
+</script>
+</body>
+</html>
