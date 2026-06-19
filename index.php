@@ -1,19 +1,32 @@
 <?php
 session_start();
-?>
-<title>Expresso Verde</title>
-<?php
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'config/conexao.php';
+require_once 'src/Controller/CarrinhoController.php';
+
+// Rotas AJAX (precisam executar antes de qualquer output HTML)
+$rota = $_GET['rota'] ?? 'catalogo';
+$action = $_GET['action'] ?? null;
+
+if ($rota === 'carrinho' && $action === 'update_ajax') {
+    $carrinhoController = new CarrinhoController($mysqli);
+    $carrinhoController->updateAjax();
+    // updateAjax() já faz exit(), mas por segurança:
+    exit();
+}
+?>
+<title>Expresso Verde</title>
+<?php
 require_once 'src/Controller/PostController.php';
 require_once 'src/Controller/UsuarioController.php';
 require_once 'src/Controller/ProdutoController.php';
-require_once 'src/Controller/CarrinhoController.php';
 require_once 'src/Controller/PedidoController.php';
 require_once 'src/Controller/EnderecoController.php';
 require_once 'src/Controller/VendaController.php';
+
 
 //(Roteamento simples)
 $rota = $_GET['rota'] ?? 'catalogo';
@@ -58,6 +71,8 @@ if ($rota === 'login') {
         $carrinhoController->remove();
     } elseif ($action === 'update') {
         $carrinhoController->update();
+    } elseif ($action === 'update_ajax') {
+        $carrinhoController->updateAjax();
     } else {
         $carrinhoController->index();
     }

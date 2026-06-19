@@ -278,6 +278,71 @@
     transition: transform 0.3s;
 }
 
+/* ========== Alertas de Feedback ========== */
+.pedido-alerta {
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    animation: slideDown 0.3s ease;
+}
+
+.pedido-alerta i {
+    font-size: 1.2rem;
+}
+
+.pedido-alerta-sucesso {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.pedido-alerta-erro {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ========== Botão Cancelar Pedido ========== */
+.form-cancelar {
+    display: inline-flex;
+}
+
+.btn-cancelar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid #e74c3c;
+    border-radius: 6px;
+    color: #e74c3c;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-cancelar:hover {
+    background: #e74c3c;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-cancelar:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-cancelar i {
+    font-size: 12px;
+}
+
 @media (max-width: 600px) {
     .pedido-header {
         flex-direction: column;

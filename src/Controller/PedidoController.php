@@ -42,23 +42,20 @@ class PedidoController {
                 exit();
             }
 
-            $total = 0;
-            foreach ($_SESSION['carrinho'] as $item) {
-                $total += $item['preco'] * $item['quantidade'];
-            }
-
             $pedidoModel = new PedidoModel($this->db);
-            $id_pedido = $pedidoModel->inserir($id_usuario, $id_endereco, $total);
+            $resultado = $pedidoModel->finalizarPedido($id_usuario, $id_endereco, $_SESSION['carrinho']);
 
-            foreach ($_SESSION['carrinho'] as $item) {
-                $pedidoModel->inserirItem($id_pedido, $item['id'], $item['quantidade'], $item['preco']);
+            if ($resultado['ok']) {
+                // Pedido criado com sucesso — limpar carrinho
+                $_SESSION['carrinho'] = [];
+                header("Location: index.php?rota=pedidos");
+                exit();
+            } else {
+                // Estoque insuficiente ou erro — voltar ao carrinho com mensagem
+                $_SESSION['carrinho_erro'] = $resultado['erro'];
+                header("Location: index.php?rota=carrinho");
+                exit();
             }
-
-            // Limpa o carrinho
-            $_SESSION['carrinho'] = [];
-
-            header("Location: index.php?rota=pedidos");
-            exit();
         }
 
         // GET: exibe a tela de checkout com seleção de endereço

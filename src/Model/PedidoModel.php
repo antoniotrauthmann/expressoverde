@@ -23,6 +23,85 @@ class PedidoModel {
         $stmt->execute();
     }
 
+    /**
+     * Finaliza o pedido com validação de estoque e decremento atômico.
+     * Retorna ['ok' => true, 'id_pedido' => int] em sucesso,
+     * ou ['ok' => false, 'erro' => string] em falha.
+     */
+    public function finalizarPedido($id_usuario, $id_endereco, $carrinho) {
+        $this->db->begin_transaction();
+
+        try {
+            // 1. Validar estoque de cada item (com lock FOR UPDATE)
+            foreach ($carrinho as $item) {
+                $stmt = $this->db->prepare(
+                    "SELECT estoque, produto_nome FROM produto WHERE id_produto = ? FOR UPDATE"
+                );
+                $stmt->bind_param("i", $item['id']);
+                $stmt->execute();
+                $produto = $stmt->get_result()->fetch_assoc();
+
+                if (!$produto) {
+                    $this->db->rollback();
+                    return ['ok' => false, 'erro' => "Produto não encontrado (ID {$item['id']})."];
+                }
+
+                if ((int)$produto['estoque'] < (int)$item['quantidade']) {
+                    $this->db->rollback();
+                    $nome = $produto['produto_nome'];
+                    $disp = $produto['estoque'];
+                    return [
+                        'ok' => false,
+                        'erro' => "Estoque insuficiente para \"{$nome}\". Disponível: {$disp}, solicitado: {$item['quantidade']}."
+                    ];
+                }
+            }
+
+            // 2. Calcular total com preço atualizado do banco
+            $total = 0;
+            foreach ($carrinho as $item) {
+                $total += $item['preco'] * $item['quantidade'];
+            }
+
+            // 3. Inserir pedido
+            $stmt = $this->db->prepare(
+                "INSERT INTO pedido (id_usuario, id_endereco, total, status) VALUES (?, ?, ?, 'pendente')"
+            );
+            $stmt->bind_param("iid", $id_usuario, $id_endereco, $total);
+            $stmt->execute();
+            $id_pedido = $stmt->insert_id;
+
+            // 4. Inserir itens e decrementar estoque
+            foreach ($carrinho as $item) {
+                // Inserir item_pedido
+                $stmt = $this->db->prepare(
+                    "INSERT INTO item_pedido (id_pedido, id_produto, quantidade, preco_unitario) VALUES (?, ?, ?, ?)"
+                );
+                $stmt->bind_param("iiid", $id_pedido, $item['id'], $item['quantidade'], $item['preco']);
+                $stmt->execute();
+
+                // Decrementar estoque
+                $stmt = $this->db->prepare(
+                    "UPDATE produto SET estoque = estoque - ? WHERE id_produto = ? AND estoque >= ?"
+                );
+                $stmt->bind_param("iii", $item['quantidade'], $item['id'], $item['quantidade']);
+                $stmt->execute();
+
+                if ($stmt->affected_rows === 0) {
+                    $this->db->rollback();
+                    return ['ok' => false, 'erro' => "Falha ao decrementar estoque do produto ID {$item['id']}."];
+                }
+            }
+
+            $this->db->commit();
+            return ['ok' => true, 'id_pedido' => $id_pedido];
+
+        } catch (Exception $e) {
+            $this->db->rollback();
+            return ['ok' => false, 'erro' => 'Erro interno ao processar o pedido.'];
+        }
+    }
+
     public function buscarPorUsuario($id_usuario) {
         $stmt = $this->db->prepare(
             "SELECT * FROM pedido WHERE id_usuario = ? ORDER BY criado_em DESC"

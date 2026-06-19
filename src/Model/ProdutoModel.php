@@ -36,4 +36,17 @@ class ProdutoModel
         $resultado = $stmt->get_result();
         return $resultado->fetch_assoc();
     }
+
+    /**
+     * Retorna o estoque atual de um produto direto do banco de dados
+     */
+    public function buscarEstoque($id_produto)
+    {
+        $stmt = $this->db->prepare("SELECT estoque FROM produto WHERE id_produto = ?");
+        $stmt->bind_param("i", $id_produto);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $row = $resultado->fetch_assoc();
+        return $row ? (int)$row['estoque'] : 0;
+    }
 }
