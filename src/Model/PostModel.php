@@ -12,7 +12,6 @@ class PostModel {
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    // NOVO MÉTODO: Essencial para podermos apagar o arquivo físico de imagem do servidor
     public function buscarPorId($id_post) {
         $stmt = $this->db->prepare("SELECT * FROM post_comunidade WHERE id_post = ?");
         $stmt->bind_param("i", $id_post);
@@ -27,16 +26,13 @@ class PostModel {
         return $stmt->execute();
     }
 
-    // REFINAMENTO ANTIFRAUDE: Gerencia a tabela intermediária de curtidas
     public function alternarCurtida($id_post, $id_usuario) {
-        // 1. Verifica se o usuário já curtiu esse post específico
         $stmt = $this->db->prepare("SELECT 1 FROM curtida_post WHERE id_post = ? AND id_usuario = ?");
         $stmt->bind_param("ii", $id_post, $id_usuario);
         $stmt->execute();
         $jaCurtiu = $stmt->get_result()->fetch_assoc();
 
         if ($jaCurtiu) {
-            // Se já curtiu, retira a curtida (Descurtir)
             $stmtDeletar = $this->db->prepare("DELETE FROM curtida_post WHERE id_post = ? AND id_usuario = ?");
             $stmtDeletar->bind_param("ii", $id_post, $id_usuario);
             $stmtDeletar->execute();
@@ -45,7 +41,6 @@ class PostModel {
             $stmtDecrementar->bind_param("i", $id_post);
             return $stmtDecrementar->execute();
         } else {
-            // Se não curtiu, adiciona a curtida (Curtir)
             $stmtInserir = $this->db->prepare("INSERT INTO curtida_post (id_post, id_usuario) VALUES (?, ?)");
             $stmtInserir->bind_param("ii", $id_post, $id_usuario);
             $stmtInserir->execute();
@@ -57,7 +52,6 @@ class PostModel {
     }
     
     public function excluirSeguro($id_post, $id_usuario) {
-        // Remove os vínculos de curtidas do post primeiro para evitar erros de chave
         $stmtCurtidas = $this->db->prepare("DELETE FROM curtida_post WHERE id_post = ?");
         $stmtCurtidas->bind_param("i", $id_post);
         $stmtCurtidas->execute();

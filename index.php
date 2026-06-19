@@ -1,8 +1,6 @@
 <?php
 session_start();
-?>
-<title>Expresso Verde</title>
-<?php
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -14,7 +12,7 @@ require_once 'src/Controller/CarrinhoController.php';
 require_once 'src/Controller/PedidoController.php';
 require_once 'src/Controller/EnderecoController.php';
 
-//(Roteamento simples)
+// (Roteamento simples)
 $rota = $_GET['rota'] ?? 'catalogo';
 
 $controller = new PostController($mysqli);
@@ -24,6 +22,7 @@ $carrinhoController = new CarrinhoController($mysqli);
 $pedidoController = new PedidoController($mysqli);
 $enderecoController = new EnderecoController($mysqli);
 
+// Processa as rotas primeiro
 if ($rota === 'login') {
     $usuarioController->login();
 } elseif ($rota === 'cadastro') {
@@ -31,6 +30,7 @@ if ($rota === 'login') {
 } elseif ($rota === 'logout') {
     $usuarioController->logout();
 } elseif ($rota === 'feed') {
+    echo "<title>Expresso Verde</title>";
     $controller->index();
 } elseif ($rota === 'salvar') {
     $controller->salvar();
@@ -39,16 +39,21 @@ if ($rota === 'login') {
 } elseif ($rota === 'excluir') {
     $controller->excluir();
 } elseif ($rota === 'manual') {
+    echo "<title>Expresso Verde</title>";
     include 'src/View/manualView.php';
 } elseif ($rota === 'catalogo') {
+    echo "<title>Expresso Verde</title>";
     include 'src/View/Catalogo_produtos/index.php';
 } elseif ($rota === 'produto') {
+    echo "<title>Expresso Verde</title>";
     include 'src/View/Produto/index.php';
 } elseif ($rota === 'perfil') {
+    echo "<title>Expresso Verde</title>";
     include 'src/View/Perfil/index.php';
 } elseif ($rota === 'cadastrar_produto') {
     $produtoController->cadastrar();
 } elseif ($rota === 'carrinho') {
+    echo "<title>Expresso Verde</title>";
     $action = $_GET['action'] ?? null;
     if ($action === 'add') {
         $carrinhoController->add();
