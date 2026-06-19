@@ -43,6 +43,9 @@ $is_catalogo = (!isset($_GET['rota']) || $_GET['rota'] === 'catalogo');
         else if ($id > 0){
             echo '<div class="d-flex flex-row" style="gap:5px;"><a href="index.php?rota=carrinho" class="btn btn-entrar">🛒</a>';
             echo '<a href="index.php?rota=feed" class="btn btn-entrar">comunidade</a>';
+            if (isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'profissional') {
+                echo '<a href="index.php?rota=central_vendas" class="btn btn-entrar" style="background-color:#104c4b; color:#fff; border-color:#104c4b;">🏪 Central</a>';
+            }
             echo '<a href="index.php?rota=pedidos" class="btn btn-entrar">Pedidos</a>';
             echo '<a href="index.php?rota=perfil" class="btn btn-entrar">Perfil</a>';
             echo '<a href="index.php?rota=logout" class="btn btn-entrar">Sair</a></div>';

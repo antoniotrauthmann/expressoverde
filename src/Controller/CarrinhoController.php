@@ -12,6 +12,22 @@ class CarrinhoController {
     }
 
     public function index() {
+        // Atualizar estoque do banco para cada item do carrinho (garante dados frescos)
+        $model = new ProdutoModel($this->db);
+        foreach ($_SESSION['carrinho'] as $id => &$item) {
+            $estoqueAtual = $model->buscarEstoque($id);
+            $item['estoque'] = $estoqueAtual;
+            // Se o estoque caiu abaixo da quantidade no carrinho, ajustar
+            if ($item['quantidade'] > $estoqueAtual) {
+                $item['quantidade'] = $estoqueAtual;
+            }
+            // Se estoque zerou, remover do carrinho
+            if ($estoqueAtual <= 0) {
+                unset($_SESSION['carrinho'][$id]);
+            }
+        }
+        unset($item);
+
         include __DIR__ . '/../View/Carrinho/index.php';
     }
 
@@ -24,14 +40,25 @@ class CarrinhoController {
             $produto = $model->buscarPorId($id_produto);
 
             if ($produto) {
-                if (isset($_SESSION['carrinho'][$id_produto])) {
-                    $_SESSION['carrinho'][$id_produto]['quantidade'] += $quantidade;
-                } else {
+                $estoqueDisponivel = (int)$produto['estoque'];
+                $qtdAtualNoCarrinho = isset($_SESSION['carrinho'][$id_produto])
+                    ? $_SESSION['carrinho'][$id_produto]['quantidade']
+                    : 0;
+
+                $novaQtd = $qtdAtualNoCarrinho + $quantidade;
+
+                // Limitar à quantidade disponível em estoque
+                if ($novaQtd > $estoqueDisponivel) {
+                    $novaQtd = $estoqueDisponivel;
+                }
+
+                if ($novaQtd > 0) {
                     $_SESSION['carrinho'][$id_produto] = [
                         'id' => $produto['id_produto'],
                         'nome' => $produto['produto_nome'],
                         'preco' => $produto['preco'],
-                        'quantidade' => $quantidade
+                        'quantidade' => $novaQtd,
+                        'estoque' => $estoqueDisponivel
                     ];
                 }
             }
@@ -47,7 +74,16 @@ class CarrinhoController {
 
             if ($quantidade > 0) {
                 if (isset($_SESSION['carrinho'][$id_produto])) {
+                    // Validar contra o estoque do banco
+                    $model = new ProdutoModel($this->db);
+                    $estoqueDisponivel = $model->buscarEstoque($id_produto);
+
+                    if ($quantidade > $estoqueDisponivel) {
+                        $quantidade = $estoqueDisponivel;
+                    }
+
                     $_SESSION['carrinho'][$id_produto]['quantidade'] = $quantidade;
+                    $_SESSION['carrinho'][$id_produto]['estoque'] = $estoqueDisponivel;
                 }
             } else {
                 $this->removeById($id_produto);
@@ -65,6 +101,65 @@ class CarrinhoController {
         exit();
     }
     
+    /**
+     * Atualiza quantidade via AJAX (retorna JSON, sem redirect)
+     */
+    public function updateAjax() {
+        header('Content-Type: application/json');
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            echo json_encode(['ok' => false, 'erro' => 'Método inválido']);
+            exit();
+        }
+
+        $id_produto = (int)($_POST['id_produto'] ?? 0);
+        $quantidade = (int)($_POST['quantidade'] ?? 0);
+
+        // Buscar estoque atual do banco
+        $model = new ProdutoModel($this->db);
+        $estoqueDisponivel = $model->buscarEstoque($id_produto);
+
+        if ($quantidade > 0) {
+            // Limitar ao estoque disponível
+            if ($quantidade > $estoqueDisponivel) {
+                $quantidade = $estoqueDisponivel;
+            }
+
+            if (isset($_SESSION['carrinho'][$id_produto])) {
+                $_SESSION['carrinho'][$id_produto]['quantidade'] = $quantidade;
+                $_SESSION['carrinho'][$id_produto]['estoque'] = $estoqueDisponivel;
+            }
+        } else {
+            $this->removeById($id_produto);
+        }
+
+        // Calcular novos totais
+        $subtotal = 0;
+        if (isset($_SESSION['carrinho'][$id_produto])) {
+            $item = $_SESSION['carrinho'][$id_produto];
+            $subtotal = $item['preco'] * $item['quantidade'];
+        }
+
+        $totalGeral = 0;
+        $totalItens = 0;
+        foreach ($_SESSION['carrinho'] as $item) {
+            $totalGeral += $item['preco'] * $item['quantidade'];
+            $totalItens += $item['quantidade'];
+        }
+
+        echo json_encode([
+            'ok'         => true,
+            'quantidade' => $quantidade,
+            'estoque'    => $estoqueDisponivel,
+            'subtotal'   => number_format($subtotal, 2, ',', '.'),
+            'total'      => number_format($totalGeral, 2, ',', '.'),
+            'totalItens' => $totalItens,
+            'removido'   => $quantidade <= 0,
+            'limitado'   => ((int)($_POST['quantidade'] ?? 0)) > $estoqueDisponivel
+        ]);
+        exit();
+    }
+
     private function removeById($id) {
         if (isset($_SESSION['carrinho'][$id])) {
             unset($_SESSION['carrinho'][$id]);
