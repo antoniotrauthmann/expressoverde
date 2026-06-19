@@ -2,12 +2,13 @@
 html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
 }
 
 /* Espaçamento no topo do body para o conteúdo não sumir sob o header fixo */
 body {
     padding-top: 73px; 
+    background-color: #f4f7f6;
 }
 
 /* Reset interno do cabeçalho */

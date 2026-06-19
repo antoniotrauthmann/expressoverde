@@ -24,7 +24,7 @@ body.comunidade-page {
 
 /* Compensação do Header Fixo */
 .comunidade-container {
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 /* MENU DE NAVEGAÇÃO */
@@ -75,6 +75,7 @@ body.comunidade-page {
 }
 
 .publish-card h3 {
+    color: var(--text-primary);
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 18px;
@@ -180,6 +181,9 @@ body.comunidade-page {
     font-weight: 700;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 8px;
+}
+.feed-header-title > span{
+    color: var(--accent-dark);
 }
 
 .post-card {
@@ -343,6 +347,7 @@ body.comunidade-page {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 15px;
+    color: var(--text-primary);
 }
 
 .sidebar-list {

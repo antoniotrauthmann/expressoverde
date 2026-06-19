@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="category-grid-modern mb-5">
+        <div class="category-grid-modern mb-5" id="produtos-relevantes">
             <a href="index.php?rota=busca&c=planta" class="category-card-item">
                 <div class="category-icon-wrapper">🌿</div>
                 <span class="category-name">Plantas</span>
@@ -88,7 +88,7 @@
             </a>
         </div>
 
-        <div class="pt-4 position-relative" id="produtos-relevantes">
+        <div class="pt-4 position-relative">
             <div class="text-center mb-4">
                 <h2 class="section-title">Produtos Relevantes</h2>
                 <div class="category-tabs-bar mt-3">

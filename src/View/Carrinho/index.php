@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="src/View/Carrinho/style.css">
 
 <div class="carrinho-container">
-    <h1 class="badge-tag">Meu Carrinho</h1>
+    <h1>Meu Carrinho</h1>
     <?php if (empty($_SESSION['carrinho'])): ?>
         <div class="empty-cart">
             <i class="fa-solid fa-basket-shopping"></i>
