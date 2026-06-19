@@ -6,9 +6,7 @@
 
 .cv-wrapper {
     font-family: "DM Sans", 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    padding-top: 80px;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f6fdf6 0%, #eef7ee 100%);
+    /* background: linear-gradient(135deg, #f6fdf6 0%, #eef7ee 100%); */
 }
 
 .cv-container {

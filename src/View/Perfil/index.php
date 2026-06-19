@@ -63,13 +63,14 @@ $qtdEnderecos = count($enderecos);
                     </div>
 
                     <div class="profile-card-footer">
+                        
                         <button class="btn-pf-primary" onclick="window.location.href='index.php?rota=editar_perfil'">
                             <i class="fa-solid fa-user-pen"></i> Editar Perfil
                         </button>
                         
                         <?php if ($_SESSION['usuario_tipo'] === 'profissional'): ?>
-                            <button class="btn-pf-secondary" onclick="window.location.href='index.php?rota=cadastrar_produto'">
-                                <i class="fa-solid fa-plus-circle"></i> Cadastrar Produto
+                            <button class="btn-pf-secondary" onclick="window.location.href='index.php?rota=central_vendas'">
+                                🏪 Central de Vendas
                             </button>
                         <?php endif; ?>
                         
