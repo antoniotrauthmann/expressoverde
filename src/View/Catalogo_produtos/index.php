@@ -232,7 +232,7 @@
             <div class="row g-4">
                 <?php 
                     // Filtragem simulando os lançamentos mais recentes/IDs maiores
-                    $sql_kits = "SELECT p.id_produto, p.produto_nome, i.produto_caminho_imagem, p.preco, p.descricao FROM produto p LEFT JOIN imagens_produto i ON p.id_produto = i.id_produto GROUP BY p.id_produto ORDER BY p.id_produto DESC LIMIT 2";
+                    $sql_kits = "SELECT p.id_produto, p.produto_nome, i.produto_caminho_imagem, p.preco, p.descricao FROM produto p LEFT JOIN imagens_produto i ON p.id_produto = i.id_produto WHERE p.categoria = 'kit_jardinagem' GROUP BY p.id_produto ORDER BY p.id_produto DESC LIMIT 2";
                     $res_kits = $mysqli->query($sql_kits);
                     while($row = $res_kits->fetch_assoc()) { 
                 ?>
@@ -291,26 +291,29 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const header = document.querySelector('nav') || document.querySelector('header') || document.querySelector('.navbar');
+        // 1. Mantém a lógica de abrir o modal de cadastro via URL (vinda do Upstream)
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('modal') === 'cadastro') {
+            const cadastroModal = document.getElementById('cadastroModal');
+            if (cadastroModal) {
+                new bootstrap.Modal(cadastroModal).show();
+            }
+        }
+
+        // 2. Mantém a lógica dinâmica do cabeçalho ao scrollar (vinda do Stash)
+        const header = document.querySelector('.cabecalho.header-dynamic');
         if (header) {
-            header.style.transition = "all 0.4s ease-in-out";
-            header.style.position = "sticky";
-            header.style.top = "0";
-            header.style.zIndex = "1050";
-            
-            function handleScroll() {
-                if (window.scrollY > 50) {
-                    header.style.backgroundColor = "#ffffff";
-                    header.style.boxShadow = "0 2px 15px rgba(0,0,0,0.1)";
-                    header.querySelectorAll('a').forEach(link => { link.style.color = "#2d3748"; });
+            function checkScroll() {
+                // Altera o estado assim que o usuário realiza o primeiro scroll para baixo (mais de 15px)
+                if (window.scrollY > 15) {
+                    header.classList.add('scrolled');
                 } else {
-                    header.style.backgroundColor = "#145c54"; 
-                    header.style.boxShadow = "none";
-                    header.querySelectorAll('a').forEach(link => { link.style.color = "#ffffff"; });
+                    header.classList.remove('scrolled');
                 }
             }
-            window.addEventListener('scroll', handleScroll);
-            handleScroll();
+
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Executa na inicialização da página caso já comece com scroll
         }
     });
 </script>
