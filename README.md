@@ -84,7 +84,3 @@ Assista ao vídeo do projeto:
 🔗 [Link do vídeo completo](https://drive.google.com/file/d/17KipqXUz7V8dM-nMRL_1pzxKuK85Oxnu/view?usp=sharing)
 
 
-
-## 📊 Gráfico de rede do projeto
-
-<img width="751" height="471" alt="grafico de rede" src="https://github.com/user-attachments/assets/54562a0a-fca7-4fcb-8efc-d41c2986d961" />
