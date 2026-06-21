@@ -50,7 +50,7 @@ O projeto foi desenvolvido utilizando o padrão de arquitetura **MVC (Model-View
 
 * [🗓️ Planejamento de Sprints](documents/sprints/)
 * [📊 Planejamento no Trello](https://trello.com/b/y7IEh6g8/engenharia-de-software-expresso-verde)
-* 🎨 Protótipos *(em desenvolvimento)*
+* [🎨 Protótipos](documents/prototipoTelas)
 * [🎭 User Stories](documents/user-stories.md)
 * [📋 Requisitos Funcionais](documents/requisitos-funcionais.md)
 * [📋 Requisitos Não Funcionais](documents/requisitos-nao-funcionais.md)
