@@ -243,8 +243,8 @@
                             </div>
                             <div class="kit-body">
                                 <span class="kit-badge">Combo Prático</span>
-                                <h4><?= $row['produto_nome'] ?></h4>
-                                <p class="text-muted fs-7"><?= $row['descricao'] ? $row['descricao'] : "Sem descrição";?></p>
+                                <h4><?php echo mb_strlen($row['produto_nome'], 'UTF-8') > 45 ? mb_substr($row['produto_nome'], 0, 42, 'UTF-8') . '...' : $row['produto_nome']; ?></h4>
+                                <p class="text-muted fs-7"><?php echo mb_strlen($row['descricao'], 'UTF-8') > 45 ? mb_substr($row['descricao'], 0, 42, 'UTF-8') . '...' : $row['descricao']; ?></p>
                                 <div class="d-flex align-items-center justify-content-between mt-auto">
                                     <span class="kit-price">R$ <?= number_format($row['preco'], 2, ',', '.') ?></span>
                                     <a href="index.php?rota=produto&p=<?= $row['id_produto'] ?>" class="btn-kit-buy">Comprar Kit</a>

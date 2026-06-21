@@ -75,6 +75,6 @@ class ProdutoController
             exit();
         }
 
-        include __DIR__ . '/../View/Cadastro_produto/index.php';
+        include __DIR__ . '/../View/Central_vendas/index.php';
     }
 }
