@@ -2,28 +2,48 @@
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+*{
+    box-sizing: border-box !important;
+}
+head{
+    margin-bottom: 0 !important;
+}
+.badge-tag {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
+
 .carrinho-container h1 {
-    color: #2c3e50;
+    color: #104c4b;
     margin-bottom: 30px;
-    border-bottom: 2px solid #27ae60;
+    border-bottom: 4px solid #c2dfcd;
     padding-bottom: 10px;
     display: inline-block;
+    font-size: 26px;
 }
 
 .empty-cart {
     text-align: center;
-    padding: 50px 20px;
-    background: #f9f9f9;
+    padding: 60px 20px;
+    background: #f9faf8;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .empty-cart i {
     font-size: 64px;
-    color: #bdc3c7;
+    color: #c2dfcd;
     margin-bottom: 20px;
 }
 
@@ -42,73 +62,220 @@
     border-collapse: collapse;
     background: #fff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     margin-bottom: 30px;
+    border: 1px solid #e8ede5;
 }
 
 .carrinho-table thead {
-    background: #27ae60;
+    background: #104c4b;
     color: #fff;
 }
 
-.carrinho-table th, .carrinho-table td {
-    padding: 15px;
+.carrinho-table th {
+    padding: 14px 18px;
     text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.carrinho-table td {
+    padding: 16px 18px;
+    text-align: left;
+    color: #2c3e50;
+    font-size: 0.95rem;
 }
 
 .carrinho-table tbody tr {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eef2ea;
+    transition: background 0.2s, opacity 0.3s, transform 0.3s;
 }
 
 .carrinho-table tbody tr:last-child {
     border-bottom: none;
 }
 
-.form-update {
+.carrinho-table tbody tr:hover {
+    background: #f5faf5;
+}
+
+/* ========== Animação de confirmação ========== */
+@keyframes rowPulse {
+    0% { background: #f5faf5; }
+    50% { background: #d4edda; }
+    100% { background: #fff; }
+}
+
+.row-updated {
+    animation: rowPulse 0.6s ease;
+}
+
+/* ========== Alerta de erro de estoque ========== */
+.carrinho-alerta {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 4px solid #e74c3c;
+    border-radius: 8px;
+    color: #991b1b;
+    font-size: 0.95rem;
+    animation: slideIn 0.3s ease;
 }
 
-.input-qtd {
-    width: 60px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.btn-update {
-    background: #3498db;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.btn-update:hover {
-    background: #2980b9;
-}
-
-.btn-remove {
+.carrinho-alerta i {
     color: #e74c3c;
-    text-decoration: none;
     font-size: 1.2rem;
-    transition: color 0.3s;
+    flex-shrink: 0;
+}
+
+.alerta-fechar {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #991b1b;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 4px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.alerta-fechar:hover {
+    opacity: 1;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== Info de estoque disponível ========== */
+.estoque-info {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.78rem;
+    color: #7f8c8d;
+    letter-spacing: 0.2px;
+}
+
+/* ========== Botão + desabilitado ========== */
+.qty-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    background: #f0f0f0;
+    color: #bbb;
+}
+
+.qty-btn:disabled:hover {
+    background: #f0f0f0;
+    color: #bbb;
+}
+
+/* ========== Animação de limite de estoque ========== */
+@keyframes rowShake {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-4px); }
+    40%      { transform: translateX(4px); }
+    60%      { transform: translateX(-3px); }
+    80%      { transform: translateX(3px); }
+}
+
+.row-limited {
+    animation: rowShake 0.4s ease;
+    background: #fff3cd !important;
+}
+
+/* ========== Stepper de Quantidade ========== */
+.qty-stepper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid #d4dfca;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f9faf8;
+}
+
+.qty-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    color: #104c4b;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+    background: #104c4b;
+    color: #fff;
+}
+
+.qty-btn:active {
+    transform: scale(0.9);
+}
+
+.qty-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 36px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    border-left: 1px solid #d4dfca;
+    border-right: 1px solid #d4dfca;
+    background: #fff;
+    user-select: none;
+}
+
+/* ========== Botão Remover ========== */
+.btn-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid #f5c6cb;
+    background: transparent;
+    color: #e74c3c;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 
 .btn-remove:hover {
-    color: #c0392b;
+    background: #e74c3c;
+    color: #fff;
+    border-color: #e74c3c;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.25);
+    transform: translateY(-1px);
 }
 
+.btn-remove:active {
+    transform: translateY(0);
+}
+
+/* ========== Resumo e Total ========== */
 .carrinho-resumo {
     background: #fff;
-    padding: 30px;
-    border-radius: 8px;
+    padding: 28px;
+    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e8ede5;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -117,12 +284,14 @@
 .carrinho-resumo h2 {
     color: #2c3e50;
     margin-bottom: 20px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .total-value {
     color: #27ae60;
-    font-weight: bold;
+    font-weight: 800;
+    font-size: 1.5rem;
+    transition: color 0.3s;
 }
 
 .carrinho-actions {
@@ -132,35 +301,40 @@
 
 .btn-continuar {
     padding: 12px 24px;
-    background: #f1f2f6;
-    color: #2c3e50;
+    background: #f0f8f0;
+    color: #104c4b;
     text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: background 0.3s;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 1px solid #c2dfcd;
 }
 
 .btn-continuar:hover {
-    background: #dfe4ea;
+    background: #e0f0e0;
+    border-color: #104c4b;
 }
 
 .btn-checkout {
     padding: 12px 24px;
-    background: #27ae60;
+    background: #104c4b;
     color: #fff;
     text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: background 0.3s;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .btn-checkout:hover {
-    background: #2ecc71;
+    background: #0c3837;
+    box-shadow: 0 4px 12px rgba(16, 76, 75, 0.3);
+    transform: translateY(-1px);
 }
 
+/* ========== Responsivo ========== */
 @media (max-width: 768px) {
     .carrinho-table thead {
         display: none;
@@ -173,15 +347,22 @@
     
     .carrinho-table tr {
         margin-bottom: 15px;
-        border: 1px solid #eee;
-        border-radius: 8px;
-        padding: 10px;
+        border: 1px solid #e8ede5;
+        border-radius: 10px;
+        padding: 12px;
+        background: #fff;
     }
     
     .carrinho-table td {
         text-align: right;
+        padding: 10px 15px;
         padding-left: 50%;
         position: relative;
+        border-bottom: 1px dashed #eef2ea;
+    }
+
+    .carrinho-table td:last-child {
+        border-bottom: none;
     }
     
     .carrinho-table td::before {
@@ -190,7 +371,8 @@
         left: 15px;
         width: 45%;
         text-align: left;
-        font-weight: bold;
+        font-weight: 700;
+        color: #104c4b;
     }
     
     .carrinho-actions {
@@ -201,5 +383,10 @@
     .carrinho-actions a {
         text-align: center;
         width: 100%;
+    }
+
+    .carrinho-resumo {
+        align-items: stretch;
+        text-align: center;
     }
 }

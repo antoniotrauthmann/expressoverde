@@ -10,6 +10,22 @@
 <body>
     <main class="pedidos-container">
         <h1>Meus Pedidos</h1>
+
+        <?php if (!empty($_SESSION['pedido_msg'])): ?>
+            <div class="pedido-alerta pedido-alerta-sucesso">
+                <i class="fa-solid fa-circle-check"></i>
+                <?= htmlspecialchars($_SESSION['pedido_msg']) ?>
+            </div>
+            <?php unset($_SESSION['pedido_msg']); ?>
+        <?php endif; ?>
+
+        <?php if (!empty($_SESSION['pedido_erro'])): ?>
+            <div class="pedido-alerta pedido-alerta-erro">
+                <i class="fa-solid fa-circle-xmark"></i>
+                <?= htmlspecialchars($_SESSION['pedido_erro']) ?>
+            </div>
+            <?php unset($_SESSION['pedido_erro']); ?>
+        <?php endif; ?>
         
         <?php if (empty($pedidos)): ?>
             <div class="empty-pedidos">
@@ -43,8 +59,8 @@
                             </ul>
                         </div>
 
-                        <!-- Detalhes do Pedido (endereço) -->
-                        <div class="pedido-detalhes" id="detalhes-<?php echo $pedido['id_pedido']; ?>" style="display: none;">
+                        <!-- Detalhes do Pedido (endereço + ações) -->
+                        <div class="pedido-detalhes" id="detalhes-<?php echo $pedido['id_pedido']; ?>">
                             <?php if (!empty($pedido['endereco'])): ?>
                                 <div class="detalhe-endereco">
                                     <div class="detalhe-endereco-icon">
@@ -66,6 +82,23 @@
                             <?php else: ?>
                                 <p class="detalhe-sem-endereco">Endereço não disponível.</p>
                             <?php endif; ?>
+
+                            <?php if (!in_array($pedido['status'], ['cancelado', 'entregue'])): ?>
+                                <div class="detalhe-acoes">
+                                    <div class="cancelar-section">
+                                        <div class="cancelar-info">
+                                            <i class="fa-solid fa-circle-info"></i>
+                                            <span>Deseja cancelar este pedido?.</span>
+                                        </div>
+                                        <form method="POST" action="index.php?rota=cancelar_pedido" class="form-cancelar" onsubmit="return confirm('Tem certeza que deseja cancelar o Pedido #<?php echo $pedido['id_pedido']; ?>? Esta ação não pode ser desfeita.');">
+                                            <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
+                                            <button type="submit" class="btn-cancelar">
+                                                <i class="fa-solid fa-ban"></i> Cancelar Pedido
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         
                         <div class="pedido-footer">
@@ -73,6 +106,7 @@
                                 <i class="fa-solid fa-chevron-down" id="icon-detalhes-<?php echo $pedido['id_pedido']; ?>"></i>
                                 <span id="text-detalhes-<?php echo $pedido['id_pedido']; ?>">Ver Detalhes</span>
                             </button>
+
                             <div class="pedido-total-wrapper">
                                 <span class="pedido-total-label">Total Pago:</span>
                                 <span class="pedido-total-valor">R$ <?php echo number_format($pedido['total'], 2, ',', '.'); ?></span>
@@ -90,13 +124,13 @@
             const icon = document.getElementById('icon-detalhes-' + id);
             const text = document.getElementById('text-detalhes-' + id);
             
-            if (detalhes.style.display === 'none') {
-                detalhes.style.display = 'block';
+            const aberto = detalhes.classList.toggle('aberto');
+
+            if (aberto) {
                 icon.classList.remove('fa-chevron-down');
                 icon.classList.add('fa-chevron-up');
                 text.textContent = 'Ocultar Detalhes';
             } else {
-                detalhes.style.display = 'none';
                 icon.classList.remove('fa-chevron-up');
                 icon.classList.add('fa-chevron-down');
                 text.textContent = 'Ver Detalhes';
