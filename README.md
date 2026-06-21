@@ -83,8 +83,10 @@ O projeto foi desenvolvido utilizando o padrão de arquitetura **MVC (Model-View
 ## 🎥 Vídeo de Apresentação
 
 Assista ao vídeo do projeto:
-🔗 [Link do vídeo completo](https://github.com/antoniotrauthmann/expressoverde/blob/feat/apresentacao/documents/VideoProjeto.mp4)
-[Link do vídeo no youtube](https://youtu.be/2jU0jhp2OL0)
+
+🔗 [Link do vídeo completo para baixar](https://github.com/antoniotrauthmann/expressoverde/blob/feat/apresentacao/documents/VideoProjeto.mp4)
+
+🔗 [Link do vídeo no youtube](https://youtu.be/2jU0jhp2OL0)
 
 
 
