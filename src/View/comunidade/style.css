@@ -64,7 +64,7 @@ body.comunidade-page {
     box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
 }
 
-form, .post {
+.publish-form, .post {
     background-color: #2d2d2d;
     padding: 20px;
     border-radius: 8px;

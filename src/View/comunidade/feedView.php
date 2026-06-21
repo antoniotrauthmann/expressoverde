@@ -20,10 +20,10 @@
         </div>
 
         <!-- Layout de Duas Colunas (Feed + Lateral informativa) -->
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             
             <!-- Coluna Principal (Feed e Formulário) -->
-            <div class="col-lg-8">
+            <div class="col-lg-8" style="width: fit-content">
                 
                 <!-- Card de Publicação -->
                 <div class="publish-card">
@@ -60,39 +60,41 @@
         <?php foreach ($posts as $post): ?>
             <div class="post" style="border: 1px solid #4d4d4d; padding: 20px; margin-bottom: 20px; position: relative; width: 100%; max-width: 500px; box-sizing: border-box;">
                 
-                <?php if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_id'] == $post['id_usuario']): ?>
-                    <a href="index.php?rota=excluir&id=<?= $post['id_post'] ?>" 
-                       class="btn-excluir" 
-                       onclick="return confirm('Tem certeza que deseja apagar seu post?')">
-                       Excluir  🗑️
-                    </a>
-                <?php endif; ?>
-
-                                <!-- Conteúdo Central do Post -->
-                                <div class="post-body">
-                                    <p class="post-text"><?= htmlspecialchars($post['conteudo']) ?></p>
-                                    
-                                    <?php if (!empty($post['post_caminho_imagem'])): ?>
-                                        <div class="post-image-wrapper">
-                                            <img src="/PROJETO-ES/public/uploads/<?= $row['post_caminho_imagem'] ?>" alt="Imagem da publicação">
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-
-                                <!-- Rodapé do Card: Interações -->
-                                <div class="post-footer">
-                                    <a href="index.php?rota=curtir&id=<?= $post['id_post'] ?>" class="btn-like">
-                                        <i class="fa-solid fa-heart"></i> <span><?= $post['curtidas'] ?></span> Curtidas
-                                    </a>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <div class="empty-feed-card">
-                            <i class="fa-solid fa-comments"></i>
-                            <p>Nenhum post ainda. Seja o primeiro a movimentar a comunidade!</p>
+                <!-- Conteúdo Central do Post -->
+                <div class="post-body">
+                    <strong style="color: #2ecc71;">@<?= htmlspecialchars($post['usuario_nome']) ?></strong>
+                    <p class="post-text"><?= htmlspecialchars($post['conteudo']) ?></p>
+                    
+                    <?php if (!empty($post['post_caminho_imagem'])): ?>
+                        <div class="post-image-wrapper">
+                            <img src="<?= htmlspecialchars($post['post_caminho_imagem']) ?>" alt="Imagem da publicação">
                         </div>
                     <?php endif; ?>
+                </div>
+
+                <small  style="color: #aaa;">Postado em: <?= isset($post['criado_em']) ? $post['criado_em'] : 'Data indisponível' ?></small>
+                <!-- Rodapé do Card: Interações -->
+                <div class="post-footer d-flex justify-content-between">
+                    <a href="index.php?rota=curtir&id=<?= $post['id_post'] ?>" class="btn-like btn-curtir">
+                        <i class="fa-solid fa-heart"></i> <span><?= $post['curtidas'] ?></span> Curtidas
+                    </a>
+                    <?php if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_id'] == $post['id_usuario']): ?>
+                        <a href="index.php?rota=excluir&id=<?= $post['id_post'] ?>" 
+                            class="btn-excluir btn-delete-post" 
+                            onclick="return confirm('Tem certeza que deseja apagar seu post?')"
+                            style="text-decoration:none">
+                            Excluir  🗑️
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <?php else: ?>
+            <div class="empty-feed-card">
+                <i class="fa-solid fa-comments"></i>
+                <p>Nenhum post ainda. Seja o primeiro a movimentar a comunidade!</p>
+            </div>
+        <?php endif; ?>
                 </div>
             </div>
 
@@ -118,14 +120,6 @@
                             Ver Manual de Cuidados <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
-
-                <div class="curtidas-container">
-                    <a href="index.php?rota=curtir&id=<?= $post['id_post'] ?>" 
-                       class="btn-curtir" 
-                       style="text-decoration: none; color: #ff4757; font-weight: bold;">
-                        ❤️ <span><?= $post['curtidas'] ?></span> Curtidas
-                    </a>
-                </div>
             </div>
 
 <script>
