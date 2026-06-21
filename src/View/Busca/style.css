@@ -1,11 +1,37 @@
-/* Cores Customizadas */
-.text-purple { color: #8A2BE2; }
-.bg-purple-light { background-color: #d8b4fe !important; border-color: #d8b4fe !important; color: #4c1d95 !important; }
-.bg-purple-light:hover { background-color: #c084fc !important; }
+/* Configurações Gerais e Cores Base */
+:root {
+    --primary-purple: #8A2BE2;
+    --primary-purple-hover: #7322bd;
+    --light-purple: #d8b4fe;
+    --dark-text: #1a1a1a;
+    --muted-text: #666;
+    --card-bg: #ffffff;
+}
 
+/* Cores Customizadas */
+.text-purple { color: var(--primary-purple); }
+
+.bg-purple-light { 
+    background-color: var(--light-purple) !important; 
+    border: 1px solid var(--light-purple) !important; 
+    color: #4c1d95 !important; 
+    transition: all 0.2s ease;
+}
+.bg-purple-light:hover { 
+    background-color: #c084fc !important; 
+    transform: translateY(-1px);
+}
+
+.btn-purple-custom {
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+/* Badges estruturadas */
 .badge-discount {
     background-color: #d4fc79;
-    color: #1a1a1a;
+    color: var(--dark-text);
     font-size: 0.75rem;
     font-weight: 700;
     padding: 4px 8px;
@@ -14,102 +40,124 @@
 
 .badge-likes {
     background-color: rgba(255, 255, 255, 0.95);
-    color: #1a1a1a;
-    font-size: 0.75rem;
+    color: var(--dark-text);
+    font-size: 0.72rem;
     font-weight: 600;
     padding: 4px 10px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     gap: 4px;
+    backdrop-filter: blur(4px);
 }
 
-/* Botões de Filtro */
+/* Botões de Filtro Ativos e Inativos */
 .filter-btn {
     font-size: 0.85rem;
     font-weight: 500;
     border-color: #e5e5e5;
     color: #555;
-    white-space: nowrap;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 6px 16px;
+    transition: all 0.2s ease-in-out;
 }
-.filter-btn:hover {
-    background-color: #f8f9fa;
-}
-.filter-btn::after {
-    margin-left: 0.5em;
+.filter-btn:hover, .active-filter {
+    background-color: var(--dark-text) !important;
+    color: #fff !important;
+    border-color: var(--dark-text) !important;
 }
 
 /* Categorias do Topo */
 .category-box {
-    width: 60px;
-    height: 60px;
-    background-color: #f8f9fa;
-    border-radius: 12px;
+    width: 56px;
+    height: 56px;
+    background-color: #f1f3f5;
+    border-radius: 50%; /* Transforma em círculos modernos estilo Enjoei */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    transition: transform 0.2s;
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
 }
 .category-box:hover {
-    transform: scale(1.05);
-    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #fff;
+    border-color: var(--primary-purple);
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.15);
 }
 .category-text {
-    font-size: 0.65rem;
-    font-weight: 700;
+    font-size: 0.72rem;
+    font-weight: 600;
     text-align: center;
     display: block;
-    color: #333;
-    text-decoration: none;
+    color: #444;
 }
 
-/* Scroll horizontal para filtros e categorias */
+/* Scroll horizontal limpo para Mobile e Desktop */
 .scroll-horizontal {
+    display: flex;
     overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
 }
 .scroll-horizontal::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
 }
 
-/* Cards de Produto */
+/* Cards de Produto Modernizados */
+.product-card {
+    border-radius: 16px;
+    transition: all 0.25s ease;
+    background: var(--card-bg);
+}
+.class-card-link:hover .product-card {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+.img-container {
+    border-radius: 16px 16px 0 0;
+}
+
 .product-img {
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 12px;
+    transition: transform 0.4s ease;
 }
+.class-card-link:hover .product-img {
+    transform: scale(1.03);
+}
+
 .product-title {
     font-size: 0.85rem;
-    color: #444;
-    margin-top: 6px;
-    margin-bottom: 2px;
+    color: #333;
+    margin-top: 4px;
+    font-weight: 500;
+    line-height: 1.3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
 .product-brand {
     font-size: 0.75rem;
-    color: #888;
-}
-.price-current {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #111;
-}
-.price-old {
-    font-size: 0.8rem;
-    color: #999;
-    text-decoration: line-through;
-    margin-left: 6px;
-    font-weight: 400;
+    color: var(--muted-text);
+    white-space: normal;
 }
 
-/* Ícone customizado estilo Enjoei */
+.price-current {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--dark-text);
+}
+
+/* Ícone customizado */
 .icon-u {
-    color: #8A2BE2;
+    color: var(--primary-purple);
     font-weight: bold;
-    font-family: monospace;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }

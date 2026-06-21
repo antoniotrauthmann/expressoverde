@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="/projeto-es/src/View/Central_vendas/style.css">
 
 <title>Central de Vendas - Expresso Verde</title>
-
 <?php if (!empty($_SESSION['venda_sucesso'])): ?>
     <div class="cv-modal-overlay" id="modalSucesso">
         <div class="cv-modal">
