@@ -48,12 +48,12 @@ O projeto foi desenvolvido utilizando o padrão de arquitetura **MVC (Model-View
 
 ## 🧭 Links
 
-* [🗓️ Planejamento de Sprints](docs/sprints/)
+* [🗓️ Planejamento de Sprints](documents/sprints/)
 * [📊 Planejamento no Trello](https://trello.com/b/y7IEh6g8/engenharia-de-software-expresso-verde)
 * 🎨 Protótipos *(em desenvolvimento)*
-* [🎭 User Stories](docs/user-stories.md)
-* [📋 Requisitos Funcionais](docs/requisitos-funcionais.md)
-* [📋 Requisitos Não Funcionais](docs/requisitos-nao-funcionais.md)
+* [🎭 User Stories](documents/user-stories.md)
+* [📋 Requisitos Funcionais](documents/requisitos-funcionais.md)
+* [📋 Requisitos Não Funcionais](documents/requisitos-nao-funcionais.md)
 * ⚙️ Documentação da API *(em desenvolvimento)*
 
 ## 🚀 Tecnologias Utilizadas
@@ -72,11 +72,11 @@ O projeto foi desenvolvido utilizando o padrão de arquitetura **MVC (Model-View
     ```
 2. Configure o Banco de dados:
     - Ative o MySQL no seu painel de controle.
-    - Importe o arquivo /docs/schema.sql via PHPMyAdmin.
+    - Importe o arquivo /config/database/expressoverde.sql via PHPMyAdmin.
 3. Configure a conexão
-    - Ajuste `/config/db_connect.php`
+    - Ajuste `/config/db_connect.php` 
 4. Acesse no navegador:
-    - `http://localhost/projeto-es`
+    - `http://localhost/projeto-es/index.php?rota=catalogo`
 
 ---
 
@@ -88,5 +88,11 @@ Assista ao vídeo do projeto:
 
 🔗 [Link do vídeo no youtube](https://youtu.be/2jU0jhp2OL0)
 
+---
 
-
+| Descrição | Link |
+| --------- | --------- |
+| Repositório | [Repositório](https://github.com/antoniotrauthmann/expressoverde) |
+| Landing Page | [Landing Page](https://antoniotrauthmann.github.io/expressoverde/) |
+| Apresentação | [PDF](documents/ApresentacaoExpressoVerde.pdf) |
+| Trello | [Trello](https://trello.com/b/y7IEh6g8/engenharia-de-software-expresso-verde) |
