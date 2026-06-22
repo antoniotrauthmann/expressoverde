@@ -50,7 +50,7 @@ a {
     border-top: 1px solid var(--border-color);
 }
 
-/* Header & Logo */
+/* Header & Logo da Pasta Assets */
 header {
     background-color: var(--bg-header);
     border-bottom: 1px solid var(--border-color);
@@ -67,11 +67,20 @@ header {
     padding: 16px 24px;
 }
 
-.logo {
-    color: var(--accent);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    transition: filter 0.2s ease;
+}
+
+.logo-img:hover {
+    filter: brightness(1.1);
 }
 
 nav ul {
@@ -172,24 +181,27 @@ nav a:hover {
     letter-spacing: -0.01em;
 }
 
-.section-desc, .showcase-desc {
+.showcase-desc {
     max-width: 650px;
     margin: -16px auto 44px auto;
     color: var(--text-muted);
     font-size: 1.05rem;
 }
 
-/* ============================================================
-   SEÇÃO DE DEMONSTRAÇÃO ATUALIZADA (BOX INVISÍVEL + GLOW PREMIUM)
-   ============================================================ */
+#demonstracao {
+    position: relative;
+    background: radial-gradient(circle at 75% 50%, rgba(34, 197, 94, 0.08) 0%, rgba(5, 5, 5, 0) 65%);
+}
+
 .showcase-wrapper {
     display: flex;
     position: relative;
-    min-height: 500px;
-    margin-top: 20px;
-    background: transparent; /* Caixa integrada, invisível */
-    border: none;             /* Sem bordas rígidas delimitadoras */
-    padding: 10px 0;
+    min-height: 480px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 35px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .showcase-list {
@@ -213,43 +225,44 @@ nav a:hover {
     cursor: pointer;
     padding: 14px 18px;
     display: block;
-    border-left: 2px solid transparent;
+    border-left: 3px solid transparent;
     transition: all 0.25s ease;
+    border-radius: 0 4px 4px 0;
 }
 
 .showcase-item:hover .showcase-link {
     color: var(--accent);
     border-left-color: var(--accent);
-    background: linear-gradient(90deg, rgba(34, 197, 94, 0.05) 0%, transparent 100%);
+    background-color: rgba(34, 197, 94, 0.03);
 }
 
-/* Moldura ganha um degradê de iluminação escura sutil (Ambient Glow) */
+/* Painel de Visualização - Proporção estrita e fundo contrastante */
 .showcase-display {
     position: absolute;
-    top: 10px;
-    right: 0;
-    width: calc(100% - 360px);
-    height: calc(100% - 20px);
+    top: 35px;
+    right: 35px;
+    width: calc(100% - 390px);
+    height: calc(100% - 70px);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(8px);
-    border-radius: 8px;
+    transform: translateY(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
     overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(145deg, #0b0c0e 0%, #050505 100%);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 
-                0 0 50px rgba(34, 197, 94, 0.06); /* Degradê radial no hover */
-    border: 1px solid rgba(34, 197, 94, 0.2);
+    background-color: #08090b;
 }
 
+/* Preserva rigorosamente as proporções e o aspecto original da tela */
 .showcase-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Garante que a imagem inteira apareça sem cortes */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
     display: block;
 }
 
@@ -257,21 +270,21 @@ nav a:hover {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    border-color: rgba(34, 197, 94, 0.25);
 }
 
-/* Indicativo discreto em degradê antes de interagir */
 .showcase-placeholder {
     position: absolute;
-    top: 10px;
-    right: 0;
-    width: calc(100% - 360px);
-    height: calc(100% - 20px);
+    top: 35px;
+    right: 35px;
+    width: calc(100% - 390px);
+    height: calc(100% - 70px);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed rgba(255, 255, 255, 0.04);
-    background: radial-gradient(circle at center, rgba(34, 197, 94, 0.02) 0%, transparent 70%);
-    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+    background: rgba(5, 5, 5, 0.4);
+    border-radius: 6px;
     color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 0.9rem;
@@ -520,7 +533,7 @@ footer {
 
     .showcase-wrapper {
         flex-direction: column;
-        padding: 0;
+        padding: 16px;
         min-height: auto;
     }
 
