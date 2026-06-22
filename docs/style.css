@@ -10,9 +10,6 @@
     --text-white: #ffffff;
     --font-sans: 'Inter', sans-serif;
     --font-mono: 'Fira Code', monospace;
-    
-    /* Cores do Degradê de Destaque */
-    --gradient-glow: linear-gradient(135deg, rgba(34, 197, 94, 0.25) 0%, rgba(13, 14, 17, 0) 100%);
 }
 
 * {
@@ -53,7 +50,7 @@ a {
     border-top: 1px solid var(--border-color);
 }
 
-/* Header */
+/* Header & Logo */
 header {
     background-color: var(--bg-header);
     border-bottom: 1px solid var(--border-color);
@@ -70,21 +67,11 @@ header {
     padding: 16px 24px;
 }
 
-.logo-link {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    height: 42px;
-    width: auto;
-    object-fit: contain;
-    filter: brightness(0.9) contrast(1.05);
-    transition: filter 0.2s ease;
-}
-
-.logo-img:hover {
-    filter: brightness(1.1) contrast(1.05);
+.logo {
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 nav ul {
@@ -122,7 +109,7 @@ nav a:hover {
     border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
-.hero h1 {
+.hero h2 {
     font-size: 3rem;
     font-weight: 700;
     color: var(--text-white);
@@ -164,13 +151,12 @@ nav a:hover {
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--text-white);
-    border: 1px solid var(--border-color);
+    color: var(--accent);
+    border: 1px solid var(--accent);
 }
 
 .btn-secondary:hover {
-    background-color: var(--bg-card);
-    border-color: var(--text-muted);
+    background-color: var(--accent-dim);
 }
 
 /* Seções Gerais */
@@ -193,18 +179,17 @@ nav a:hover {
     font-size: 1.05rem;
 }
 
-/* Seção de Demonstração Interativa */
+/* ============================================================
+   SEÇÃO DE DEMONSTRAÇÃO ATUALIZADA (BOX INVISÍVEL + GLOW PREMIUM)
+   ============================================================ */
 .showcase-wrapper {
     display: flex;
     position: relative;
-    min-height: 460px;
+    min-height: 500px;
     margin-top: 20px;
-    background-color: var(--bg-card);
-    background-image: var(--gradient-glow);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 35px;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+    background: transparent; /* Caixa integrada, invisível */
+    border: none;             /* Sem bordas rígidas delimitadoras */
+    padding: 10px 0;
 }
 
 .showcase-list {
@@ -213,7 +198,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 16px;
     z-index: 2;
 }
 
@@ -228,61 +213,65 @@ nav a:hover {
     cursor: pointer;
     padding: 14px 18px;
     display: block;
-    border-left: 3px solid transparent;
+    border-left: 2px solid transparent;
     transition: all 0.25s ease;
-    border-radius: 0 4px 4px 0;
 }
 
 .showcase-item:hover .showcase-link {
     color: var(--accent);
     border-left-color: var(--accent);
-    background-color: rgba(34, 197, 94, 0.04);
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.05) 0%, transparent 100%);
 }
 
+/* Moldura ganha um degradê de iluminação escura sutil (Ambient Glow) */
 .showcase-display {
     position: absolute;
-    top: 35px;
-    right: 35px;
-    width: calc(100% - 390px);
-    height: calc(100% - 70px);
+    top: 10px;
+    right: 0;
+    width: calc(100% - 360px);
+    height: calc(100% - 20px);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px) scale(0.98);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
+    transform: translateY(8px);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(34, 197, 94, 0.05);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #0b0c0e 0%, #050505 100%);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 
+                0 0 50px rgba(34, 197, 94, 0.06); /* Degradê radial no hover */
+    border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
 .showcase-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top;
+    object-fit: contain; /* Garante que a imagem inteira apareça sem cortes */
     display: block;
 }
 
 .showcase-item:hover .showcase-display {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) scale(1);
-    border-color: rgba(34, 197, 94, 0.3);
+    transform: translateY(0);
 }
 
+/* Indicativo discreto em degradê antes de interagir */
 .showcase-placeholder {
     position: absolute;
-    top: 35px;
-    right: 35px;
-    width: calc(100% - 390px);
-    height: calc(100% - 70px);
+    top: 10px;
+    right: 0;
+    width: calc(100% - 360px);
+    height: calc(100% - 20px);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed var(--border-color);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, rgba(0,0,0,0.2) 100%);
-    border-radius: 6px;
+    border: 1px dashed rgba(255, 255, 255, 0.04);
+    background: radial-gradient(circle at center, rgba(34, 197, 94, 0.02) 0%, transparent 70%);
+    border-radius: 8px;
     color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 0.9rem;
@@ -443,7 +432,7 @@ nav a:hover {
     margin-top: 16px;
 }
 
-/* Seção de Integrantes - 4 Colunas flexíveis */
+/* Seção de Integrantes */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -516,7 +505,7 @@ footer {
         display: none;
     }
     
-    .hero h1 {
+    .hero h2 {
         font-size: 2.1rem;
     }
     
@@ -531,7 +520,7 @@ footer {
 
     .showcase-wrapper {
         flex-direction: column;
-        padding: 16px;
+        padding: 0;
         min-height: auto;
     }
 
@@ -549,7 +538,7 @@ footer {
         top: 0;
         right: 0;
         width: 100%;
-        height: 200px;
+        height: 220px;
         opacity: 1;
         visibility: visible;
         transform: none;
@@ -559,7 +548,7 @@ footer {
 
     .showcase-item:active .showcase-display, 
     .showcase-item:focus-within .showcase-display {
-        display: block;
+        display: flex;
     }
     
     .footer-container {
