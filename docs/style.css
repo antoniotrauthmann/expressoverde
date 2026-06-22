@@ -103,53 +103,58 @@ nav a:hover {
     color: var(--accent);
 }
 
-/* ============================================================
-   Hover Preview nas Imagens do Menu
-   ============================================================ */
 
 .nav-link-with-preview {
-    position: relative;
+    position: relative !important; /* Força o preview a se basear no link, não na tela toda */
     display: inline-block;
-    padding: 10px 0; /* Aumenta a área de hover para não fechar acidentalmente */
 }
 
 .preview-box {
-    position: absolute;
-    top: calc(100% + 10px);
+    position: absolute !important;
+    top: calc(100% + 12px);
     left: 50%;
     transform: translateX(-50%) translateY(10px);
-    width: 320px;
-    height: 200px;
+    
+    /* Tamanho corrigido para formato miniatura (estilo thumbnail discreto) */
+    width: 220px;  
+    height: 135px; 
+    
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    
+    /* Estado inicial escondido */
     opacity: 0;
     visibility: hidden;
-    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 1000;
-    pointer-events: none;
-    overflow: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    
+    z-index: 9999; /* Fica acima de tudo */
+    overflow: hidden !important;
+    
+    pointer-events: none !important; 
 }
 
 .page-preview-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    border: none;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover;    /* Corta proporcionalmente sem distorcer */
+    object-position: top; /* Foca no topo do print tirado */
     display: block;
+    border: none;
     filter: brightness(0.9);
 }
 
-/* Triângulo do tooltip */
+/* Pequena seta indicadora */
 .preview-box::before {
     content: '';
     position: absolute;
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border-width: 8px;
+    border-width: 6px;
     border-style: solid;
     border-color: transparent transparent var(--border-color) transparent;
 }
@@ -159,20 +164,18 @@ nav a:hover {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border-width: 7px;
+    border-width: 5px;
     border-style: solid;
     border-color: transparent transparent var(--bg-card) transparent;
     margin-bottom: -1px;
 }
 
-/* Gatilho da Animação */
+/* Gatilho de Ativação Suave */
 .nav-link-with-preview:hover .preview-box {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
-
-/* Fim Preview Menu */
 
 /* Hero Section */
 .hero {
@@ -474,11 +477,11 @@ footer {
 /* Responsividade básica */
 @media (max-width: 768px) {
     .preview-box {
-        display: none !important; /* Desativa prints em celular */
+        display: none !important; /* Desativa completamente em celulares */
     }
     
     nav ul {
-        display: none; /* Simplificação para mobile */
+        display: none;
     }
     
     .hero h1 {
