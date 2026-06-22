@@ -1,12 +1,12 @@
 :root {
-    --bg-main: #050505;       /* Preto absoluto/profundo */
-    --bg-card: #0d0e11;       /* Cinza escuro de terminal para blocos */
+    --bg-main: #050505;
+    --bg-card: #0d0e11;
     --bg-header: rgba(5, 5, 5, 0.85);
-    --accent: #22c55e;        /* Verde LazyVim sóbrio */
+    --accent: #22c55e;
     --accent-dim: rgba(34, 197, 94, 0.15);
-    --border-color: #1f232c;   /* Bordas discretas estilo divisores do NeoVim */
-    --text-main: #cdd6f4;     /* Texto claro desaturado */
-    --text-muted: #7f849c;    /* Subtextos e comentários */
+    --border-color: #1f232c;
+    --text-main: #cdd6f4;
+    --text-muted: #7f849c;
     --text-white: #ffffff;
     --font-sans: 'Inter', sans-serif;
     --font-mono: 'Fira Code', monospace;
@@ -50,7 +50,7 @@ a {
     border-top: 1px solid var(--border-color);
 }
 
-/* Header Estilo Terminal Superior */
+/* Header */
 header {
     background-color: var(--bg-header);
     border-bottom: 1px solid var(--border-color);
@@ -67,7 +67,6 @@ header {
     padding: 16px 24px;
 }
 
-/* Ajustes da Logo em Imagem */
 .logo-link {
     display: flex;
     align-items: center;
@@ -101,90 +100,6 @@ nav a {
 
 nav a:hover {
     color: var(--accent);
-}
-
-
-.nav-link-with-preview {
-    position: relative !important; 
-    display: inline-flex;
-    align-items: center;
-    
-    padding: 10px 15px; 
-    margin: -10px -15px; 
-    
-    color: var(--accent) !important; 
-    font-weight: 600;
-    border-bottom: 1px dashed var(--accent);
-    
-    cursor: pointer; 
-}
-
-.preview-box {
-    position: absolute !important;
-    top: calc(100% + 12px);
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    
-    /* Tamanho corrigido para formato miniatura (estilo thumbnail discreto) */
-    width: 220px;  
-    height: 135px; 
-    
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
-    
-    /* Estado inicial escondido */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    
-    z-index: 9999; /* Fica acima de tudo */
-    overflow: hidden !important;
-    
-    pointer-events: none !important; 
-}
-
-.page-preview-img {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    object-fit: cover;    /* Corta proporcionalmente sem distorcer */
-    object-position: top; /* Foca no topo do print tirado */
-    display: block;
-    border: none;
-    filter: brightness(0.9);
-}
-
-/* Pequena seta indicadora */
-.preview-box::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent transparent var(--border-color) transparent;
-}
-.preview-box::after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent var(--bg-card) transparent;
-    margin-bottom: -1px;
-}
-
-/* Gatilho de Ativação Suave */
-.nav-link-with-preview:hover .preview-box {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
 }
 
 /* Hero Section */
@@ -225,7 +140,6 @@ nav a:hover {
     gap: 16px;
 }
 
-/* Botões */
 .btn {
     padding: 10px 22px;
     font-size: 0.9rem;
@@ -269,6 +183,104 @@ nav a:hover {
     letter-spacing: -0.01em;
 }
 
+/* ============================================================
+   NOVO: Seção de Demonstração (Imagens Grandes com Hover)
+   ============================================================ */
+
+.showcase-wrapper {
+    display: flex;
+    position: relative;
+    min-height: 420px; /* Altura fixa para acomodar os prints grandes */
+    margin-top: 40px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.showcase-list {
+    flex: 0 0 300px; /* Largura fixa para a lista de botões */
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    z-index: 2;
+}
+
+.showcase-item {
+    position: static;
+}
+
+.showcase-link {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 12px 16px;
+    display: block;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.showcase-item:hover .showcase-link {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Container que exibe a imagem animada à direita */
+.showcase-display {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: calc(100% - 380px); /* Ocupa o restante do espaço */
+    height: calc(100% - 60px);
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 10;
+}
+
+.showcase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.showcase-item:hover .showcase-display {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Um texto que fica aparecendo enquanto o usuário não passou o mouse em nada */
+.showcase-placeholder {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: calc(100% - 380px);
+    height: calc(100% - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    z-index: 1;
+}
+
 /* Grid Layouts */
 .grid {
     display: grid;
@@ -303,7 +315,7 @@ nav a:hover {
     font-family: var(--font-mono);
 }
 
-/* Cards (Estilo Janela de Código / Vim) */
+/* Cards */
 .card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -336,7 +348,7 @@ nav a:hover {
     font-size: 0.95rem;
 }
 
-/* Tecnologias Stack Descrição */
+/* Stack Tech */
 .stack-desc {
     max-width: 650px;
     margin: 0 auto 40px auto;
@@ -372,7 +384,7 @@ nav a:hover {
     font-weight: 500;
 }
 
-/* Terminal de Comandos (Como rodar localmente) */
+/* Terminal de Comandos */
 .terminal-block {
     background-color: #000000;
     border: 1px solid var(--border-color);
@@ -484,12 +496,8 @@ footer {
     color: var(--accent);
 }
 
-/* Responsividade básica */
+/* Responsividade */
 @media (max-width: 768px) {
-    .preview-box {
-        display: none !important; /* Desativa completamente em celulares */
-    }
-    
     nav ul {
         display: none;
     }
@@ -505,6 +513,40 @@ footer {
     
     .grid-2 {
         grid-template-columns: 1fr;
+    }
+
+    /* Ajuste da nova seção de Demonstração para Celular */
+    .showcase-wrapper {
+        flex-direction: column;
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .showcase-list {
+        flex: auto;
+        gap: 10px;
+    }
+
+    .showcase-placeholder {
+        display: none; /* Esconde o texto vazio no celular */
+    }
+
+    .showcase-display {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 220px;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        margin-top: 10px;
+        display: none; /* Escondido por padrão, mostra só ao dar um tap no celular */
+    }
+
+    .showcase-item:active .showcase-display, 
+    .showcase-item:focus-within .showcase-display {
+        display: block;
     }
     
     .footer-container {
