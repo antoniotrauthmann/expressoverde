@@ -8,12 +8,12 @@ class ProdutoModel
         $this->db = $mysqli;
     }
 
-    public function inserir($produto_nome, $categoria, $preco, $estoque, $descricao, $id_loja = null)
+    public function inserir($produto_nome, $categoria, $preco, $estoque, $descricao, $id_loja = null, $cadastrado_por = null)
     {
         $stmt = $this->db->prepare(
-            "INSERT INTO produto (produto_nome, categoria, preco, estoque, descricao, id_loja) VALUES (?, ?, ?, ?, ?, ?)"
+            "INSERT INTO produto (produto_nome, categoria, preco, estoque, descricao, id_loja, cadastrado_por) VALUES (?, ?, ?, ?, ?, ?, ?)"
         );
-        $stmt->bind_param("ssdisi", $produto_nome, $categoria, $preco, $estoque, $descricao, $id_loja);
+        $stmt->bind_param("ssdisii", $produto_nome, $categoria, $preco, $estoque, $descricao, $id_loja, $cadastrado_por);
         $stmt->execute();
 
         return $stmt->insert_id;

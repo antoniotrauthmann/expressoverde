@@ -47,7 +47,7 @@ class ProdutoController
                 $stmt->execute();
                 $id_loja = $stmt->get_result()->fetch_assoc()['id_loja'];
 
-                $id_produto = $model->inserir($nome, $categoria, $preco, $estoque, $descricao, $id_loja);
+                $id_produto = $model->inserir($nome, $categoria, $preco, $estoque, $descricao, $id_loja, $_SESSION['usuario_id']);
 
                 $uploadDir = __DIR__ . '/../../public/uploads/';
 
