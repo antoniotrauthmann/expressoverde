@@ -12,7 +12,7 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo-link">
-                <img src="assets/logo.png" alt="Expresso Verde" class="logo-img">
+                <img src="logo.png" alt="Expresso Verde" class="logo-img">
             </a>
             
             <nav>
@@ -34,8 +34,8 @@
                 <h1>Plataforma Expresso Verde</h1>
                 <p class="hero-subtitle">Ambiente focado na conexão entre compradores e vendedores de artigos de jardinagem. Aplicação prática dos conceitos rigorosos de arquitetura e engenharia de software.</p>
                 <div class="hero-buttons">
-                    <a href="https://youtu.be/2jU0jhp2OL0" target="_blank" class="btn btn-primary">Acessar Apresentação</a>
-                    <a href="https://github.com/antoniotrauthmann/projeto-es" target="_blank" class="btn btn-secondary">Repositório Git</a>
+                    <a href="https://youtu.be/2jU0jhp2OL0" target="_blank" class="btn btn-primary">🎥 Ver Apresentação</a>
+                    <a href="https://github.com/antoniotrauthmann/projeto-es" target="_blank" class="btn btn-secondary">Acessar Repositório</a>
                 </div>
             </div>
         </section>
@@ -60,7 +60,7 @@
                             </div>
                         </li>
                         <li class="showcase-item">
-                            <span class="showcase-link">03. Central de Trade -></span>
+                            <span class="showcase-link">03. Central de Vendas -></span>
                             <div class="showcase-display">
                                 <img src="assets/central.png" alt="Tela Central" class="showcase-img">
                             </div>
@@ -68,7 +68,7 @@
                     </ul>
                     
                     <div class="showcase-placeholder">
-                        <span>Passe o cursor nos itens ao lado</span>
+                        <span>Passe o cursor nos itens ao lado para visualizar as telas</span>
                     </div>
                 </div>
             </div>
@@ -98,33 +98,23 @@
                 <div class="grid grid-3">
                     <div class="card">
                         <div class="card-num">01//</div>
-                        <h3>Autenticação e Perfis</h3>
-                        <p>Controle de acesso seguro para compradores e vendedores gerenciarem seus portfólios.</p>
+                        <h3>🛒 Compra e Venda</h3>
+                        <p>Controle de acesso seguro para compradores e vendedores gerenciarem seus portfólios e transações.</p>
                     </div>
                     <div class="card">
                         <div class="card-num">02//</div>
-                        <h3>Módulo de Trade</h3>
-                        <p>Fluxo completo de exposição de catálogos, processamento de intenções de compra e venda.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-num">03//</div>
-                        <h3>Busca Indexada</h3>
+                        <h3>🔍 Busca Inteligente</h3>
                         <p>Filtros estruturados para localização ágil de espécies de plantas, sementes e ferramentas específicas.</p>
                     </div>
                     <div class="card">
+                        <div class="card-num">03//</div>
+                        <h3>📱 Interface Responsiva</h3>
+                        <p>Layout moderno otimizado para o consumo de dados estável tanto em desktop quanto mobile.</p>
+                    </div>
+                    <div class="card">
                         <div class="card-num">04//</div>
-                        <h3>Feed da Comunidade</h3>
+                        <h3>🌱 Comunidade</h3>
                         <p>Espaço interativo voltado para compartilhamento de logs de cultivo, textos técnicos e imagens.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-num">05//</div>
-                        <h3>Interface Fluida</h3>
-                        <p>Layout responsivo otimizado para o consumo de dados estável tanto em desktop quanto mobile.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-num">06//</div>
-                        <h3>Histórico de Operações</h3>
-                        <p>Rastreabilidade interna de últimas aquisições e transações concluídas na plataforma.</p>
                     </div>
                 </div>
             </div>
@@ -136,11 +126,11 @@
                 <p class="text-center section-desc">O ecossistema adota o padrão estrutural <strong>MVC (Model-View-Controller)</strong>, garantindo baixo acoplamento e separação de responsabilidades nas camadas de negócio.</p>
                 
                 <div class="tech-grid">
-                    <div class="tech-tag"><span>LANG</span>export<strong>PHP 8.x</strong></div>
-                    <div class="tech-tag"><span>DATA</span>export<strong>MySQL</strong></div>
-                    <div class="tech-tag"><span>VIEW</span>export<strong>HTML5 / CSS3</strong></div>
-                    <div class="tech-tag"><span>ARCH</span>export<strong>Padrão MVC</strong></div>
-                    <div class="tech-tag"><span>FLOW</span>export<strong>GitFlow</strong></div>
+                    <div class="tech-tag"><span>LANG</span><strong>PHP 8.x</strong></div>
+                    <div class="tech-tag"><span>DATA</span><strong>MySQL</strong></div>
+                    <div class="tech-tag"><span>VIEW</span><strong>HTML5 / CSS3</strong></div>
+                    <div class="tech-tag"><span>ARCH</span><strong>Padrão MVC</strong></div>
+                    <div class="tech-tag"><span>FLOW</span><strong>GitFlow</strong></div>
                 </div>
             </div>
         </section>
@@ -159,9 +149,9 @@
                         <p class="cmd-line"><span class="prompt">$</span> git clone https://github.com/antoniotrauthmann/projeto-es.git docs-site</p>
                         <p class="cmd-comment"># Mova para o diretório htdocs / root do seu servidor local</p>
                         <p class="cmd-line"><span class="prompt">$</span> cp -r docs-site /var/www/html/projeto-es</p>
-                        <p class="cmd-comment"># Importe o schema do banco de dados no MySQL (/config/database/expressoverde.sql)</p>
+                        <p class="cmd-comment"># Importe o schema do banco de dados no MySQL</p>
                         <p class="cmd-line"><span class="prompt">$</span> mysql -u root -p expressoverde < config/database/expressoverde.sql</p>
-                        <p class="cmd-comment"># Configure suas credenciais locais em /config/db_connect.php</p>
+                        <p class="cmd-comment"># Acesse o painel pelo seu navegador local</p>
                         <p class="cmd-line"><span class="prompt">$</span> open http://localhost/projeto-es/index.php?rota=catalogo</p>
                     </div>
                 </div>
@@ -177,7 +167,7 @@
                         <span class="github-hint">Acessar GitHub -></span>
                     </a>
                     <a href="https://github.com/antoniotrauthmann" target="_blank" class="member-card">
-                        <p class="member-name">Antonio Andrade Trauthmann</p>
+                        <p class="member-name">Antonio Andrade Trauthman</p>
                         <span class="github-hint">Acessar GitHub -></span>
                     </a>
                     <a href="https://github.com/JIgor08" target="_blank" class="member-card">
