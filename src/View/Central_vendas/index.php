@@ -77,7 +77,7 @@
 
                             <div class="cv-pedido-comprador">
                                 <i class="fa-solid fa-user"></i>
-                                <span>Comprador: <strong><?= htmlspecialchars($pedido['nome_comprador']) ?></strong></span>
+                                <span>Comprador: <strong>Cliente #<?= $pedido['id_pedido'] ?></strong></span>
                             </div>
 
                             <div class="cv-pedido-itens">

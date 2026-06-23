@@ -40,6 +40,19 @@ class CarrinhoController {
             $produto = $model->buscarPorId($id_produto);
 
             if ($produto) {
+                // Verificar se o produto pertence à loja do usuário logado
+                if (isset($_SESSION['usuario_id']) && !empty($produto['id_loja'])) {
+                    $stmtLoja = $this->db->prepare("SELECT id_loja FROM usuario WHERE id_usuario = ?");
+                    $stmtLoja->bind_param("i", $_SESSION['usuario_id']);
+                    $stmtLoja->execute();
+                    $resLoja = $stmtLoja->get_result()->fetch_assoc();
+                    if ($resLoja && $resLoja['id_loja'] == $produto['id_loja']) {
+                        // Vendedor tentando comprar próprio produto — bloquear
+                        header("Location: index.php?rota=produto&p=" . $id_produto);
+                        exit();
+                    }
+                }
+
                 $estoqueDisponivel = (int)$produto['estoque'];
                 $qtdAtualNoCarrinho = isset($_SESSION['carrinho'][$id_produto])
                     ? $_SESSION['carrinho'][$id_produto]['quantidade']

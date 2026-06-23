@@ -20,6 +20,18 @@ $first_result = $result->fetch_assoc();
 $precoOriginal = (float)$first_result["preco"];
 $precoDesconto = $precoOriginal - ($precoOriginal / 5);
 $precoParcela = $precoOriginal / 2;
+
+// Verificar se o usuário logado é dono deste produto (via id_loja)
+$ehProprioProduto = false;
+if (isset($_SESSION['usuario_id']) && !empty($first_result['id_loja'])) {
+    $stmtLoja = $mysqli->prepare("SELECT id_loja FROM usuario WHERE id_usuario = ?");
+    $stmtLoja->bind_param("i", $_SESSION['usuario_id']);
+    $stmtLoja->execute();
+    $resLoja = $stmtLoja->get_result()->fetch_assoc();
+    if ($resLoja && $resLoja['id_loja'] == $first_result['id_loja']) {
+        $ehProprioProduto = true;
+    }
+}
 ?>
 
 <div class="product-page-wrapper py-5">
@@ -104,6 +116,20 @@ $precoParcela = $precoOriginal / 2;
 
                     <hr class="my-4" style="border-color: #e2e8f0;">
                     
+                    <?php if ($ehProprioProduto): ?>
+                        <div class="alert-proprio-produto" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; margin-bottom: 16px;">
+                            <i class="fa-solid fa-circle-info" style="color: #6c757d; font-size: 1.2rem; flex-shrink: 0;"></i>
+                            <span style="color: #495057; font-size: 0.9rem; line-height: 1.4;">Você cadastrou este produto. Não é possível comprar um produto da sua própria loja.</span>
+                        </div>
+                        <div class="action-buttons-group mb-4">
+                            <button type="button" class="btn w-100 py-3 mb-2" disabled style="background: #adb5bd; color: #fff; border: none; border-radius: 10px; font-weight: 600; cursor: not-allowed; opacity: 0.7;">
+                                <i class="fa-solid fa-bag-shopping me-2"></i> Comprar agora
+                            </button>
+                            <button type="button" class="btn w-100 py-3" disabled style="background: #ced4da; color: #6c757d; border: 1px solid #dee2e6; border-radius: 10px; font-weight: 600; cursor: not-allowed; opacity: 0.7;">
+                                <i class="fa-solid fa-cart-plus me-2"></i> Adicionar ao carrinho
+                            </button>
+                        </div>
+                    <?php else: ?>
                     <div class="action-buttons-group mb-4">
                         <form action="index.php?rota=carrinho&action=add" method="POST" class="mb-2">
                             <input type="hidden" name="id_produto" value="<?= $first_result['id_produto'] ?>">
@@ -122,6 +148,7 @@ $precoParcela = $precoOriginal / 2;
                             </button>
                         </form>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
