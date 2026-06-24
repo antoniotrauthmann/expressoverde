@@ -13,7 +13,7 @@ class PostController {
         Auth::verificar();
         $model = new PostModel($this->db);
         $posts = $model->buscarTodos();
-        include __DIR__ . '/../View/feedView.php';
+        include __DIR__ . '/../View/Comunidade/feedView.php';
     }
 
     public function salvar() {
@@ -21,8 +21,14 @@ class PostController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $conteudo = $_POST['conteudo_texto']; 
             $titulo = "Post da Comunidade"; 
-            
             $id_usuario = $_SESSION['usuario_id']; 
+
+            $model = new PostModel($this->db);
+            
+            if (!$model->validarConteudo($conteudo)) {
+                header("Location: index.php?rota=feed&erro=conteudo_vazio");
+                exit();
+            }
 
             $post_caminho_imagem = null;
             if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === 0) {
@@ -35,7 +41,6 @@ class PostController {
                 }
             }
 
-            $model = new PostModel($this->db);
             $model->inserir($id_usuario, $titulo, $conteudo, $post_caminho_imagem); 
 
             header("Location: index.php?rota=feed");
@@ -50,19 +55,42 @@ class PostController {
             $id_usuario_logado = $_SESSION['usuario_id'];
 
             $model = new PostModel($this->db);
-            $model->excluirSeguro($id_post, $id_usuario_logado);
+            $post = $model->buscarPorId($id_post);
+            
+            if ($model->excluirSeguro($id_post, $id_usuario_logado)) {
+                if ($post && !empty($post['post_caminho_imagem']) && file_exists($post['post_caminho_imagem'])) {
+                    unlink($post['post_caminho_imagem']);
+                }
+            }
         }
         header("Location: index.php?rota=feed");
         exit();
     }
 
     public function curtir() {
+        Auth::verificar();
+        
+        if (ob_get_length()) ob_clean();
+        
+        header('Content-Type: application/json');
+
         if (isset($_GET['id'])) {
             $id_post = $_GET['id'];
+            $id_usuario_logado = $_SESSION['usuario_id'];
+
             $model = new PostModel($this->db);
-            $model->adicionarCurtida($id_post);
+            $model->alternarCurtida($id_post, $id_usuario_logado);
+            
+            $postAtualizado = $model->buscarPorId($id_post);
+            
+            echo json_encode([
+                'sucesso' => true,
+                'curtidas' => $postAtualizado['curtidas']
+            ]);
+            exit();
         }
-        header("Location: index.php?rota=feed");
+
+        echo json_encode(['sucesso' => false, 'erro' => 'ID inválido']);
         exit();
     }
 }

@@ -1,99 +1,525 @@
+/* --- CONFIGURAÇÕES GERAIS DA PÁGINA --- */
+.corpo { 
+    margin: 0; 
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif; 
+    background-color: #f8fafc;
+    color: #2d3748;
+}
 
-    .corpo { 
-        margin: 0; 
-        padding: 0;
-        font-family: Arial, sans-serif; 
-        background-color: #ffffff; /* Fundo cinza conforme o wireframe */
+.section-padding {
+    padding: 60px 0;
+}
+
+/* --- ESTILO DA HERO SECTION --- */
+.hero-section {
+    background-color: #145c54;
+    background-image: radial-gradient(circle at 80% 20%, #1a6e64 0%, #145c54 100%);
+    padding: 80px 0 100px 0;
+    color: #ffffff;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    height: 35rem;
+}
+
+.badge-tag {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-title .highlight-text {
+    color: #ffc107;
+}
+
+.hero-subtitle {
+    font-size: 17px;
+    color: #e2e8f0;
+    margin-bottom: 35px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-order-now {
+    background-color: #ffc107;
+    color: #145c54;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.btn-order-now:hover {
+    background-color: #ffffff;
+    color: #145c54;
+    transform: translateY(-2px);
+}
+
+.total-count-badge {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+}
+
+.banner-carousel {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.propaganda-imagem {
+    height: 380px;
+    object-fit: cover;
+}
+
+/* --- SEÇÃO CATEGORIAS --- */
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.category-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.category-card-item {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 24px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #2d3748;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    border: 1px solid #edf2f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.category-card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(20, 92, 84, 0.08);
+    border-color: #145c54;
+    color: #145c54;
+}
+
+.category-icon-wrapper {
+    font-size: 32px;
+    background-color: #f0f7f6;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    transition: background 0.3s;
+}
+
+.category-card-item:hover .category-icon-wrapper {
+    background-color: #145c54;
+}
+
+.category-name {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+/* --- TABS DE FILTRAGEM --- */
+.category-tabs-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tab-pill {
+    padding: 8px 22px;
+    border-radius: 50px;
+    background-color: #ffffff;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s;
+}
+
+.tab-pill:hover, .tab-pill.active {
+    background-color: #145c54;
+    color: #ffffff;
+    border-color: #145c54;
+}
+
+/* --- GRID E CARDS DE PRODUTOS PREMIUM --- */
+.product-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 15px 5px;
+}
+
+.product-card-modern {
+    text-decoration: none; 
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #edf2f7;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.product-card-modern:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.product-img-wrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #f7fafc;
+}
+
+.product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.product-card-modern:hover .product-img-wrapper img {
+    transform: scale(1.06);
+}
+
+.product-info-wrapper {
+    padding-top: 15px;
+}
+
+.product-title-modern {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-meta-modern {
+    font-size: 12px;
+    color: #718096;
+    margin-bottom: 12px;
+}
+
+.product-price-modern {
+    font-size: 19px;
+    font-weight: 800;
+    color: #145c54;
+}
+
+/* --- CONTROLOS DOS CARROSÉIS --- */
+.custom-control-btn {
+    width: 45px;
+    height: 45px;
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0;
+    border-radius: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+}
+
+.custom-control-btn:hover {
+    background-color: #145c54 !important;
+}
+
+.custom-control-btn:hover .carousel-control-prev-icon,
+.custom-control-btn:hover .carousel-control-next-icon {
+    filter: invert(1);
+}
+
+.carousel-control-prev.custom-control-btn { left: -22px; }
+.carousel-control-next.custom-control-btn { right: -22px; }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(0.7);
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ================= NOVOS COMPONENTES VISUAIS (3 SEÇÕES) ================= */
+
+/* SEÇÃO 1: OFERTAS IMPERDÍVEIS */
+.promo-banner-card {
+    background: linear-gradient(135deg, #b22222 0%, #7a1111 100%);
+    border-radius: 24px;
+    padding: 40px 30px;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(178, 34, 34, 0.2);
+}
+.promo-badge {
+    background: rgba(255,255,255,0.2);
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.countdown-placeholder {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #ffc107;
+    font-weight: bold;
+}
+.compact-offer-card {
+    background: white;
+    border-radius: 18px;
+    padding: 15px;
+    display: block;
+    text-decoration: none;
+    border: 1px solid #edf2f7;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.compact-offer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.tag-discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #e53e3e;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    z-index: 2;
+}
+.offer-img-box {
+    height: 140px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+.offer-img-box img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+.compact-offer-card h5 {
+    font-size: 14px;
+    color: #2d3748;
+    font-weight: 700;
+    margin-bottom: 8px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.price-line .old-price {
+    font-size: 12px; text-decoration: line-through; color: #a0aec0; margin-right: 8px;
+}
+.price-line .new-price {
+    font-size: 16px; color: #e53e3e; font-weight: 800;
+}
+
+/* SEÇÃO 2: PREMIUM COLECIONÁVEIS */
+.premium-showcase-bg {
+    background: linear-gradient(145deg, #0f403a 0%, #092421 100%);
+    box-shadow: 0 20px 40px rgba(11, 42, 38, 0.3);
+}
+.rare-product-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 15px;
+    transition: all 0.3s;
+}
+.rare-product-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.02);
+}
+.rare-img-wrapper {
+    height: 180px; border-radius: 14px; overflow: hidden;
+}
+.rare-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.rare-info h4 {
+    font-size: 15px; color: white; font-weight: 600; margin-top: 15px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.rare-price { color: #ffc107; font-weight: 800; font-size: 18px; }
+.rare-btn-view {
+    background: #ffc107; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50px; text-decoration: none; color: #145c54; font-size: 14px;
+}
+
+/* SEÇÃO 3: KITS DE JARDINAGEM */
+.kit-horizontal-card {
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #edf2f7;
+    height: 200px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+.kit-horizontal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+}
+.kit-img { width: 40%; height: 100%; }
+.kit-img img { width: 100%; height: 100%; object-fit: cover; }
+.kit-body { width: 60%; padding: 20px; display: flex; flex-direction: column; }
+.kit-badge {
+    background: #e6f4f2; color: #145c54; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 30px; align-self: flex-start; margin-bottom: 8px;
+}
+.kit-body h4 { font-size: 17px; font-weight: 700; color: #1a202c; }
+.kit-price { font-size: 20px; font-weight: 800; color: #145c54; }
+.btn-kit-buy {
+    background: #145c54; color: white; padding: 6px 16px; border-radius: 30px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s;
+}
+.btn-kit-buy:hover { background: #ffc107; color: #145c54; }
+
+
+/* ================= GRID DE ACESSÓRIOS EM MOSAICO (BENTO GRID 2x3) ================= */
+.accessories-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 220px);
+    gap: 20px;
+}
+
+.accessory-bento-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+/* Configuração de Proporções Assimétricas (2 na vertical e 3 na horizontal totalizado) */
+.item-style-1 {
+    grid-row: span 2; /* Bloco Grande e Vertical ocupando as duas linhas */
+    grid-column: span 1;
+}
+.item-style-2 { grid-column: span 1; grid-row: span 1; }
+.item-style-3 { grid-column: span 1; grid-row: span 1; }
+.item-style-4 { grid-column: span 1; grid-row: span 1; }
+.item-style-5 { grid-column: span 1; grid-row: span 1; }
+
+.accessory-bg-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accessory-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(15, 40, 37, 0.9) 0%, rgba(0, 0, 0, 0) 70%);
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+    transition: background 0.3s;
+}
+
+.accessory-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.accessory-category-tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #ffc107;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.accessory-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+/* Efeitos de Hover Premium */
+.accessory-bento-item:hover .accessory-bg-img {
+    transform: scale(1.05);
+}
+.accessory-bento-item:hover .accessory-overlay {
+    background: linear-gradient(to top, rgba(20, 92, 84, 0.95) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+
+/* --- RESPONSIVIDADE ADAPTATIVA --- */
+@media (max-width: 991px) {
+    .hero-section { padding: 40px 0; text-align: center; height: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-reviews { justify-content: center; }
+    .product-grid-modern { grid-template-columns: repeat(2, 1fr); }
+    .accessories-bento-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        grid-template-rows: repeat(3, 200px); 
+    }
+    .item-style-1 { grid-row: span 1; grid-column: span 2; }
+}
+
+@media (max-width: 576px) {
+    .product-grid-modern { grid-template-columns: 1fr; }
+    .accessories-bento-grid { 
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto;
         display: flex;
         flex-direction: column;
+        gap: 15px;
     }
-    
-    /* Barra de Categorias */
-    .category-bar { 
-        background-color: #ffffff; /* Rosa bem claro da imagem */
-        display: flex; 
-        justify-content: space-around; 
-        padding: 10px 0; 
-        font-size: 18px;
-    }
-    .category-bar a { 
-        text-decoration: none; 
-        color: #000; 
-    }
-    
-    .propaganda-imagem{
-        object-fit: cover;
-    }
-
-    /* Garante que os containers internos do carrossel respeitem os 250px da classe .banner */
-    .carousel-inner, 
-    .carousel-item {
-        height: 100%;
-    }
-
-    /* Ajusta a imagem para preencher o container sem distorcer */
-    .propaganda-imagem {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;       /* Faz a imagem preencher o espaço cortando as bordas sobressalentes */
-        object-position: center; /* Mantém o centro da imagem visível */
-    }
-
-    /* Banner de Propaganda */
-    .banner { 
-        background-color: #e56b6b; /* Vermelho/Coral do banner */
-        color: white; 
-        height: 250px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: space-between; 
-        padding: 0 40px; 
-        font-size: 24px; 
-    }
-    .banner-text {
-        letter-spacing: 1px;
-    }
-    .arrow {
-        cursor: pointer;
-        font-weight: normal;
-    }
-
-    /* Container Principal */
-    .container { 
-        padding: 50px 40px; 
-    }
-    
-    /* Grid de Categorias (4 colunas) */
-    .category-grid { 
-        display: grid; 
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 30px; 
-        margin-bottom: 60px; 
-    }
-    .category-box { 
-        background-color: #d9d9d9; 
-        height: 280px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        font-size: 20px; 
-        border-radius: 10px;
-        color: #000; 
-    }
-    
-    /* Grid de Produtos (5 colunas) */
-    .product-grid { 
-        display: grid; 
-        grid-template-columns: repeat(5, 1fr); 
-        gap: 20px; 
-    }
-    .product-box { 
-        background-color: #d9d9d9; 
-        border-radius: 5px;
-        height: 180px; 
-        padding: 15px; 
-        font-size: 18px; 
-        color: #000; 
-        display: flex;
-        align-items: flex-end; /* Alinhamento do texto similar ao mockup */
-    }
+    .accessory-bento-item { height: 180px; }
+    .hero-title { font-size: 32px; }
+    .kit-horizontal-card { flex-direction: column; height: auto; }
+    .kit-img { width: 100%; height: 140px; }
+    .kit-body { width: 100%; }
+}

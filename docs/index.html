@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresso Verde | UFT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo-link">
+                <img src="assets/logo.png" alt="Expresso Verde" class="logo-img">
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#sobre">/sobre</a></li>
+                    <li><a href="#demonstracao">/telas</a></li>
+                    <li><a href="#funcionalidades">/funcionalidades</a></li>
+                    <li><a href="#tecnologias">/tecnologias</a></li>
+                    <li><a href="#time">/integrantes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container text-center">
+                <div class="meta-badge">UFT // Engenharia de Software // 2026.1</div>
+                <h2>Plataforma Expresso Verde</h2>
+                <p class="hero-subtitle">Ambiente focado na conexão entre compradores e vendedores de artigos de jardinagem. Aplicação prática dos conceitos rigorosos de arquitetura e engenharia de software.</p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/antoniotrauthmann/projeto-es" target="_blank" class="btn btn-primary">Acessar Repositório</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="section border-top">
+            <div class="container grid grid-2">
+                <div>
+                    <h2 class="section-title">O Projeto</h2>
+                    <p>O Expresso Verde é um sistema web desenvolvido sob a orientação do Prof. Edeilson Milhomem da Silva. O foco principal reside na intermediação eficiente e segura de plantas, sementes, ferramentas e insumos de jardinagem.</p>
+                </div>
+                <div>
+                    <h2 class="section-title">Objetivos Acadêmicos</h2>
+                    <ul class="spec-list">
+                        <li>Levantamento sistemático e validação de requisitos</li>
+                        <li>Modelagem de processos e arquitetura distribuída</li>
+                        <li>Desenvolvimento modularizado focado em manutenibilidade</li>
+                        <li>Garantia de qualidade por meio de rotinas de testes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="demonstracao" class="section border-top showcase-section">
+            <div class="container">
+                <h2 class="section-title text-center">Visualizando o Projeto</h2>
+                <p class="text-center showcase-desc">Páginas e funções do projeto</p>
+                
+                <div class="showcase-wrapper">
+                    <div class="showcase-sidebar">
+                        <ul class="showcase-list">
+                            <li class="showcase-item item-home">
+                                <span class="showcase-link">01. Página Principal <span>&rarr;</span></span>
+                            </li>
+                            <li class="showcase-item item-comunidade">
+                                <span class="showcase-link">02. Feed da Comunidade <span>&rarr;</span></span>
+                            </li>
+                            <li class="showcase-item item-central">
+                                <span class="showcase-link">03. Central de Vendas <span>&rarr;</span></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="showcase-displays-area">
+                        <div class="showcase-placeholder">
+                            <span>Passe o cursor nos itens ao lado para renderizar as telas</span>
+                        </div>
+                        
+                        <div class="showcase-display display-home">
+                            <img src="assets/home.png" alt="Tela Home" class="showcase-img">
+                        </div>
+                        <div class="showcase-display display-comunidade">
+                            <img src="assets/comunidade.png" alt="Tela Comunidade" class="showcase-img">
+                        </div>
+                        <div class="showcase-display display-central">
+                            <img src="assets/central.png" alt="Tela Central" class="showcase-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="funcionalidades" class="section border-top">
+            <div class="container">
+                <h2 class="section-title text-center">Funcionalidades Planejadas</h2>
+                <div class="grid grid-4">
+                    <div class="card">
+                        <div class="card-num">01//</div>
+                        <h3>Compra e Venda</h3>
+                        <p>Controle de acesso seguro para compradores e vendedores gerenciarem seus portfólios e transações.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-num">02//</div>
+                        <h3>Busca Inteligente</h3>
+                        <p>Filtros estruturados para localização ágil de espécies de plantas, sementes e ferramentas específicas.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-num">03//</div>
+                        <h3>Interface Responsiva</h3>
+                        <p>Layout moderno otimizado para o consumo de dados estável tanto em desktop quanto mobile.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-num">04//</div>
+                        <h3>Comunidade</h3>
+                        <p>Espaço interativo voltado para compartilhamento de logs de cultivo, textos técnicos e imagens.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tecnologias" class="section border-top">
+            <div class="container">
+                <h2 class="section-title text-center">Arquitetura & Stack</h2>
+                <p class="text-center showcase-desc">O ecossistema adota o padrão estrutural <strong>MVC (Model-View-Controller)</strong>, garantindo baixo acoplamento e separação de responsabilidades nas camadas de negócio.</p>
+                
+                <div class="tech-grid">
+                    <div class="tech-tag"><span>LANG</span><strong>PHP 8.x</strong></div>
+                    <div class="tech-tag"><span>DATA</span><strong>MySQL</strong></div>
+                    <div class="tech-tag"><span>VIEW</span><strong>HTML5 / CSS3</strong></div>
+                    <div class="tech-tag"><span>ARCH</span><strong>Padrão MVC</strong></div>
+                    <div class="tech-tag"><span>FLOW</span><strong>GitFlow</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="execucao" class="section border-top">
+            <div class="container">
+                <h2 class="section-title text-center">Instalação Local</h2>
+                <div class="terminal-block">
+                    <div class="terminal-header">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-title">bash — setup.sh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="cmd-comment"># Acesse o diretório público do seu servidor web local (Ex: Apache / XAMPP)</p>
+                        <p class="cmd-line"><span class="prompt">$</span> cd /var/www/html</p>
+                        <p class="cmd-comment"># Clone o repositório do ecossistema principal</p>
+                        <p class="cmd-line"><span class="prompt">$</span> git clone https://github.com/antoniotrauthmann/projeto-es.git</p>
+                        <p class="cmd-comment"># Crie a database local no seu SGDB MySQL e faça a carga da estrutura</p>
+                        <p class="cmd-line"><span class="prompt">$</span> mysql -u root -p -e "CREATE DATABASE expressoverde;"</p>
+                        <p class="cmd-line"><span class="prompt">$</span> mysql -u root -p expressoverde < projeto-es/config/database/expressoverde.sql</p>
+                        <p class="cmd-comment"># Inicialize a aplicação utilizando o roteamento MVC no navegador</p>
+                        <p class="cmd-line"><span class="prompt">$</span> URL: http://localhost/projeto-es/index.php?rota=catalogo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="time" class="section border-top">
+            <div class="container">
+                <h2 class="section-title text-center">Integrantes do Grupo</h2>
+                <div class="team-grid">
+                    <a href="https://github.com/hiagofreitas" target="_blank" class="member-card">
+                        <p class="member-name">Hiago Freitas Jatoba</p>
+                        <span class="github-hint">ver perfil // github</span>
+                    </a>
+                    <a href="https://github.com/antoniotrauthmann" target="_blank" class="member-card">
+                        <p class="member-name">Antonio Andrade Trauthman</p>
+                        <span class="github-hint">ver perfil // github</span>
+                    </a>
+                    <a href="https://github.com/JIgor08" target="_blank" class="member-card">
+                        <p class="member-name">João Igor dos Santos Nascimento</p>
+                        <span class="github-hint">ver perfil // github</span>
+                    </a>
+                    <a href="https://github.com/gabrielcoldebella" target="_blank" class="member-card">
+                        <p class="member-name">Gabriel Henrique Coldebella de Souza</p>
+                        <span class="github-hint">ver perfil // github</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2026 Expresso Verde — Projeto de Engenharia de Software (UFT)</p>
+            <p class="footer-version">v1.0.0 // stable</p>
+        </div>
+    </footer>
+
+</body>
+</html>

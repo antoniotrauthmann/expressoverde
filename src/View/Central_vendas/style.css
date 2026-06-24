@@ -1,0 +1,938 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+/* ===========================
+   CENTRAL DE VENDAS — LAYOUT
+   =========================== */
+
+.cv-wrapper {
+    font-family: "DM Sans", 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* background: linear-gradient(135deg, #f6fdf6 0%, #eef7ee 100%); */
+}
+
+.cv-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+}
+
+/* ===========================
+   HEADER
+   =========================== */
+
+.cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #104c4b 0%, #1a6b6a 100%);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 20px rgba(16, 76, 75, 0.25);
+}
+
+.cv-header-text h1 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.cv-header-text h1::after {
+    display: none;
+}
+
+.cv-subtitle {
+    color: #c2dfcd;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.cv-header-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.cv-header-icon i {
+    font-size: 26px;
+    color: #ffffff;
+}
+
+/* ===========================
+   TABS
+   =========================== */
+
+.cv-tabs {
+    display: flex;
+    gap: 4px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 6px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.cv-tab-btn {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #7f8c8d;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.cv-tab-btn:hover {
+    color: #104c4b;
+    background: #f0f8f0;
+}
+
+.cv-tab-btn.active {
+    background: #104c4b;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(16, 76, 75, 0.3);
+}
+
+.cv-tab-btn.active i {
+    color: #c2dfcd;
+}
+
+.cv-tab-content {
+    display: none;
+    animation: cvFadeIn 0.3s ease;
+}
+
+.cv-tab-content.active {
+    display: block;
+}
+
+@keyframes cvFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   EMPTY STATE
+   =========================== */
+
+.cv-empty {
+    text-align: center;
+    padding: 60px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cv-empty i {
+    font-size: 56px;
+    color: #c2dfcd;
+    margin-bottom: 16px;
+}
+
+.cv-empty p {
+    font-size: 18px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.cv-empty span {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* ===========================
+   PEDIDOS — LISTA
+   =========================== */
+
+.cv-pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cv-pedido-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid #e8ede5;
+    transition: box-shadow 0.2s;
+}
+
+.cv-pedido-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.cv-pedido-header {
+    background: #f8f9fa;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e8ede5;
+}
+
+.cv-pedido-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cv-pedido-numero {
+    font-weight: 700;
+    color: #104c4b;
+    font-size: 16px;
+}
+
+.cv-pedido-data {
+    color: #7f8c8d;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cv-pedido-status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-pedido-status.status-pendente {
+    background: #f39c12;
+    color: #fff;
+}
+
+.cv-pedido-status.status-confirmado {
+    background: #27ae60;
+    color: #fff;
+}
+
+.cv-pedido-status.status-em_rota {
+    background: #3498db;
+    color: #fff;
+}
+
+.cv-pedido-status.status-entregue {
+    background: #2ecc71;
+    color: #fff;
+}
+
+.cv-pedido-status.status-cancelado {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.cv-pedido-comprador {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f2f0;
+    background: #fafbfa;
+}
+
+.cv-pedido-comprador i {
+    color: #104c4b;
+    font-size: 13px;
+}
+
+.cv-pedido-itens {
+    padding: 16px 20px;
+}
+
+.cv-pedido-itens ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cv-pedido-itens li {
+    display: flex;
+    padding: 8px 0;
+    border-bottom: 1px dashed #e8ede5;
+    align-items: center;
+}
+
+.cv-pedido-itens li:last-child {
+    border-bottom: none;
+}
+
+.cv-item-qtd {
+    color: #7f8c8d;
+    width: 40px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.cv-item-nome {
+    flex: 1;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.cv-item-preco {
+    color: #34495e;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* ===========================
+   PEDIDOS — DETALHES EXPANDÍVEIS
+   =========================== */
+
+.cv-pedido-detalhes {
+    padding: 0 20px 16px;
+    animation: cvSlideDown 0.3s ease;
+}
+
+@keyframes cvSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cv-detalhe-endereco {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    background: #f0f8f0;
+    border: 1px solid #c2dfcd;
+    border-radius: 10px;
+}
+
+.cv-detalhe-icon {
+    width: 40px;
+    height: 40px;
+    background: #104c4b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cv-detalhe-icon i {
+    color: #fff;
+    font-size: 16px;
+}
+
+.cv-detalhe-info {
+    flex: 1;
+}
+
+.cv-detalhe-titulo {
+    font-weight: 700;
+    color: #104c4b;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.cv-detalhe-rua {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.cv-detalhe-sub {
+    color: #7f8c8d;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.cv-sem-endereco {
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* ===========================
+   PEDIDOS — FOOTER (STATUS + TOTAL)
+   =========================== */
+
+.cv-pedido-footer {
+    background: #fbfcfc;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e8ede5;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.cv-btn-detalhes {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid #dce4d1;
+    border-radius: 6px;
+    color: #104c4b;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.cv-btn-detalhes:hover {
+    background: #f0f8f0;
+    border-color: #104c4b;
+}
+
+.cv-status-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv-status-form label {
+    font-size: 13px;
+    color: #7f8c8d;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.cv-select-status {
+    padding: 7px 12px;
+    border: 1px solid #dce4d1;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #2c3e50;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.cv-select-status:focus {
+    border-color: #104c4b;
+}
+
+.cv-btn-atualizar {
+    padding: 7px 14px;
+    background: #104c4b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cv-btn-atualizar:hover {
+    background: #0c3837;
+}
+
+.cv-pedido-total {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv-total-label {
+    color: #7f8c8d;
+    font-size: 13px;
+}
+
+.cv-total-valor {
+    font-size: 18px;
+    font-weight: 700;
+    color: #27ae60;
+}
+
+/* ===========================
+   CADASTRO DE PRODUTO (DENTRO DA CENTRAL)
+   =========================== */
+
+.cv-cadastro-produto-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cv-form-produto {
+    width: 100%;
+}
+
+.cv-form-header {
+    margin-bottom: 20px;
+}
+
+.cv-form-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #104c4b;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.cv-form-header h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #c2dfcd;
+    margin-top: 6px;
+    border-radius: 10px;
+}
+
+.cv-form-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 2px solid #e8ede5;
+    margin-bottom: 20px;
+}
+
+.cv-form-tab {
+    background: none;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #7f8c8d;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.cv-form-tab:hover {
+    color: #104c4b;
+}
+
+.cv-form-tab.active {
+    color: #104c4b;
+    border-bottom-color: #104c4b;
+    font-weight: 600;
+}
+
+.cv-form-content {
+    display: none;
+    width: 100%;
+}
+
+.cv-form-content.active {
+    display: block;
+}
+
+.cv-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cv-input-row {
+    display: flex;
+    gap: 16px;
+}
+
+.cv-input-row .cv-input-box {
+    flex: 1;
+}
+
+.cv-input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.cv-input-box label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #104c4b;
+    margin-bottom: 6px;
+}
+
+.cv-input-box input,
+.cv-input-box select,
+.cv-input-box textarea {
+    font-size: 14px;
+    padding: 11px 14px;
+    border: 1px solid #dce4d1;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    transition: border-color 0.2s, background 0.2s;
+    font-family: "DM Sans", sans-serif;
+}
+
+.cv-input-box input:focus,
+.cv-input-box select:focus,
+.cv-input-box textarea:focus {
+    border-color: #104c4b;
+    background: #f9fdf9;
+}
+
+.cv-input-box textarea {
+    resize: vertical;
+}
+
+/* Drop zone */
+.cv-drop-zone {
+    border: 2px dashed #dce4d1;
+    border-radius: 10px;
+    min-height: 120px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.cv-drop-zone:hover,
+.cv-drop-zone.drag-over {
+    border-color: #104c4b;
+    background: #f0f8f0;
+}
+
+.cv-drop-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 28px;
+    color: #7f8c8d;
+    text-align: center;
+}
+
+.cv-drop-inner i {
+    font-size: 32px;
+    color: #c2dfcd;
+}
+
+.cv-drop-inner p {
+    font-size: 14px;
+}
+
+.cv-drop-inner span {
+    color: #104c4b;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.cv-drop-preview {
+    display: none;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+}
+
+.cv-preview-item {
+    position: relative;
+    width: 72px;
+    height: 72px;
+}
+
+.cv-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #dce4d1;
+}
+
+.cv-preview-item button {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.cv-form-submit {
+    margin-top: 24px;
+}
+
+.cv-form-submit button {
+    width: 100%;
+    padding: 13px;
+    background: #104c4b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.cv-form-submit button:hover {
+    background: #0c3837;
+}
+
+/* ===========================
+   RENDA DIÁRIA
+   =========================== */
+
+.cv-renda-resumo {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.cv-renda-resumo-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e8ede5;
+}
+
+.cv-renda-resumo-card i {
+    font-size: 28px;
+    color: #104c4b;
+    background: #f0f8f0;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.cv-renda-resumo-card div {
+    display: flex;
+    flex-direction: column;
+}
+
+.cv-renda-resumo-label {
+    font-size: 13px;
+    color: #7f8c8d;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.cv-renda-resumo-valor {
+    font-size: 22px;
+    font-weight: 700;
+    color: #104c4b;
+}
+
+.cv-renda-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cv-renda-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e8ede5;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.cv-renda-card:hover {
+    border-color: #c2dfcd;
+    box-shadow: 0 3px 12px rgba(16, 76, 75, 0.1);
+}
+
+.cv-renda-data {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cv-renda-data i {
+    color: #104c4b;
+    font-size: 16px;
+}
+
+.cv-renda-valor {
+    font-size: 18px;
+    font-weight: 700;
+    color: #27ae60;
+}
+
+/* ===========================
+   MODAIS
+   =========================== */
+
+.cv-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+}
+
+.cv-modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 380px;
+    width: 90%;
+}
+
+.cv-modal-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.cv-modal-icon.sucesso {
+    background: #d4edda;
+    color: #155724;
+}
+
+.cv-modal-icon.erro {
+    background: #fde8e8;
+    color: #c0392b;
+}
+
+.cv-modal p {
+    color: #2c3e50;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cv-modal button {
+    padding: 10px 28px;
+    background: #104c4b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.cv-modal button:hover {
+    background: #0c3837;
+}
+
+/* ===========================
+   RESPONSIVO
+   =========================== */
+
+@media (max-width: 768px) {
+    .cv-header {
+        padding: 20px;
+    }
+
+    .cv-header-text h1 {
+        font-size: 22px;
+    }
+
+    .cv-header-icon {
+        display: none;
+    }
+
+    .cv-tabs {
+        flex-direction: column;
+    }
+
+    .cv-tab-btn {
+        justify-content: flex-start;
+    }
+
+    .cv-pedido-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cv-pedido-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cv-status-form {
+        flex-wrap: wrap;
+    }
+
+    .cv-renda-resumo {
+        flex-direction: column;
+    }
+
+    .cv-input-row {
+        flex-direction: column;
+    }
+
+    .cv-cadastro-produto-wrapper {
+        padding: 20px;
+    }
+}

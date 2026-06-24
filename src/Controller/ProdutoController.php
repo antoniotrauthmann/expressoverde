@@ -41,7 +41,13 @@ class ProdutoController
             $model = new ProdutoModel($this->db);
 
             try {
-                $id_produto = $model->inserir($nome, $categoria, $preco, $estoque, $descricao);
+                // Busca o id_loja do usuário logado
+                $stmt = $this->db->prepare("SELECT id_loja FROM usuario WHERE id_usuario = ?");
+                $stmt->bind_param("i", $_SESSION['usuario_id']);
+                $stmt->execute();
+                $id_loja = $stmt->get_result()->fetch_assoc()['id_loja'];
+
+                $id_produto = $model->inserir($nome, $categoria, $preco, $estoque, $descricao, $id_loja, $_SESSION['usuario_id']);
 
                 $uploadDir = __DIR__ . '/../../public/uploads/';
 
@@ -69,6 +75,6 @@ class ProdutoController
             exit();
         }
 
-        include __DIR__ . '/../View/Cadastro_produto/index.php';
+        include __DIR__ . '/../View/Central_vendas/index.php';
     }
 }

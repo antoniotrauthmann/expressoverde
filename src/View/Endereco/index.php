@@ -32,7 +32,7 @@
                     
                     <div class="input-group">
                         <label for="cidade">Cidade</label>
-                        <input type="text" id="cidade" name="cidade" placeholder="São Paulo" required>
+                        <input type="text" id="cidade" name="cidade" placeholder="São Paulo" required style="width: 100%">
                     </div>
                 </div>
                 

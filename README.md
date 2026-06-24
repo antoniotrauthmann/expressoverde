@@ -1,3 +1,5 @@
+
+
 # Universidade Federal do Tocantins (UFT)
 
 * **Professor: Edeilson Milhomem da Silva**
@@ -46,13 +48,13 @@ O projeto foi desenvolvido utilizando o padrão de arquitetura **MVC (Model-View
 
 ## 🧭 Links
 
-* [🗓️ Planejamento de Sprints](docs/sprints/)
+* [🗓️ Planejamento de Sprints](documents/sprints/)
 * [📊 Planejamento no Trello](https://trello.com/b/y7IEh6g8/engenharia-de-software-expresso-verde)
-* 🎨 Protótipos *(em desenvolvimento)*
-* [🎭 User Stories](docs/user-stories.md)
-* [📋 Requisitos Funcionais](docs/requisitos-funcionais.md)
-* [📋 Requisitos Não Funcionais](docs/requisitos-nao-funcionais.md)
-* ⚙️ Documentação da API *(em desenvolvimento)*
+* [🎨 Protótipos](documents/prototipoTelas)
+* [🎭 User Stories](documents/user-stories.md)
+* [📋 Requisitos Funcionais](documents/requisitos-funcionais.md)
+* [📋 Requisitos Não Funcionais](documents/requisitos-nao-funcionais.md)
+* [⚙️ Documentação da API](/api)
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -70,21 +72,27 @@ O projeto foi desenvolvido utilizando o padrão de arquitetura **MVC (Model-View
     ```
 2. Configure o Banco de dados:
     - Ative o MySQL no seu painel de controle.
-    - Importe o arquivo /docs/schema.sql via PHPMyAdmin.
+    - Importe o arquivo /config/database/expressoverde.sql via PHPMyAdmin.
 3. Configure a conexão
-    - Ajuste `/config/db_connect.php`
+    - Ajuste `/config/db_connect.php` 
 4. Acesse no navegador:
-    - `http://localhost/projeto-es`
+    - `http://localhost/projeto-es/index.php?rota=catalogo`
 
 ---
 
 ## 🎥 Vídeo de Apresentação
 
 Assista ao vídeo do projeto:
-🔗 [Link do vídeo completo](https://drive.google.com/file/d/17KipqXUz7V8dM-nMRL_1pzxKuK85Oxnu/view?usp=sharing)
 
+🔗 [Link do vídeo completo para baixar](https://github.com/antoniotrauthmann/expressoverde/blob/feat/apresentacao/documents/VideoProjeto.mp4)
 
+🔗 [Link do vídeo no youtube](https://youtu.be/2jU0jhp2OL0)
 
-## 📊 Gráfico de rede do projeto
+---
 
-<img width="751" height="471" alt="grafico de rede" src="https://github.com/user-attachments/assets/54562a0a-fca7-4fcb-8efc-d41c2986d961" />
+| Descrição | Link |
+| --------- | --------- |
+| Repositório | [Repositório](https://github.com/antoniotrauthmann/expressoverde) |
+| Landing Page | [Landing Page](https://antoniotrauthmann.github.io/expressoverde/) |
+| Apresentação | [PDF](documents/ApresentacaoExpressoVerde.pdf) |
+| Trello | [Trello](https://trello.com/b/y7IEh6g8/engenharia-de-software-expresso-verde) |
